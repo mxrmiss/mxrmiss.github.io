@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Git &amp; Github</title>
+    <url>/2020/05/03/Git/</url>
+    <content><![CDATA[<h1 id="Git-amp-Github"><a href="#Git-amp-Github" class="headerlink" title="Git &amp; Github"></a>Git &amp; Github</h1><ul>
+<li><p>Git 初始化</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"># 设置github昵称<br>git config --global user.name &#39;mxrmiss&#39;<br># 设置github邮箱<br>git config --global user.email &#39;heroli520@outlook.com&#39;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>git status 无法显示中文</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">git config --global core.quotepath false<br></code></pre></td></tr></table></figure>
+<a id="more"></a></li>
+<li><p>git 无法推送新文件到github仓库原因</p>
+<ol>
+<li>可能仓库内已经有东西了，而且使用的推送命令不对</li>
+<li>或是原来的仓库内的东西是通过网页进行上传的， 而不还是通过命令行进行上传的</li>
+<li>强制使用命令  “git commit 文件 +mster” 可能会使原仓库内的东西丢失，网上的教程都他妈的是骗人的</li>
+</ol>
+</li>
+<li><p>查看git简单配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">git config --list<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>是git无密向github传输文件</p>
+<ol>
+<li>终端输入ssh-keygen, 之后不断按回车</li>
+<li>会产生一对公密和私密，存储在家目录下的 .ssh 目录中</li>
+<li>cat ～/.ssh/id_rsa.pub ，复制输出的公密内容至 github个人主页setting中的ssh中，并保存</li>
+<li>以后clone仓库地址时就可以直接使用</li>
+</ol>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/05/02/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">"My New Post"</span><br></code></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>MongoDB</title>
+    <url>/2020/05/03/mongod_note/</url>
+    <content><![CDATA[<p>#关于MongoDB<br>    -安装<br>    -配置环境变量<br>        C:\Program Files\MongoDB\Server\4.2\bin<br>    -在C盘中创建一个文件夹 data<br>    -在data中创建1一个文件夹db</p>
+<pre><code>-打开cmd命令行窗口
+    -输入 mongod启动mongodb服务器
+    -32位注意：
+        启动服务器时，需要输入如下内容：
+            mongod --storageEngine=mmapv1
+        **注意！此内容32位用户只需在第一次使用mongodb时输入
+
+    -  mongod --dbpath数据库路径 --port 端口号        </code></pre><a id="more"></a>
+<pre><code>-再打开一个cmd窗口
+    -输入mongo 连接mongodb， 出现 &gt; 便为成功
+
+-数据库（database）
+    -数据库的服务器
+        -服务器用来保存数据
+        -mongod 用来启动服务器
+
+    -数据库的客户端
+        -客户端用来操作服务器， 对数据进行增删改查的操作
+        -mongo 用来启动服务器
+
+    -将MongoDB设置为系统服务，可以自动在后台启动，不需要每次都手动启动
+        1、在C盘根目录创建data（前面步骤已创建）
+            在data下创建db和log文件夹
+        2、创建配置文件
+            在目录 C:\Program Files\MongoDB\Server\4.2下添加一个配置</code></pre>]]></content>
+      <categories>
+        <category>mongodb</category>
+      </categories>
+      <tags>
+        <tag>mongodb</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建个人博客</title>
+    <url>/2020/05/03/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="搭建静态页面个人博客"><a href="#搭建静态页面个人博客" class="headerlink" title="搭建静态页面个人博客"></a>搭建静态页面个人博客</h1><h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><ol>
+<li><p>检查电脑是否有node.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">node -v<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>若没有则下载</p>
+</li>
+<li><p>安装npm</p>
+</li>
+<li><pre><code>npm install -g hexo-cli
+这样会报错
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>5. 解决错误：<br><br>   Missing write access to &#x2F;usr&#x2F;local&#x2F;lib&#x2F;node_modules是没有写权限, npm官方给出的解决方案是新建一个有权限的文件夹, 在这个新文件夹中安装npm包. 这个方法不适用于Microsoft Windows系统.<br>   在用户的根目录创建文件夹(名字不一定要是.npm-global, 可以自己起):<br></code></pre></td></tr></table></figure>
+mkdir ~/.npm-global
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>&lt;!--more--&gt;<br><br>设置npm全局包的安装路径:<br></code></pre></td></tr></table></figure>
+npm config set prefix &apos;~/.npm-global&apos;
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br><br><br>在用户的根目录下查看有没有.profile文件, 如果没有就创建, 然后用文本编辑器打开, 加上以下一行, 保存:<br></code></pre></td></tr></table></figure>
+export PATH=~/.npm-global/bin:$PATH
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br><br><br>回到终端运行以下命令, 让配置生效:<br></code></pre></td></tr></table></figure>
+source /etc/profile</code></pre></li>
+</ol>
+<p>   然后全局安装npm包就可以了.<br>   ————————————————</p>
+<p>   <a href="https://blog.csdn.net/zhangxuekang/article/details/89075039" target="_blank" rel="noopener">原文链接</a></p>
+<ol start="6">
+<li><p>将 Hexo 所在的目录下的 node_modules 添加到环境变量之中即可直接使用 hexo <command>：</p>
+<p>echo ‘PATH=”$PATH:./node_modules/.bin”‘ &gt;&gt; ~/.profile</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>正则</title>
+    <url>/2020/05/02/%E6%AD%A3%E5%88%99/</url>
+    <content><![CDATA[<p>#正则<br>-关于贪婪与非贪婪<br>    .<em>? 非贪婪，匹配到需要的就结束，不管后面是否有符合的<br>    .</em>  贪婪，会一直匹配所有的符合项，直到匹配结束</p>
+<p>compile 最好不要使用，这是多此一举，直接re.findall进行正则匹配</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>管理学</title>
+    <url>/2020/05/03/%E7%AE%A1%E7%90%86%E5%AD%A6/</url>
+    <content><![CDATA[<h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><ol>
+<li><p>管理学的产生与发展。</p>
+</li>
+<li><p>学习管理学的意义、理论指导、科学思维以及基本方法。</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3></li>
+</ol>
+<h2 id="第一章-管理学导论"><a href="#第一章-管理学导论" class="headerlink" title="第一章 管理学导论"></a>第一章 管理学导论</h2><ol>
+<li><p>理解组织与管理的内涵。</p>
+</li>
+<li><p>认识组织的特征、企业的特征。</p>
+</li>
+<li><p>管理工作的主要内容。</p>
+</li>
+<li><p>理解管理的本质。</p>
+</li>
+<li><p>如何理解管理的科学性与艺术性。</p>
+</li>
+<li><p>管理的基本原理、基本方法与工具。</p>
+</li>
+<li><p>认识理性分析与直觉判断的关系。</p>
+<a id="more"></a>
+
+</li>
+</ol>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><h2 id="第二章-管理理论的历史演变"><a href="#第二章-管理理论的历史演变" class="headerlink" title="第二章 管理理论的历史演变"></a>第二章 管理理论的历史演变</h2><ol>
+<li><p>理解泰勒科学管理的基本思想。</p>
+</li>
+<li><p>理解法约尔的一般管理理论的主要思想。</p>
+</li>
+<li><p>理解韦伯组织理论在管理实践中的意义。</p>
+</li>
+<li><p>组织协调机制主要有哪些形式？</p>
+</li>
+<li><p>理解组织合法性的内涵以及对组织结构变化的影响。</p>
+</li>
+<li><p>现代系统与权变管理理论的主要思想。</p>
+</li>
+<li><p>理解西蒙决策理论的主要观点。 </p>
+</li>
+</ol>
+<h2 id="第三章-决策与决策过程"><a href="#第三章-决策与决策过程" class="headerlink" title="第三章 决策与决策过程"></a>第三章 决策与决策过程</h2><ol>
+<li><p>如何理解决策，决策有哪些基本特征？</p>
+</li>
+<li><p>理解决策与计划之间的关系。</p>
+</li>
+<li><p>不同的决策类型及其异同之处。</p>
+</li>
+<li><p>理解一般的决策过程是如何制定的。</p>
+</li>
+<li><p>决策的影响因素有哪些？</p>
+</li>
+<li><p>按照不同准则分别选择最优决策方案。</p>
+</li>
+</ol>
+<h2 id="第四章-环境分析于理性决策"><a href="#第四章-环境分析于理性决策" class="headerlink" title="第四章 环境分析于理性决策"></a>第四章 环境分析于理性决策</h2><ol>
+<li><p>理解组织与环境的关系。</p>
+</li>
+<li><p>环境分析有哪些主要方法？</p>
+</li>
+<li><p>理性决策、非理性决策和行为决策。</p>
+</li>
+<li><p>决策方案生成的主要方法是什么？</p>
+</li>
+<li><p>用决策树方法来评价和选择一个具体的决策方案。</p>
+</li>
+<li><p>用蒂蒙斯教授的机会评价框架评价一个创新或创业机会。</p>
+</li>
+</ol>
+<h2 id="第五章-决策的事实与调整"><a href="#第五章-决策的事实与调整" class="headerlink" title="第五章 决策的事实与调整"></a>第五章 决策的事实与调整</h2><ol>
+<li><p>理解计划与决策的区别。 </p>
+</li>
+<li><p>掌握目标管理的基本主张和特点。</p>
+</li>
+</ol>
+<h2 id="第六章-组织与设计"><a href="#第六章-组织与设计" class="headerlink" title="第六章 组织与设计"></a>第六章 组织与设计</h2><ol>
+<li><p>理解组织结构设计包括哪些内容。</p>
+</li>
+<li><p>理解机械式组织与有机式组织的区别。</p>
+</li>
+<li><p>理解正式组织与非正式组织的整合。</p>
+</li>
+</ol>
+<h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3>]]></content>
+      <categories>
+        <category>管理学</category>
+      </categories>
+      <tags>
+        <tag>管理学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux</title>
+    <url>/2020/05/03/Linux/</url>
+    <content><![CDATA[<p><a href="https://book.apeland.cn/details/189/" target="_blank" rel="noopener">本笔记的友情链接</a></p>
+<h2 id="常用目录介绍"><a href="#常用目录介绍" class="headerlink" title="常用目录介绍"></a>常用目录介绍</h2><ol>
+<li>boot    存放启动文件</li>
+<li>dev     存放设备文件</li>
+<li>etc     存放配置文件</li>
+<li>home    普通用户家目录，以/home/$username的方式存放</li>
+<li>media   移动存储自动挂载目录,以 /media/$device_name的方式来存放</li>
+<li>mnt     手动挂载目录</li>
+<li>opt     三方软件安装目录</li>
+<li>proc    内存系统文件</li>
+<li>root    管理员家目录</li>
+<li>run     里面的东西是系统运行时需要的, 不能随便删除. 但是重启的时候应该抛弃. 下次系统运行时重新生成</li>
+<li>srv     服务相关数据</li>
+<li>sys     系统文件</li>
+<li>tmp     临时文件夹</li>
+<li>usr     存放库文件、文档、命令、用户数据等</li>
+<li>var     日志存放lib     库文件<a id="more"></a></li>
+</ol>
+<ul>
+<li>-echo相当于python中的print，即输出、打印的意思</li>
+</ul>
+<h2 id="linux基本命令"><a href="#linux基本命令" class="headerlink" title="linux基本命令"></a>linux基本命令</h2><h3 id="命令-命令选项-参数"><a href="#命令-命令选项-参数" class="headerlink" title="命令[命令选项][参数]"></a>命令[命令选项][参数]</h3><p>​    {必选项}， [可选项]</p>
+<p>1）清屏命令：clear      快捷键  ctrl+l<br>2）帮助命令：man<br>3）进入文件夹命令: cd  【change dir，cd理解为改变目录的意思】<br>4）列出当前目录内容命令：ls   [-a -l -d ] 【list】<br>5）显示主机名：hostname<br>6）显示日期时间：date [-s %F]<br>7）显示日历：cal<br>8）计算器：bc<br>9）重启命令：reboot     shutdown -r      init 6<br>10）注销命令：logout<br>11）关机命令：halt      shutdown -h         init 0<br>12) 显示当前操作系统和机器的信息: uname<br>13) 显示当前路径: pwd 【定位自己的位置】</p>
+<p>-多个命令选项可以用一个 — 拼凑在一起，若命令产生了冲突，则以排最后的为主<br>-命令选项写全称时，前面加 — —</p>
+<ul>
+<li><p>从命令行启动图形界面的默认图片查看器</p>
+<p>​    运行命令：xdg-open filename.png</p>
+</li>
+<li><p>在命令行打开一个图片:</p>
+<ol>
+<li><p>apt install fim</p>
+</li>
+<li><p>fim filename.png</p>
+<ul>
+<li><p>fim是fbi的升级版</p>
+<p><a href="http://www.itpro.net.cn/2019/12/linux" target="_blank" rel="noopener">有关于fim的操作链接</a></p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>apt 与apt-get 的区别：apt-get 是 apt 的子集</p>
+</li>
+<li><p>更新安装包：apt upgrade</p>
+</li>
+</ul>
+<h3 id="安装内核头文件"><a href="#安装内核头文件" class="headerlink" title="安装内核头文件"></a>安装内核头文件</h3><ul>
+<li>输入命令：apt-get install linux-headers-$(uname -r)或者直接敲apt-get install linux-headers-在这时候你按键盘上的tab键，找你本系统的头文件安装即可</li>
+</ul>
+<h3 id="关于Anaconda的安装"><a href="#关于Anaconda的安装" class="headerlink" title="关于Anaconda的安装"></a>关于Anaconda的安装</h3><ul>
+<li><p>在清华镜像站下载Anaconda</p>
+</li>
+<li><p>安装后修改环境变量</p>
+<ul>
+<li><p>sudo vim /etc/profile</p>
+</li>
+<li><p>向里面写入  export PATH=$PATH:/home/balacksheep/anaconda3/bin:$PATH</p>
+<pre><code>%%blacksheep为用户名，应选择自己的路                            径配置环境变量</code></pre></li>
+</ul>
+</li>
+<li><p>安装后命令行使用时前面有base，代表安装成功，不需要去掉base，对使用无影响</p>
+</li>
+<li><p>更换anaconda的源，以清华源举例：</p>
+<ul>
+<li><p>sudo vim ~/.condarc</p>
+</li>
+<li><p>向里面写入：</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">channels:<br>https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;anaconda&#x2F;pkgs&#x2F;main&#x2F;<br>https:&#x2F;&#x2F;mirrors.ustc.edu.cn&#x2F;anaconda&#x2F;cloud&#x2F;conda-forge&#x2F;<br>https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;pkgs&#x2F;free&#x2F;<br>defaults<br>show_channel_urls: true<br></code></pre></td></tr></table></figure></code></pre><h3 id="关于qq的安装问题"><a href="#关于qq的安装问题" class="headerlink" title="关于qq的安装问题"></a>关于qq的安装问题</h3><ul>
+<li>在kali系统中，输入wine，系统会自动提示你wine未安装，此时按照提示给的步骤来就行了</li>
+<li>关于字体问题：qq安装好了后会发现有些字体变成了乱码，此时可以安装一些字体来解决</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">apt-get install xfonts-intl-chinese<br>apt-get install ttf-wqy-microhei<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>关于QQ用wine装好后找不到的问题<ul>
+<li>wine 默认被配置成home文件下的隐藏文件，cd .wine即可调出</li>
+<li>输入~/.wine/drive_c/Program Files (x86)/Tencent/QQ/Bin</li>
+<li>你会发现里面优QQ.exe文件，输入wine QQ 或wine QQ.exe即可调出QQ程序</li>
+<li>为了方便，可以把QQ/Bin 放到home文件下</li>
+</ul>
+</li>
+</ul>
+<h3 id="关于vmware-虚拟机安装"><a href="#关于vmware-虚拟机安装" class="headerlink" title="关于vmware 虚拟机安装"></a>关于vmware 虚拟机安装</h3><ol>
+<li>官网下载虚拟机最新版本</li>
+<li>chmod -x 下载的文件</li>
+<li>sudo bash 下载的文件</li>
+<li>之后就可以在电脑中找到虚拟机，并进行下一步的安装操作</li>
+</ol>
+<h3 id="man-中文手册下载"><a href="#man-中文手册下载" class="headerlink" title="man 中文手册下载"></a>man 中文手册下载</h3><ol>
+<li>Debian / Ubuntu安装</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">sudo apt update<br>sudo apt install manpages-zh<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Arch Linux:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">pacman -Syu<br>pacman -S man-pages-zh_cn man-pages-zh_tw<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Red Hat / CentOS:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">yum update<br>yum install man-pages-zh-CN<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>Fedora:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">dnf update<br>dnf install man-pages-zh-CN<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="vim命令"><a href="#vim命令" class="headerlink" title="vim命令"></a>vim命令</h3><ol>
+<li>:set number 显示行号</li>
+<li>:set 取消行号</li>
+<li>xG:跳转到指定的第x行，G移动到文件末尾行</li>
+<li>dd ：剪切一行， yy：复制一行</li>
+<li>D：剪切一个字符，y：复制一个字符</li>
+<li>p：粘贴</li>
+<li>dxw：删除光标右边x个字符</li>
+<li>dxh：删除光标左边x个字符</li>
+<li>:x 删除一个字符</li>
+<li>/string :查找字符 n:向上查找，N：向下查找</li>
+<li>:范围 s/oldword/newword/g  字符替换 %s全文查找，g为global，全局替换</li>
+</ol>
+<ul>
+<li>vim规则总结</li>
+</ul>
+<p>（1）一般是操作字符+被操作的量</p>
+<p>（2）$ 为结尾， 0 为开头</p>
+<ul>
+<li>vim简单配置：</li>
+</ul>
+  <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-string">"===================</span><br><span class="hljs-string">"</span>适合自己用的vimrc配置文件<br><span class="hljs-string">"===================</span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span>设置编码<br><span class="hljs-built_in">set</span> fileencodings=utf<span class="hljs-number">-8</span>,ucs-bom,gb18030,gbk,gb2312,cp936<br><span class="hljs-built_in">set</span> termencoding=utf<span class="hljs-number">-8</span><br><span class="hljs-built_in">set</span> encoding=utf<span class="hljs-number">-8</span><br><br><span class="hljs-string">"保存.vimrc文件时自动重启加载，即让此文件立即生效</span><br><span class="hljs-string">autocmd BufWritePost $MYVIMRC source $MYVIMRC</span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span>语法高亮<br>syntax on<br><br><span class="hljs-string">"设置ruler会在右下角显示光标所在的行号和列号,不方便查看,改成设置状态栏显示内容</span><br><span class="hljs-string">"</span><span class="hljs-built_in">set</span> ruler<br><br><span class="hljs-string">"设置状态行显示的内容. %F: 显示当前文件的完整路径. %r: 如果readonly,会显示[RO]</span><br><span class="hljs-string">"</span>%B: 显示光标下字符的编码值,十六进制. %l:光标所在的行号. %v:光标所在的虚拟列号.<br><span class="hljs-string">"%P: 显示当前内容在整个文件中的百分比. %H和%M是strftime()函数的参数,获取时间.</span><br><span class="hljs-string">set statusline=%F%r\ [HEX=%B][%l,%v,%P]\ %&#123;strftime(\"%H:%M\")&#125;</span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span>显示行号<br><span class="hljs-built_in">set</span> nu <span class="hljs-string">"等同于 set number</span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span>突出显示当前行<br><span class="hljs-built_in">set</span> cursorline <span class="hljs-string">"等同于 set cul</span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span>突出显示当前列<br><span class="hljs-built_in">set</span> cursorcolumn <span class="hljs-string">"等同于 set cuc</span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span>共享剪贴板  <br><span class="hljs-built_in">set</span> clipboard+=unnamed <br><br><span class="hljs-string">"从不备份  </span><br><span class="hljs-string">set nobackup</span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span>自动保存<br><span class="hljs-built_in">set</span> autowrite<br><br><span class="hljs-string">"隐藏工具栏</span><br><span class="hljs-string">"</span><span class="hljs-built_in">set</span> guioptions-=T<br><span class="hljs-string">"隐藏菜单栏</span><br><span class="hljs-string">"</span><span class="hljs-built_in">set</span> guioptions-=m<br><br><span class="hljs-string">"高亮显示所有搜索到的内容.后面用map映射快捷键来方便关闭当前搜索的高亮.</span><br><span class="hljs-string">"</span><span class="hljs-built_in">set</span> hlsearch<br><br><span class="hljs-string">"光标立刻跳转到搜索到内容</span><br><span class="hljs-string">"</span><span class="hljs-built_in">set</span> incsearch<br><br><span class="hljs-string">"搜索到最后匹配的位置后,再次搜索不回到第一个匹配处</span><br><span class="hljs-string">"</span><span class="hljs-built_in">set</span> nowrapscan<br><br><span class="hljs-string">"去掉输入错误时的提示声音</span><br><span class="hljs-string">set noeb</span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span> 默认按下Esc后,需要等待<span class="hljs-number">1</span>秒才生效,设置Esc超时时间为<span class="hljs-number">100</span>ms,尽快生效<br><span class="hljs-built_in">set</span> ttimeout<br><span class="hljs-built_in">set</span> ttimeoutlen=<span class="hljs-number">100</span><br><br><span class="hljs-string">"在处理未保存或只读文件的时候，弹出确认</span><br><span class="hljs-string">set confirm</span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span>让Backspace键可以往前删除字符.<br><span class="hljs-string">"Debian系统自带的vim版本会加载一个debian.vim文件,默认已经设置这一项,</span><br><span class="hljs-string">"</span>可以正常使用Backspace键.如果使用自己编译的vim版本,并自行配置.vimrc文件,<br><span class="hljs-string">"可能就没有设置这一项,导致Backspace键用不了,或者时灵时不灵.所以主动配置.</span><br><span class="hljs-string">"</span>使回格键（backspace）正常处理indent, eol, start等<br><span class="hljs-built_in">set</span> backspace=indent,eol,start<br><br><span class="hljs-string">"允许backspace和光标键跨越行边界</span><br><span class="hljs-string">"</span><span class="hljs-built_in">set</span> whichwrap+=&lt;,&gt;,h,l<br><br><span class="hljs-string">"去掉有关vi一致性模式,避免操作习惯上的局限.</span><br><span class="hljs-string">set nocompatible</span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span>FIXME 在MS-DOS控制台打开vim时,控制台使用鼠标右键来复制粘贴,设置<br><span class="hljs-string">"全鼠标模式,鼠标右键被映射为visual mode,不能用来复制粘贴,不方便.</span><br><span class="hljs-string">"</span>但是如果不设置鼠标模式,会无法使用鼠标滚轮来滚动界面.经过验证,发现<br><span class="hljs-string">"可以设成普通模式mouse=n来使用鼠标滚轮,也能使用鼠标右键复制粘贴.</span><br><span class="hljs-string">"</span> mouse=c/mouse=i模式都不能用鼠标滚轮. Linux下还是要设成 mouse=a<br><span class="hljs-built_in">set</span> mouse=n<br><span class="hljs-string">"set selection=exclusive</span><br><span class="hljs-string">"</span><span class="hljs-built_in">set</span> selectmode=mouse,key<br><br><span class="hljs-string">"高亮显示括号匹配</span><br><span class="hljs-string">set showmatch</span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span>设置Tab长度为<span class="hljs-number">4</span>空格<br><span class="hljs-built_in">set</span> tabstop=<span class="hljs-number">4</span><br><span class="hljs-string">"设置自动缩进长度为4空格</span><br><span class="hljs-string">set shiftwidth=4</span><br><span class="hljs-string">"</span>自动缩进,这个导致从外面拷贝多行以空格开头的内容时,会有多的缩进,先不设置<br><span class="hljs-string">"set autoindent</span><br><span class="hljs-string">"</span>不要用空格代替制表符<br><span class="hljs-built_in">set</span> noexpandtab<br><span class="hljs-string">"输入tab制表符时，自动替换成空格</span><br><span class="hljs-string">"</span><span class="hljs-built_in">set</span> expandtab<br><span class="hljs-string">"设置softtabstop有一个好处是可以用Backspace键来一次删除4个空格.</span><br><span class="hljs-string">"</span>softtabstop的值为负数,会使用shiftwidth的值,两者保持一致,方便统一缩进.<br><span class="hljs-string">"set softtabstop=4</span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span>显示空格和tab键<br><span class="hljs-built_in">set</span> listchars=tab:&gt;-,trail:-<br><br><span class="hljs-string">"1=启动显示状态行, 2=总是显示状态行.设置总是显示状态行,方便看到当前文件名</span><br><span class="hljs-string">set laststatus=2</span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span>自动补全<br>:inoremap ( ()&lt;ESC&gt;i<br>:inoremap ) &lt;c-r&gt;=ClosePair(<span class="hljs-string">')'</span>)&lt;CR&gt;<br>:inoremap &#123; &#123;&lt;CR&gt;&#125;&lt;ESC&gt;O<br>:inoremap &#125; &lt;c-r&gt;=ClosePair(<span class="hljs-string">'&#125;'</span>)&lt;CR&gt;<br>:inoremap [ []&lt;ESC&gt;i<br>:inoremap ] &lt;c-r&gt;=ClosePair(<span class="hljs-string">']'</span>)&lt;CR&gt;<br>:inoremap <span class="hljs-string">" "</span><span class="hljs-string">"&lt;ESC&gt;i</span><br><span class="hljs-string">:inoremap ' ''&lt;ESC&gt;i</span><br><span class="hljs-string">function! ClosePair(char)</span><br><span class="hljs-string">    if getline('.')[col('.') - 1] == a:char</span><br><span class="hljs-string">        return "</span>\&lt;Right&gt;<span class="hljs-string">"</span><br><span class="hljs-string">    else</span><br><span class="hljs-string">        return a:char</span><br><span class="hljs-string">    endif</span><br><span class="hljs-string">endfunction </span><br><span class="hljs-string">"</span>打开文件类型检测,并载入文件类型插件,为特定文件类型载入相关缩进文<br>filetype plugin indent on<br><span class="hljs-string">" 设置自动补全的选项. longest表示只自动补全最大匹配的部分,剩余部分通过</span><br><span class="hljs-string">"</span> CTRL-P/CTRL-N来选择匹配项进行补全. menu表示弹出可补全的内容列表.<br><span class="hljs-string">" 如果有多个匹配,longest选项不会自动选中并完整补全,要多按一次CTRL-P,比较</span><br><span class="hljs-string">"</span> 麻烦,不做设置,保持默认设置,vim默认没有设置longest.<br><span class="hljs-string">"set completeopt=longest,menu "</span>启用这句才会开启自动补全<br><br><br><span class="hljs-string">"=============显示中文帮助</span><br><span class="hljs-string">if version &gt;= 603</span><br><span class="hljs-string">    set helplang=cn</span><br><span class="hljs-string">    set encoding=utf-8</span><br><span class="hljs-string">endif</span><br><span class="hljs-string"></span><br><span class="hljs-string">"</span>=============新建.c,.h,.sh,.java文件，自动插入文件头 <br>autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec <span class="hljs-string">":call SetTitle()"</span> <br><span class="hljs-string">""</span>定义函数SetTitle，自动插入文件头 <br>func SetTitle() <br>    <span class="hljs-string">"如果文件类型为.sh文件 </span><br><span class="hljs-string">    if &amp;filetype == 'sh' </span><br><span class="hljs-string">        call setline(1,"</span>\############################<span class="hljs-string">") </span><br><span class="hljs-string">        call append(line("</span>.<span class="hljs-string">"), "</span>\# <span class="hljs-built_in">File</span> Name: <span class="hljs-string">".expand("</span>%<span class="hljs-string">")) </span><br><span class="hljs-string">        call append(line("</span>.<span class="hljs-string">")+1, "</span>\# Author: Li Ziqiang<span class="hljs-string">") </span><br><span class="hljs-string">        call append(line("</span>.<span class="hljs-string">")+2, "</span>\# mail: <span class="hljs-number">2296557984</span>@qq.com<span class="hljs-string">") </span><br><span class="hljs-string">        call append(line("</span>.<span class="hljs-string">")+3, "</span>\# Created Time: <span class="hljs-string">".strftime("</span>%c<span class="hljs-string">"))</span><br><span class="hljs-string">        call append(line("</span>.<span class="hljs-string">")+4, "</span>\############################<span class="hljs-string">") </span><br><span class="hljs-string">        call append(line("</span>.<span class="hljs-string">")+5, "</span>\#!/bin/bash<span class="hljs-string">") </span><br><span class="hljs-string">        call append(line("</span>.<span class="hljs-string">")+6, "</span><span class="hljs-string">") </span><br><span class="hljs-string">    else </span><br><span class="hljs-string">        call setline(1, "</span><span class="hljs-comment">/******************************") </span><br><span class="hljs-comment">        call append(line("."), "    &gt; File Name: ".expand("%")) </span><br><span class="hljs-comment">        call append(line(".")+1, "    &gt; Author:Li Ziqiang") </span><br><span class="hljs-comment">        call append(line(".")+2, "    &gt; Mail: 2296557984@qq.com ") </span><br><span class="hljs-comment">        call append(line(".")+3, "    &gt; Created Time: ".strftime("%c")) </span><br><span class="hljs-comment">        call append(line(".")+4, " *****************************/</span><span class="hljs-string">") </span><br><span class="hljs-string">        call append(line("</span>.<span class="hljs-string">")+5, "</span><span class="hljs-string">")</span><br><span class="hljs-string">    endif</span><br><span class="hljs-string"></span><br><span class="hljs-string">    "</span>新建文件后，自动定位到文件末尾<br>    autocmd BufNewFile * normal G<br>endfunc<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tcp/ip</title>
+    <url>/2020/05/03/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[<h1 id="网络协议"><a href="#网络协议" class="headerlink" title="网络协议"></a>网络协议</h1><p><a href="http://blog.sina.com.cn/s/blog_52ddfea30100nssx.html" target="_blank" rel="noopener">相关博客</a></p>
+<h2 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h2><h3 id="以太网术语"><a href="#以太网术语" class="headerlink" title="以太网术语"></a>以太网术语</h3><p>以太网遵循一组控制其基本操作的简单规则。为了更好地理解这些规则，了解基本的以太网术语十分重要。 </p>
+<ol>
+<li>介质——以太网设备连接到一个公共介质上，该介质为电气信号的传输提供了一条路径。历史上一直使用同轴铜电缆作为传输介质，但是目前双绞线或光纤更为多见。 </li>
+<li>网段——我们将单个共享介质称作一个以太网段。 </li>
+<li>节点——连接到网段的设备称作站点或节点。 </li>
+<li>帧——节点使用称作帧的简短消息进行通信，帧是大小不固定的信息块。 帧类似于人类语言中的句子。在中文里，我们构造句子时会有一些规则，例如每个句子必须包含主语和谓语。以太网协议也规定了用于构造帧的一组规则。对于帧的最大和最小长度有明确规定，而且帧中必须包含一组必需的信息段。例如，每个帧必须包括目标地址和源地址，它们分别指出了消息的接收方和发送方。通过地址可标识唯一的节点，就像通过姓名可找出某个人一样。任何两个以太网设备都不应具有相同的地址。<a id="more"></a>
+####TCP/IP协议原理图及解释</li>
+</ol>
+<p><a href="http://s3.sinaimg.cn/middle/52ddfea3t998861108572&690" target="_blank" rel="noopener">原理图链接</a></p>
+<p><strong>应用层（FTP协议）:</strong></p>
+<p>首先我们说说应用层，应用层就像在特定城市特定大厦特定房间内的某一个用户，应用层之间的通讯就像两个不同用户之间发送的信，这个信是点对点的，从一个用户（某一主机内特定应用程序）到另外一个特定用户（另一主机内特定应用程序）。一个主机（大厦）内可能有很多应用程序（客户），我们如何区分它们呢，实际生活中我们用房间号，在电脑内部区分不同应用程序我们用端口号。</p>
+<p><strong>传输层(TCP):</strong></p>
+<p>用户写好了信，需要给信套上信封，并且写好发件人所在大厦，和收件人所在大厦，实际生活中的大厦完全可以类比为我们的计算机和服务器。传输层（TCP）就是在两个不同主机之间传输信息的协议。</p>
+<p><strong>网络层(IP):</strong></p>
+<p>邮件准备好了，他首先会被送到本城市的快递公司，并且被打包，包裹上会写着源是重庆快递公司，目的是沈阳快递公司，但是重庆快递公司发现它不能直接发货到沈阳，需要通过北京快递公司进行中转。所以虽然目的是沈阳，但是他首先把这个包裹发给了北京。某个城市的快递公司就像IP协议，要抵达目的IP，需要查询路由表，如果发现目的地址不是直连就需要找下一跳。通过了解快递公司的工作，我们了解到IP协议是逐跳工作的。每一跳（路由器）根据目的IP地址查询下一跳，并且最终转发到目的地。</p>
+<p><strong>链路层（以太网）:</strong></p>
+<p>重庆快递公司已经知道他需要把包裹发给北京快递公司了，现在他就把包裹送到重庆火车站，搭上去往北京的火车，然后在北京火车站卸货。然后送到北京快递公司，北京快递公司再判断下一跳为沈阳快递公司，并且选择适当的传输方式，例如:汽车，最后通过这种传输方式送到目的地沈阳快递公司。链路层协议就像包裹的运输方式，我们可以选择以太网（火车），也可以选择令牌环（汽车）。并且链路层协议是逐介质的，从一个网卡（重庆火车站）到另外一个网卡（北京火车站）。<br>所以你会发现一个数据包从源到目的，IP地址总是不变的（源是重庆快递公司，目的是沈阳快递公司），但是链路层协议却在不断变化，第一跳源是重庆火车站，目的是北京火车站，第二跳源是北京汽车站，目的是沈阳汽车站。</p>
+<ul>
+<li><p>知名端口号一般都低于1024，客户端端口号是临时的</p>
+</li>
+<li><p>TCP对数据进行封装，并对数据的安全进行保障，IP对被TCP封装后的数据进行传输</p>
+</li>
+<li><p>UDP对数据进行包装时不会对数据是否丢包进行保障，丢包时不返回检查，例如聊天信息的传输</p>
+</li>
+<li><p>以太网的类型：0800  IP数据  （记）</p>
+<p>​                         0806  ARP请求/应答   (记)</p>
+<p>​                         8035  RARP请求/应答</p>
+</li>
+<li><p>以太网的MTU最大值是1500，当数据大小大于出口的MTU时，会进行切片，并可进行多次切片处理</p>
+</li>
+</ul>
+<h2 id="关于IP首部"><a href="#关于IP首部" class="headerlink" title="关于IP首部"></a>关于IP首部</h2><p><a href="https://blog.csdn.net/Wu000999/article/details/88617237" target="_blank" rel="noopener">IP首部链接</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20190317101238221.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1d1MDAwOTk5,size_16,color_FFFFFF,t_70" alt="img"></p>
+<ul>
+<li>详情点击上方链接（太难了。。。）</li>
+</ul>
+<h2 id="MAC-地址与-IP-地址区别"><a href="#MAC-地址与-IP-地址区别" class="headerlink" title="MAC 地址与 IP 地址区别"></a>MAC 地址与 IP 地址区别</h2><ul>
+<li>IP 地址和 MAC 地址相同点是它们都唯一，不同的特点主要有：</li>
+</ul>
+<ol>
+<li>对于网络上的某一设备，如一台计算机或一台路由器，其 IP 地址是基于网络拓扑设计出的，同一台设备或计算机上，改动 IP 地址是很容易的（但必须唯一），而 MAC 则是生产厂商烧录好的，一般不能改动。我们可以根据需要给一台主机指定任意的 IP 地址，如我们可以给局域网上的某台计算机分配 IP 地址为 192.168.0.112 ，也可以将它改成 192.168.0.200。而任一网络设备（如网卡，路由器）一旦生产出来以后，其 MAC 地址不可由本地连接内的配置进行修改。如果一个计算机的网卡坏了，在更换网卡之后，该计算机的 MAC 地址就变了。</li>
+<li>长度不同。IP 地址为 32 位，MAC 地址为 48 位。</li>
+<li>分配依据不同。IP 地址的分配是基于网络拓扑，MAC 地址的分配是基于制造商。</li>
+<li>寻址协议层不同。IP 地址应用于 OSI 第三层，即网络层，而 MAC 地址应用在 OSI 第二层，即数据链路层。 数据链路层协议可以使数据从一个节点传递到相同链路的另一个节点上（通过 MAC 地址），而网络层协议使数据可以从一个网络传递到另一个网络上（ARP 根据目的 IP 地址，找到中间节点的 MAC 地址，通过中间节点传送，从而最终到达目的网络）。</li>
+<li><strong>MAC地址其实是可以修改的，网上能搜到</strong></li>
+</ol>
+<h3 id="数据传输时"><a href="#数据传输时" class="headerlink" title="数据传输时"></a>数据传输时</h3><ul>
+<li>IP视为标记，原IP和目的IP再数据传输的过程中是不变的</li>
+<li>MAC视为步骤，每次经过网关时，IP和原MAC不变，但是目的MAC却会改变</li>
+</ul>
+<h5 id="基于TCP的应用层协议："><a href="#基于TCP的应用层协议：" class="headerlink" title="基于TCP的应用层协议："></a>基于TCP的应用层协议：</h5><ul>
+<li>HTTP：80</li>
+<li>HTTPS：443</li>
+<li>FTP：20/21</li>
+<li>SSH：22</li>
+<li>TELNET：23</li>
+<li>SMTP/POP：25/110</li>
+</ul>
+<h3 id="通过tcp包中flags的值来判断tcp的状态"><a href="#通过tcp包中flags的值来判断tcp的状态" class="headerlink" title="通过tcp包中flags的值来判断tcp的状态"></a>通过tcp包中flags的值来判断tcp的状态</h3><p>在TCP层，有个FLAGS字段，这个字段有以下几个标识：SYN, FIN, ACK, PSH, RST, URG.</p>
+<p>其中，对于我们日常的分析有用的就是前面的五个字段。<br>它们的含义是：SYN表示建立连接，FIN表示关闭连接，ACK表示响应，PSH表示有 DATA数据传输，RST表示连接重置。</p>
+<p>其中，ACK是可能与SYN，FIN等同时使用的，比如SYN和ACK可能同时为1，它表示的就是建立连接之后的响应，如果只是单个的一个SYN，它表示的只是建立连接。TCP的几次握手就是通过这样的ACK表现出来的。但SYN与FIN是不会同时为1的，因为前者表示的是建立连接，而后者表示的是断开连接。RST一般是在FIN之后才会出现为1的情况，表示的是连接重置。一般地，当出现FIN包或RST包时，我们便认为客户端与服务器端断开了连接；而当出现SYN和SYN＋ACK包时，我们认为客户端与服务器建立了一个连接。</p>
+<p>PSH为1的情况，一般只出现在 DATA内容不为0的包中，也就是说PSH为1表示的是有真正的TCP数据包内容被传递。<br>TCP的连接建立和连接关闭，都是通过请求－响应的模式完成的。</p>
+<p>TCP三次握手：<br>TCP(Transmission Control Protocol)传输控制协议<br>TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接：</p>
+<p>位码即tcp标志位，有6种标示：SYN(synchronous建立联机) ACK(acknowledgement 确认) PSH(push传送) FIN(finish结束) RST(reset重置) URG(urgent紧急)Sequence number(顺序号码) Acknowledge number(确认号码)</p>
+<p>三次握手详解如下：<br>一个虚拟连接的建立是通过三次握手来实现的</p>
+<p>(B) –&gt; [SYN] –&gt; (A)<br>假如服务器A和客户机B通讯. 当A要和B通信时，B首先向A发一个SYN (Synchronize) 标记的包，告诉A请求建立连接.<br>注意: 一个 SYN包就是仅SYN标记设为1的TCP包(参见TCP包头Resources). 认识到这点很重要，只有当A受到B发来的SYN包，才可建立连接，除此之外别无他法。因此，如果你的防火墙丢弃所有的发往外网接口的SYN包，那么你将不能让外部任何主机主动建立连接。<br>(B) &lt;– [SYN /ACK] &lt;–(A)<br>接着，A收到后会发一个对SYN包的确认包(SYN/ACK)回去，表示对第一个SYN包的确认，并继续握手操作.<br>注意: SYN/ACK包是仅SYN 和 ACK 标记为1的包.<br>(B) –&gt; [ACK] –&gt; (A)<br>B收到SYN/ACK 包,B发一个确认包(ACK)，通知A连接已建立。至此，三次握手完成，一个TCP连接完成<br>Note: ACK包就是仅ACK 标记设为1的TCP包. 需要注意的是当三此握手完成、连接建立以后，TCP连接的每个包都会设置ACK位<br>握手阶段：<br>序号 方向 seq ack</p>
+<ol>
+<li>A-&gt;B 10000 0</li>
+<li>B-&gt;A 20000 10000+1=10001</li>
+<li>A-&gt;B 10001 20000+1=20001<br>解释：<br>1：A向B发起连接请求，以一个随机数初始化A的seq,这里假设为10000，此时ACK＝0<br>2：B收到A的连接请求后，也以一个随机数初始化B的seq，这里假设为20000，意思是：你的请求我已收到，我这方的数据流就从这个数开始。B的ACK是A的seq加1，即10000＋1＝10001<br>3：A收到B的回复后，它的seq是它的上个请求的seq加1，即10000＋1＝10001，意思也是：你的回复我收到了，我这方的数据流就从这个数开始。A此时的ACK是B的seq加1，即20000+1=20001<br>数据传输阶段：<br>序号　　方向　　　　　　seq ack size<br>23 A-&gt;B 40000 70000 1514<br>24 B-&gt;A 70000 40000+1514-54=41460 54<br>25 A-&gt;B 41460 70000+54-54=70000 1514<br>26 B-&gt;A 70000 41460+1514-54=42920 54<br>解释：<br>23:B接收到A发来的seq=40000,ack=70000,size=1514的数据包<br>24:于是B向A也发一个数据包，告诉B，你的上个包我收到了。B的seq就以它收到的数据包的ACK填充，ACK是它收到的数据包的SEQ加上数据包的大小(不包括以太网协议头，IP头，TCP头)，以证实B发过来的数据全收到了。<br>25:A在收到B发过来的ack为41460的数据包时，一看到41460，正好是它的上个数据包的seq加上包的大小，就明白，上次发送的数据包已安全到达。于是它再发一个数据包给B。这个正在发送的数据包的seq也以它收到的数据包的ACK填充，ACK就以它收到的数据包的seq(70000)加上包的size(54)填充,即ack=70000+54-54(全是头长，没数据项)。<br>其实在握手和结束时确认号应该是对方序列号加1,传输数据时则是对方序列号加上对方携带应用层数据的长度.如果从以太网包返回来计算所加的长度,就嫌走弯路了.<br>另外,如果对方没有数据过来,则自处己的确认号不变,序列号为上次的序列号加上本次应用层数据发送长度.</li>
+</ol>
+<p><img src="https://iknow-pic.cdn.bcebos.com/b219ebc4b74543a99d881d8113178a82b80114ef?x-bce-process=image/resize,m_lfit,w_600,h_800,limit_1" alt="img"></p>
+<p><a href="https://blog.csdn.net/hushengqiang/article/details/44180557" target="_blank" rel="noopener">原文链接</a></p>
+<h3 id="TCP-IP的四元组、五元组、七元组"><a href="#TCP-IP的四元组、五元组、七元组" class="headerlink" title="TCP/IP的四元组、五元组、七元组"></a>TCP/IP的四元组、五元组、七元组</h3><ol>
+<li><p>四元组是：源IP地址、目的IP地址、源端口、目的端口</p>
+</li>
+<li><p>五元组是:   源IP地址、目的IP地址、协议号、源端口、目的端口</p>
+</li>
+<li><p>七元组是:    源IP地址、目的IP地址、协议号、源端口、目的端口，服务类型以及接口索引</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络协议</category>
+      </categories>
+      <tags>
+        <tag>网络协议</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python爬虫实战</title>
+    <url>/2020/05/03/spider/</url>
+    <content><![CDATA[<h1 id="爬虫第一天"><a href="#爬虫第一天" class="headerlink" title="爬虫第一天"></a>爬虫第一天</h1><ul>
+<li>urllib太过古老，因此不加以深入学习</li>
+</ul>
+<h3 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h3><p>requests模块：python中原生的一款基于网络请求的模块，功能强大，简单便捷，效率高。<br>作用：模拟浏览器发送请求。</p>
+<p>如何使用：（requests模块的编码流程）<br>    -指定url<br>    -发起请求（get或post）<br>    -获取响应数据<br>    -持久化存储（数据库或本地存储）</p>
+<p>环境安装：<br>    -pip或pycharm安装<br>    -anaconda自带（方便已装）</p>
+<a id="more"></a>
+
+<h3 id="实战编码："><a href="#实战编码：" class="headerlink" title="实战编码："></a><strong>实战编码：</strong></h3><pre><code>- 需求：爬取拉勾网首页的数据
+    示例：</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    <span class="hljs-comment">#step 1:指定url</span><br>    url = <span class="hljs-string">"https://www.lagou.com/jobs/6889986.html?show=96e52fa1d2134ad483eac5662bcc9fc6"</span><br><br>    <span class="hljs-comment">#step_2:发起请求</span><br>    <span class="hljs-comment">#get会返回一个响应对象</span><br>    response = requests.get(url=url)<br><br>    <span class="hljs-comment">#step_3:获取相应数据(.text返回的是字符串形式的响应数据)</span><br>    page_text = response.text<br>    print(page_text)<br><br>    <span class="hljs-comment">#step_4:持久化存储</span><br>    <span class="hljs-keyword">with</span> open(<span class="hljs-string">'./lagou.html'</span>, <span class="hljs-string">'w'</span>, encoding = <span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        fp.write(page_text)<br>    print(<span class="hljs-string">'爬取数据结束'</span>)<br></code></pre></td></tr></table></figure>
+<ul>
+<li><p>以上代码极有可能会被网站捕获，被识别出为爬虫，所以需要实施反爬虫策略</p>
+</li>
+<li><p>示例：<br>UA:User-Agent (请求载体的身份标识)<br>UA检测：门户网站的服务器会检测对应的载体身份标识，如果检测到请求的载体身份标识为某一款浏览器，<br>说明该请求是一个正常的请求。但是，如果监测到请求的载体身份标识不是基于某一款浏览器的，则表示<br>该请求为不正常的请求（爬虫），则服务器端就很有可能拒绝这次请求。<br>UA伪装:将对应的请求载体身份标识伪装成一款浏览器</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    <span class="hljs-comment"># UA伪装：将对应的User-Agent封装到一个字典中</span><br>    headers = &#123;<br>        <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>    &#125;<br><br>    url = <span class="hljs-string">'https://www.sogou.com/web?'</span><br><br>    <span class="hljs-comment">#处理url携带的参数：封装到字典中（参数为问号后面的）</span><br>    kw = input(<span class="hljs-string">'enter a word:'</span>)<br>    param = &#123;<br>        <span class="hljs-string">'query'</span>: kw<br>    &#125;<br><br>    <span class="hljs-comment"># 需求的响应返回的是一个对象，对象应实例化</span><br>    response = requests.get(url=url, params=param, headers=headers)<br><br>    <span class="hljs-comment"># 确认相应数据是txt类型的</span><br>    page_text = response.text<br>    fileName = kw+<span class="hljs-string">'.html'</span><br>    <span class="hljs-keyword">with</span> open(fileName, <span class="hljs-string">'w'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        fp.write(page_text)<br>    print(<span class="hljs-string">'保存成功。。。'</span>)<br></code></pre></td></tr></table></figure>
+
+<h1 id="爬虫第二天"><a href="#爬虫第二天" class="headerlink" title="爬虫第二天"></a>爬虫第二天</h1><h3 id="有关于ajax"><a href="#有关于ajax" class="headerlink" title="有关于ajax"></a>有关于ajax</h3><h4 id="爬取百度翻译的内容"><a href="#爬取百度翻译的内容" class="headerlink" title="爬取百度翻译的内容"></a>爬取百度翻译的内容</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> json<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    <span class="hljs-comment">#获取url</span><br>    post_url = <span class="hljs-string">'https://fanyi.baidu.com/sug'</span><br>    <span class="hljs-comment">#进行UA伪装</span><br>    headers = &#123;<br>        <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>    &#125;<br>    <span class="hljs-comment">#post请求的参数处理（同get请求一致）</span><br>    word = input(<span class="hljs-string">'输入你想翻译的东西:'</span>)<br>    data = &#123;<br>        <span class="hljs-string">'kw'</span>: word<br>    &#125;<br>    <span class="hljs-comment">#发送请求并生成响应</span><br>    response = requests.post(url=post_url, data=data, headers=headers)<br>    <span class="hljs-comment">#获取响应数据:</span><br>    <span class="hljs-comment">#json()方法返回的是obj （如果确认响应数据是json类型的）</span><br>    dic_obj = response.json()<br><br>    <span class="hljs-comment">#持久化存储</span><br>    filename = word+<span class="hljs-string">'.json'</span><br>    <span class="hljs-keyword">with</span> open(filename, <span class="hljs-string">'w'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        json.dump(dic_obj, fp=fp, ensure_ascii=<span class="hljs-literal">False</span>)<br><br>    <span class="hljs-comment">#将jaon格式转化成dict格式</span><br>    <span class="hljs-keyword">with</span> open(filename, <span class="hljs-string">'r'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        great = json.load(fp)<br><br>    <span class="hljs-comment">#将字典格式化输出(此字典中存在字典与列表的嵌套现象)</span><br>    <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> great.items():<br>        <span class="hljs-keyword">if</span> type(v) == list:<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> v:<br>                print(i)<br>        <span class="hljs-keyword">else</span>:<br>            print(k)<br>            print(v)<br><br>    print(<span class="hljs-string">'end...'</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="爬取豆瓣电影信息"><a href="#爬取豆瓣电影信息" class="headerlink" title="爬取豆瓣电影信息"></a>爬取豆瓣电影信息</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">##此处代码示例为失败的例子，未考虑到由ajax得到的页面依旧采用了ajax</span><br><br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> json<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    url = <span class="hljs-string">'https://movie.douban.com/j/chart/top_list'</span><br>    param = &#123;<br>        <span class="hljs-string">'type'</span>: <span class="hljs-string">' 24'</span>,<br>        <span class="hljs-string">'interval_id'</span>: <span class="hljs-string">' 100:90'</span>,<br>        <span class="hljs-string">'action'</span>: <span class="hljs-string">''</span>,<br>        <span class="hljs-string">'start'</span>: <span class="hljs-string">' 1'</span>,<br>        <span class="hljs-string">'limit'</span>: <span class="hljs-string">' 20'</span>,<br>    &#125;<br>    headers = &#123;<br>        <span class="hljs-string">'User-Agent'</span>:<span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>    &#125;<br><br>    response = requests.get(url=url, params=param, headers=headers)<br><br>    list_data = response.json()<br><br>    <span class="hljs-keyword">with</span> open(<span class="hljs-string">'./douban.json'</span>, <span class="hljs-string">'w'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        json.dump(list_data, fp, ensure_ascii=<span class="hljs-literal">False</span>)<br><br>    <span class="hljs-keyword">with</span> open(<span class="hljs-string">'./douban.json'</span>, <span class="hljs-string">'r'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        great = json.load(fp)<br><br>    print(great)<br></code></pre></td></tr></table></figure>
+<h1 id="爬虫学习第三天"><a href="#爬虫学习第三天" class="headerlink" title="爬虫学习第三天"></a>爬虫学习第三天</h1><h3 id="爬取国家药监总局部分信息"><a href="#爬取国家药监总局部分信息" class="headerlink" title="爬取国家药监总局部分信息"></a>爬取国家药监总局部分信息</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> json<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    url = <span class="hljs-string">'http://125.35.6.84:81/xk/itownet/portalAction.do?method=getXkzsList'</span><br>    url_2 = <span class="hljs-string">'http://125.35.6.84:81/xk/itownet/portalAction.do?method=getXkzsById'</span><br>    headers = &#123;<br>        <span class="hljs-string">'User-Agent'</span>:<span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>    &#125;<br>    <span class="hljs-comment">#爬取的页数</span><br>    page_ = input(<span class="hljs-string">"请输入您想爬取的信息页数："</span>)<br>    <span class="hljs-keyword">for</span> page <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, int(page_)+<span class="hljs-number">1</span>):<br>        data = &#123;<br>            <span class="hljs-string">'on'</span>: <span class="hljs-string">'true'</span>,<br>            <span class="hljs-string">'page'</span>: page,<br>            <span class="hljs-string">'pageSize'</span>: <span class="hljs-string">'15'</span>,<br>            <span class="hljs-string">'productName'</span>: <span class="hljs-string">''</span>,<br>            <span class="hljs-string">'conditionType'</span>: <span class="hljs-string">'1'</span>,<br>            <span class="hljs-string">'applyname'</span>: <span class="hljs-string">''</span>,<br>            <span class="hljs-string">'applysn'</span>: <span class="hljs-string">''</span>,<br>        &#125;<br>        <span class="hljs-comment">#id_list have many ids</span><br>        id_list = []<br>        message = []<br><br>        json_list = requests.post(url=url, data=data, headers=headers).json()<br>        <span class="hljs-comment">#id_a is a dict</span><br>        <span class="hljs-keyword">for</span> id_a <span class="hljs-keyword">in</span> json_list[<span class="hljs-string">"list"</span>]:<br>            id_list.append(id_a[<span class="hljs-string">"ID"</span>])<br>            <span class="hljs-comment">#id_b是id号</span><br>        <span class="hljs-keyword">for</span> id_b <span class="hljs-keyword">in</span> id_list:<br>                data_2 = &#123;<br>                    <span class="hljs-string">"id"</span>: str(id_b)<br>                &#125;<br>                detail_message = requests.post(url=url_2, data=data_2, headers=headers).json()<br>                print(detail_message)<br>                message.append(detail_message)<br>    <span class="hljs-keyword">with</span> open(<span class="hljs-string">'./药物信息.json'</span>, <span class="hljs-string">'w'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        json.dump(message, fp, ensure_ascii=<span class="hljs-literal">False</span>)<br>    print(<span class="hljs-string">'end...'</span>)<br><br><span class="hljs-string">'''此代码爬取时间可能有些长，也有可能会出现Timeouterror错误，多试几次可能就可以了'''</span><br><span class="hljs-string">'''出现这种情况的原因是对方服务器拒绝请求（反爬虫），，，后续继续学习反反爬虫技术'''</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="数据解析概述"><a href="#数据解析概述" class="headerlink" title="数据解析概述"></a>数据解析概述</h3><ul>
+<li><p>聚焦爬虫：爬取页面中指定的页面内容</p>
+<pre><code>-编码流程
+    1、指定url
+    2、发起请求
+    3、获取相应数据
+    4、持久化存储</code></pre><p>-数据解析分类：</p>
+<pre><code>-正则
+-bs4
+-xpath</code></pre><p>-数据解析原理概述</p>
+<pre><code>-解析的局部的文本内容都会在标签之间或者标签对应的属性中进行存储
+-1、进行指定标签的定位
+-2、标签或者标签对应属性中存储的数据值进行提取（解析）</code></pre></li>
+</ul>
+<h3 id="图片的爬取代码"><a href="#图片的爬取代码" class="headerlink" title="图片的爬取代码"></a>图片的爬取代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-comment">#此处url为图片地址，而非链接【地址比链接短】</span><br>url = <span class="hljs-string">'https://tse4-mm.cn.bing.net/th/id/OIP.vLPcBX_5hWArkIbn_PqvYgHaGL?w=233&amp;h=195&amp;c=7&amp;o=5&amp;dpr=1.25&amp;pid=1.7'</span><br>headers = &#123;<br>        <span class="hljs-string">'user-agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>&#125;<br><span class="hljs-comment">#图片以二进制的形式存储，所以以.content形式接收，以jpg格式存</span><br>data_pict = requests.get(url=url, headers=headers).content<br><span class="hljs-keyword">with</span> open(<span class="hljs-string">'./beauty_pict.jpg'</span>, <span class="hljs-string">'wb'</span>) <span class="hljs-keyword">as</span> fp:<br>    fp.write(data_pict)<br></code></pre></td></tr></table></figure>
+
+<h1 id="爬虫第四天"><a href="#爬虫第四天" class="headerlink" title="爬虫第四天"></a>爬虫第四天</h1><h3 id="爬取百度图片（星空图片）"><a href="#爬取百度图片（星空图片）" class="headerlink" title="爬取百度图片（星空图片）"></a>爬取百度图片（星空图片）</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> time<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    <span class="hljs-comment">#创建一个文件夹，存放图片</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-string">'./star_sky'</span>):<br>        os.mkdir(<span class="hljs-string">'./star_sky'</span>)<br>        <br>    url = <span class="hljs-string">'https://cn.bing.com/images/search?q=%E6%98%9F%E7%A9%BA%E5%9B%BE%E7%89%87&amp;qpvt=%e6%98%9f%e7%a9%ba%e5%9b%be%e7%89%87&amp;form=IGRE&amp;first=1&amp;cw=1117&amp;ch=714'</span><br>    headers = &#123;<br>            <span class="hljs-string">'user-agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>    &#125;<br>    data_pict = requests.get(url=url, headers=headers).text<br><br>    <span class="hljs-comment">#正则匹配</span><br>    ex = <span class="hljs-string">'&lt;a class=.*?murl&amp;quot;:&amp;quot;(.*?)&amp;quot;.*?&gt;'</span><br>    star_list = re.findall(ex, data_pict, re.S)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> star_list:<br>        url_2 = i<br>        <span class="hljs-comment">#请求到了图片的二进制数据</span><br>        data_2_pict = requests.get(url=url_2, headers=headers).content<br>        <span class="hljs-comment">#为图片设置名称</span><br>        img_name = url_2.split(<span class="hljs-string">"/"</span>)[<span class="hljs-number">-1</span>]<br>        img_path = <span class="hljs-string">'./star_sky/'</span> + img_name<br>        <span class="hljs-keyword">with</span> open(img_path, <span class="hljs-string">'wb'</span>) <span class="hljs-keyword">as</span> fp:<br>            fp.write(data_2_pict)<br>        print(img_name + <span class="hljs-string">'...successful'</span>)<br>        time.sleep(<span class="hljs-number">0.1</span>)<br><br>****************************************未完，，待更新********************************************<br></code></pre></td></tr></table></figure>
+<h3 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h3><ul>
+<li>xpath解析：最常用且最便捷高效的一种解析方式，具有通用性<pre><code>-xpath解析原理：
+    -1、实例化一个etree对象，且需要将被解析的页面源码数据加载到该对象中
+    -2、调用etree对象中的xpath方法结合着xpath表达式实现标签的定位和内容的捕获
+-如何实例化一个etree对象
+    *from lxml import etree
+    -1、将 本地的html文档中的源代码数据加载到etree对象中：
+        etree.parse(filepath)
+    -2、可以将从互联网上获取的数据加载到该对象中
+        etree.HTML(&apos;page_text&apos;)###page_text就是获取的响应数据
+    - xpath(&apos;xpath表达式&apos;)
+    -xpath表达式：
+            - / ：表示的是从根目录结点开始定位，表示的是一个层级
+                    - // : 表示的是多个层级或从任意位置开始定位（前提是//前面没有结点）
+                    -属性定位：tag[@attrName=&quot;attrValue&quot;]
+                    -索引定位：p[n] 索引是从1开始的
+                    -取文本：
+        - /text() 获取的是标签中直系的文本内容
+        - //text() 标签中非直系的文本内容（所有的文本内容）
+        -[0] 可以去除列表框
+            -取属性
+        -/@attrName</code></pre></li>
+</ul>
+<h3 id="xpath代码实战示例："><a href="#xpath代码实战示例：" class="headerlink" title="xpath代码实战示例："></a>xpath代码实战示例：</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#爬取妹子图片，总共有俩千多张</span><br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    ii = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-string">'./girl'</span>):<br>        os.mkdir(<span class="hljs-string">'./girl'</span>)<br>    url_list = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">50</span>)]<br>    url_list[<span class="hljs-number">1</span>] = <span class="hljs-string">''</span><br><br>    <span class="hljs-keyword">for</span> page <span class="hljs-keyword">in</span> url_list:<br>        url = <span class="hljs-string">'https://www.lanvshen.com/zhongguo/'</span> + str(page) +<span class="hljs-string">'.html'</span><br>        headers = &#123;<br>            <span class="hljs-string">'User-Agent'</span> : <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>        &#125;<br>        get_text = requests.get(url=url, headers=headers)<br>        tree = etree.HTML(get_text.text)<br>        pict_ = tree.xpath(<span class="hljs-string">'//div[@class="hezi"]//li'</span>)<br>        <span class="hljs-keyword">for</span> it_ <span class="hljs-keyword">in</span> pict_:<br>            img_url = it_.xpath(<span class="hljs-string">'./a/img/@src'</span>)[<span class="hljs-number">0</span>]<br>            img_name = str(ii) + <span class="hljs-string">'.jpg'</span><br>            img = requests.get(url=img_url, headers=headers).content<br>            img_path = <span class="hljs-string">'./girl/'</span> + img_name<br>            <span class="hljs-keyword">with</span> open(img_path, <span class="hljs-string">'wb'</span>) <span class="hljs-keyword">as</span> fp:<br>                fp.write(img)<br>            print(img_name + <span class="hljs-string">'sccuessful...'</span>)<br>            ii = ii + <span class="hljs-number">1</span><br><br><span class="hljs-comment">##此代码存在许多不足之处，所爬取的图片都只是像素低的缩略图，并且下载速度较慢</span><br><span class="hljs-comment">##后期将学习爬取高清图片，并进行分布式爬取</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="ip代理"><a href="#ip代理" class="headerlink" title="ip代理"></a>ip代理</h3><ol>
+<li>代理的原理：在请求目的网站之前，先请求代理服务器，然后让代理服务器去请求目的网站，<br>代理服务器拿到目的网站的数据后，再转发给我们的代码</li>
+<li><a href="http://httpbin.org" target="_blank" rel="noopener">这个网站可以方便的查看http请求的一些参数</a> </li>
+<li>在代码中(requests模块)使用代理：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">'http://httpbin.org'</span><br>headers = &#123;<br>	<span class="hljs-string">'User-Anget'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>&#125;<br><br><span class="hljs-comment">#设置代理</span><br>proxy = &#123;<br>	<span class="hljs-string">'http'</span>: <span class="hljs-string">'123.54.194.96:38661'</span><br>&#125;<br>get_text = requerts.get(url=url, headers=headers, proxies=proxy).text<br>print(get_text)<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>网络代理有付费和不需要付费的，不需要付费的不稳定，常常会失效</li>
+<li>代理的作用是防止我们在爬取服务器的数据时被反爬虫而被封禁导致我们<br>的 ip 不能用而采取的措施，选择代理应选择隐蔽性高，不透明的</li>
+</ol>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><ul>
+<li><p><a href="http://blog.sina.com.cn/s/blog_628571e601019uis.html" target="_blank" rel="noopener">cookie与session的差异</a></p>
+</li>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NjA0NjgyMA==&mid=200538817&idx=2&sn=1147d48f2320fa37e82a7daef4f31c11#rd" target="_blank" rel="noopener">cookie技术深入</a>             </p>
+<ul>
+<li>Cookie是什么？     </li>
+</ul>
+<p>Cookie 是一小段文本信息，伴随着用户请求和页面在 Web 服务器和浏览器之间传递。<br>Cookie 包含每次用户访问站点时 Web 应用程序都可以读取的信息。</p>
+<ul>
+<li><p>为什么需要Cookie？ </p>
+<p>因为HTTP协议是无状态的，对于一个浏览器发出的多次请求，WEB服务器无法区分 是不是来源于同一个浏览器。<br>所以，需要额外的数据用于维护会话。Cookie 正是这样的一段随HTTP请求一起被传递的额外数据。</p>
+</li>
+<li><p>Cookie能做什么？ </p>
+<p>Cookie只是一段文本，所以它只能保存字符串。而且浏览器对它有大小限制以及 它会随着每次请求被发送到服务器，所以应该保证它<br>不要太大。Cookie的内容也是明文保存的，有些浏览器提供界面修改，所以， 不适合保存重要的或者涉及隐私的内容。</p>
+</li>
+<li><p>Cookie 的限制</p>
+<p>大多数浏览器支持最大为 4096 字节的 Cookie。由于这限制了 Cookie 的大小，最好用 Cookie 来存储少量数据，<br>或者存储用户 ID 之类的标识符。用户 ID 随后便可用于标识用户，以及从数据库或其他数据源中读取用户信息。<br>浏览器还限制站点可以在用户计算机上存储的 Cookie 的数量。大多数浏览器只允许每个站点存储 20 个 Cookie；<br>如果试图存储更多 Cookie，则最旧的 Cookie 便会被丢弃。有些浏览器还会对它们将接受的来自所有站点的 Cookie<br>总数作出绝对限制，通常为 300 个。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:/Users/Acer/Desktop/%E7%AC%94%E8%AE%B0/%E7%88%AC%E8%99%AB_day4_files/1.jpg" alt="Cookie示意图">    </p>
+<ul>
+<li>处理cookie<br>如果想要在多次请求中共享cookie，那么应该使用session</li>
+</ul>
+<h3 id="处理不信任的SSL证书"><a href="#处理不信任的SSL证书" class="headerlink" title="处理不信任的SSL证书"></a>处理不信任的SSL证书</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">resp = resquests.get(url=url, vrrify=<span class="hljs-literal">False</span>).content<br></code></pre></td></tr></table></figure>
+
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><ul>
+<li>多线程之生产者与消费者模型</li>
+</ul>
+<ul>
+<li>代码示例一：(Lock版)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-string">"""</span><br><span class="hljs-string">关于多线程生产者消费者模型</span><br><span class="hljs-string">"""</span><br><span class="hljs-keyword">import</span> threading<br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> random<br><br>gMoney = <span class="hljs-number">1000</span><br>gLock = threading.Lock()<br>gTotalTimes = <span class="hljs-number">10</span><br>gTimes = <span class="hljs-number">0</span><br><br><br><span class="hljs-comment"># 生产线程Producer</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">global</span> gMoney<br>		<span class="hljs-keyword">global</span> gTimes<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			money = random.randint(<span class="hljs-number">100</span>, <span class="hljs-number">1000</span>)<br>			gLock.acquire()<br>			<span class="hljs-keyword">if</span> gTimes &gt;= gTotalTimes:<br>				gLock.release()<br>				<span class="hljs-keyword">break</span><br>			gMoney += money<br>			print(<span class="hljs-string">'&#123;&#125;生产了&#123;&#125;元钱，剩余&#123;&#125;元钱'</span><br>				  .format(threading.current_thread(), money, gMoney))<br>			gTimes += <span class="hljs-number">1</span><br>			gLock.release()<br>			time.sleep(<span class="hljs-number">0.5</span>)<br><br><br><span class="hljs-comment"># 消费线程Consumer</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Consumer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">global</span> gMoney<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			money = random.randint(<span class="hljs-number">100</span>, <span class="hljs-number">1000</span>)<br>			gLock.acquire()<br>			<span class="hljs-keyword">if</span> gMoney &gt;= money:<br>				gMoney -= money<br>				print(<span class="hljs-string">'&#123;&#125;消费者消费了&#123;&#125;元钱，剩余&#123;&#125;元钱'</span><br>					  .format(threading.current_thread(), money, gMoney))<br>			<span class="hljs-comment"># 若剩余金额不足以消费，则退出循环</span><br>			<span class="hljs-keyword">else</span>:<br>				<span class="hljs-keyword">if</span> gTimes &gt;= gTotalTimes:<br>					gLock.release()<br>					<span class="hljs-keyword">break</span><br>				print(<span class="hljs-string">'&#123;&#125;消费者准备消费&#123;&#125;元钱，剩余&#123;&#125;元钱，不足！'</span><br>					  .format(threading.current_thread(), money, gMoney))<br>			gLock.release()<br>			time.sleep(<span class="hljs-number">0.5</span>)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mainIt</span><span class="hljs-params">()</span>:</span><br>	<span class="hljs-comment"># 设置3个消费线程</span><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):<br>		t = Consumer(name=<span class="hljs-string">'消费者线程&#123;&#125;'</span>.format(x))<br>		t.start()<br>		<span class="hljs-comment"># 设置5个生产线程</span><br><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		t = Producer(name=<span class="hljs-string">'生产者线程&#123;&#125;'</span>.format(x))<br>		t.start()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>	mainIt()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>代码示例二：(condition版)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">import</span> threading<br><span class="hljs-keyword">import</span> random<br><span class="hljs-keyword">import</span> time<br><br>gMoney = <span class="hljs-number">1000</span><br>gCondition = threading.Condition()  <span class="hljs-comment"># 等同于threading.Lock</span><br>gTimes = <span class="hljs-number">0</span><br>gTotalTimes = <span class="hljs-number">5</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">global</span> gMoney<br>		<span class="hljs-keyword">global</span> gCondition<br>		<span class="hljs-keyword">global</span> gTimes<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			money = random.randint(<span class="hljs-number">100</span>, <span class="hljs-number">1000</span>)<br>			gCondition.acquire()  <span class="hljs-comment"># 加锁（全局变量改变前（gMoney））</span><br>			<span class="hljs-keyword">if</span> gTimes &gt;= gTotalTimes:<br>				gCondition.release()  <span class="hljs-comment"># 解锁</span><br>				print(<span class="hljs-string">"当前生产者总共生产了%s次"</span> % gTimes)<br>				<span class="hljs-keyword">break</span><br>			gMoney += money<br>			print(<span class="hljs-string">"%s当前存入%s元钱，剩余%s元线"</span> % (threading.current_thread(), money, gMoney))<br>			gTimes += <span class="hljs-number">1</span><br>			gCondition.notify_all()  <span class="hljs-comment"># 通知正在等待的线程（wait）</span><br>			gCondition.release()<br>			time.sleep(<span class="hljs-number">0.5</span>)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cosumer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">global</span> gMoney<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			money = random.randint(<span class="hljs-number">100</span>, <span class="hljs-number">1000</span>)<br>			gCondition.acquire()<br>			<span class="hljs-keyword">while</span> gMoney &lt; money:<br>				<span class="hljs-keyword">if</span> gTimes &gt;= gTotalTimes:<br>					gCondition.release()<br>					<span class="hljs-keyword">return</span><br>				print(<span class="hljs-string">"%s准备消费%d元钱，剩余%d元钱，不足"</span> % (threading.current_thread(), money, gMoney))<br>				gCondition.wait()  <span class="hljs-comment"># 等待状态  （获取锁） 直到生产者把钱加上 （有钱了再去排队消费）</span><br>			gMoney -= money<br>			print(<span class="hljs-string">"%s消费了%d元钱，剩余%d元钱"</span> % (threading.current_thread(), money, gMoney))<br>			gCondition.release()<br>			time.sleep(<span class="hljs-number">0.5</span>)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):<br>		t = Cosumer(name=<span class="hljs-string">"消费者线程%s"</span> % x)<br>		t.start()<br>	<span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		t1 = Producer(name=<span class="hljs-string">"生产者线程%s"</span> % y)<br>		t1.start()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>	main()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>多线程Lock与condition方法总结：<ol>
+<li>在上述的例子中，lock方法虽然实现了多线程的使用，但是当消费者资金不足时，程序在当前线程会重新whlie True，<br>这就导致了该线程需要再次上锁和解锁，这就导致了CPU的浪费</li>
+<li>当我们使用condition方法时，每当消费者资金不足，该线程无需重新while True，也不需要再次的上锁和解锁，<br>使用wait()，使当资金不足时的消费者线程在wait()暂停并解锁，等待条件满足时再次从wait()处开始执行，这样就<br>减少了循环过程中因上锁解锁而导致的CPu资源浪费</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>Queue线程安全队列<br>在线程中，访问一些全局变量，枷锁是一个经常的过程，如果你是想把某个数据存储到某个队列中，那么python内置了一个线程安全的模块<br>叫做queue模块。python中的queue模块中提供了同步的、线程安全的模块，其中队列Queue为先进先出，实现了原子操作，即要么不做，要<br>么做完。可使用队列来实现线程的同步。相关函数如下：<br>作用：<br>　　　解耦：使程序直接实现松耦合，修改一个函数，不会有串联关系。<br>　　　提高处理效率：ＦＩＦＯ　＝　现进先出，ＬＩＦＯ　＝　后入先出。</li>
+</ul>
+<ol>
+<li><p>Queue.Queue(maxsize=0)   FIFO， 如果maxsize小于1就表示队列长度无限</p>
+</li>
+<li><p>Queue.LifoQueue(maxsize=0)   LIFO， 如果maxsize小于1就表示队列长度无限</p>
+</li>
+<li><p>Queue.qsize()   返回队列的大小</p>
+</li>
+<li><p>Queue.empty()   如果队列为空，返回True,反之False</p>
+</li>
+<li><p>Queue.full()   如果队列满了，返回True,反之False</p>
+</li>
+<li><p>Queue.get([block[, timeout]])   读队列，取出数据 ，没有数据将会等待timeout等待时间</p>
+</li>
+<li><p>Queue.put(item, [block[, timeout]])   写队列，放入数据，timeout等待时间</p>
+</li>
+<li><p>Queue.queue.clear()   清空队列</p>
+</li>
+<li><p>class queue.PriorityQueue(maxsize=0) 存储数据时可设置优先级的队列，优先级设置数越小等级越高</p>
+</li>
+<li><p>Queue.get(timeout = 1)如果1秒后没取到数据就退出</p>
+</li>
+<li><p>Queue.get_nowait() 取数据，如果没数据抛queue.Empty异常</p>
+</li>
+<li><p>Queue.task_done()后续调用告诉队列，任务的处理是完整的。</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> queue <span class="hljs-keyword">import</span> Queue<br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> threading<br><br><br><span class="hljs-comment"># 在队列中放入数值</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">set_value</span><span class="hljs-params">(q)</span>:</span><br>	index = <span class="hljs-number">0</span><br>	<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>		q.put(index)<br>		index += <span class="hljs-number">1</span><br>		time.sleep(<span class="hljs-number">0.8</span>)<br><br><br><span class="hljs-comment"># 取出队列中的数值</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_value</span><span class="hljs-params">(q)</span>:</span><br>	<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>		print(q.get())<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span><br>	<span class="hljs-comment"># 产生一个队列</span><br>	q = Queue(<span class="hljs-number">1</span>)<br>	t1 = threading.Thread(target=set_value, args=[q])<br>	t2 = threading.Thread(target=get_value, args=[q])<br><br>	t1.start()<br>	t2.start()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>	main()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>生产者与消费者模型</li>
+</ul>
+<ul>
+<li>代码示例三：(Queue版)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> threading,time<br><span class="hljs-comment">#python2  from Queue import Queue</span><br><span class="hljs-comment">#python3</span><br><span class="hljs-keyword">import</span> queue<br> <br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">global</span> queue<br>		count = <span class="hljs-number">0</span><br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			<span class="hljs-comment">#qsize返回queue内部长度</span><br>			<span class="hljs-keyword">if</span> queue.qsize() &lt; <span class="hljs-number">1000</span>:<br>				<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">100</span>):<br>					count += <span class="hljs-number">1</span><br>					msg = <span class="hljs-string">'生成产量'</span>+str(count)<br>					<span class="hljs-comment">#put是往queue中放入</span><br>					queue.put(msg)<br>					print(msg)<br>			time.sleep(<span class="hljs-number">0.5</span>)<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Consumer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">global</span> queue<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			<span class="hljs-keyword">if</span> queue.qsize() &gt; <span class="hljs-number">100</span>:<br>				<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):<br>					<span class="hljs-comment">#get从queue中取出一个值</span><br>					msg = self.name + <span class="hljs-string">"消费了"</span>+queue.get()<br>					print(msg)<br>			time.sleep(<span class="hljs-number">1</span>)<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>	queue = queue.Queue()<br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">500</span>):<br>		queue.put(<span class="hljs-string">"初始产品"</span>+str(i))<br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>):<br>		p = Producer()<br>		p.start()<br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		c = Consumer()<br>		c.start()<br></code></pre></td></tr></table></figure>
+
+<h3 id="爬虫之多线程"><a href="#爬虫之多线程" class="headerlink" title="爬虫之多线程"></a>爬虫之多线程</h3><ul>
+<li>多线程爬虫框架代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">from</span> queue <span class="hljs-keyword">import</span> Queue<br><span class="hljs-keyword">import</span> threading<br><br><span class="hljs-string">""" </span><br><span class="hljs-string">我们引入了threading这个包，我们将使用这个包中的</span><br><span class="hljs-string">Thread类，并在我们自定义的类中继承这个Thread类</span><br><span class="hljs-string">"""</span><br><br><br><span class="hljs-comment"># 生产者线程</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Procuder</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	headers = &#123;<br>			<span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'... 浏览器...'</span><br>	&#125;<br><br>	<span class="hljs-string">""" 重写继承于父类的__init__方法 """</span><br>	<span class="hljs-string">""" 我们继承了Thread这个类，在调用类中的方法时可能需要许多参数，我们用*args和**kwargs来接收"""</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, page_queue, img_queue, *args, **kwargs)</span>:</span><br>		super(Procuder, self).__init__(*args, **kwargs)<br>		self.page_queue = page_queue<br>		self.img_queue = img_queue<br><br>	<span class="hljs-string">""" 重写继承于父类的run方法，改成我们想要的方法"""</span><br>	<span class="hljs-string">""" 从存放每页的url的队列中逐一挑出一个url并传入parse_page中</span><br><span class="hljs-string">		获取每页的url</span><br><span class="hljs-string">	"""</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			<span class="hljs-keyword">if</span> self.page_queue.empty():<br>				<span class="hljs-keyword">break</span><br>			url = self.page_queue.get()<br>			self.parse_page(url)<br><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse_page</span><span class="hljs-params">(self, url)</span>:</span><br>		<span class="hljs-string">""" </span><br><span class="hljs-string">		.......</span><br><span class="hljs-string">		</span><br><span class="hljs-string">		获取每页的响应数据，并从中提取出每张图片的</span><br><span class="hljs-string">		url和name，并放入队列中</span><br><span class="hljs-string">		"""</span><br><br><br><span class="hljs-comment"># 消费者线程</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Consumer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, page_queue, img_queue, *args, **kwargs)</span>:</span><br>		super(Procuder, self).__init__(*args, **kwargs)<br>		self.page_queue = page_queue<br>		self.img_queue = img_queue<br><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			<span class="hljs-keyword">if</span> self.img_queue.empty() <span class="hljs-keyword">and</span> self.page_queue.empty():<br>				<span class="hljs-keyword">break</span><br>				<span class="hljs-string">"""</span><br><span class="hljs-string">				......</span><br><span class="hljs-string">				</span><br><span class="hljs-string">				利用从队列中获取的每张图片的url和name，进行图片的获取和永久储存</span><br><span class="hljs-string">				"""</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span><br>	<span class="hljs-string">""" 设置页数和图片的url队列"""</span><br>	page_queue = Queue()<br>	img_queue = Queue()<br><br>	<span class="hljs-comment"># 将每页的url放到页数队列中</span><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">101</span>):<br>		url = <span class="hljs-string">'http://........ %d'</span> % x<br>		page_queue.put(url)<br><br>	<span class="hljs-comment"># 设置5个生产者线程</span><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		t = Procuder(page_queue, img_queue)<br>		t.start()<br><br>	<span class="hljs-comment"># 设置5个消费者线程</span><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		t = Consumer(page_queue, img_queue)<br>		t.start()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>	main()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>多线程爬虫实战代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree<br><span class="hljs-keyword">import</span> threading<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> queue<br><span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> request<br><br><span class="hljs-comment"># 生产图片的url和name</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProimgUrl</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, page_queue, img_queue, headers, *args, **kwargs)</span>:</span><br>		super().__init__(*args, **kwargs)<br>		self.page_queue = page_queue<br>		self.img_queue = img_queue<br>		self.headers = headers<br><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			<span class="hljs-keyword">if</span> self.page_queue.empty():<br>				<span class="hljs-keyword">break</span><br>			<span class="hljs-keyword">else</span>:<br>				url = self.page_queue.get()<br>				self.parse_page(url)<br><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse_page</span><span class="hljs-params">(self, url)</span>:</span><br>		img_get = requests.get(url=url, headers=self.headers).text<br>		tree = etree.HTML(img_get)<br>		img_it = tree.xpath(<span class="hljs-string">'//div[@class="page-content text-center"]//a'</span>)<br>		<span class="hljs-keyword">for</span> it <span class="hljs-keyword">in</span> img_it:<br>			img_url = it.xpath(<span class="hljs-string">'./img[@class!="gif"]/@data-original'</span>)[<span class="hljs-number">0</span>]<br>			alt = it.xpath(<span class="hljs-string">'./img/@alt'</span>)[<span class="hljs-number">0</span>]<br>			alt = re.sub(<span class="hljs-string">r'[\?？.!！，。\/\*]'</span>, <span class="hljs-string">''</span>, alt)<br>			<span class="hljs-comment"># 利用splitext截取图片的后缀名</span><br>			suffix = os.path.splitext(img_url)[<span class="hljs-number">1</span>]<br>			img_name = alt + suffix<br>			self.img_queue.put((img_url, img_name))<br><br><br><span class="hljs-comment"># 获取图片并储存</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConimgName</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, page_queue, img_queue, headers, *args, **kwargs)</span>:</span><br>		super().__init__(*args, **kwargs)<br>		self.page_queue = page_queue<br>		self.img_queue = img_queue<br>		self.headers = headers<br><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			<span class="hljs-keyword">if</span> self.img_queue.empty() <span class="hljs-keyword">and</span> self.page_queue.empty():<br>				<span class="hljs-keyword">break</span><br>			<span class="hljs-keyword">else</span>:<br>				img_url, img_name = self.img_queue.get()<br>				<span class="hljs-comment"># 用urlli包下的request.urlretrieve模块，可以更方便的获取和存储图片</span><br>				request.urlretrieve(img_url, <span class="hljs-string">'./smile/'</span>+img_name)<br>				print(img_name + <span class="hljs-string">' 下载成功...'</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span><br>	<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-string">'./smile'</span>):<br>		os.mkdir(<span class="hljs-string">'./smile'</span>)<br>	headers = &#123;<br>		<span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '</span><br>					  <span class="hljs-string">'Chrome/80.0.3987.149 Safari/537.36 '</span><br>	&#125;<br>	page_queue = queue.Queue(<span class="hljs-number">100</span>)<br>	img_queue = queue.Queue(<span class="hljs-number">1000</span>)<br><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>):<br>		url = <span class="hljs-string">'https://www.doutula.com/photo/list/?page='</span> + str(x)<br>		page_queue.put(url)<br><br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		t = ProimgUrl(page_queue, img_queue, headers)<br>		t.start()<br><br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		t = ConimgName(page_queue, img_queue, headers)<br>		t.start()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>	main()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>多线程爬虫的一些坑：多线程爬虫爬取的内容是无序的</li>
+</ul>
+<h1 id="爬虫第五天"><a href="#爬虫第五天" class="headerlink" title="爬虫第五天"></a>爬虫第五天</h1><h2 id="scrapy爬虫框架"><a href="#scrapy爬虫框架" class="headerlink" title="scrapy爬虫框架"></a>scrapy爬虫框架</h2><p><a href="https://zhuanlan.zhihu.com/p/25443389" target="_blank" rel="noopener">关于xpath选择器selector的网址</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20200328091921480.png" alt="scrapy框架示意图"></p>
+<ol>
+<li><p>创建项目</p>
+<p>​    scrapy startproject #^%#^(项目名字)</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>创建爬虫</p>
+<p>​    scrapy genspider 爬虫名字 网络域名</p>
+<p>注意：</p>
+<ul>
+<li>爬虫名字不要和项目名字一样</li>
+<li>网站域名是允许爬虫采集的域名<ul>
+<li>baidu.com</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://img-blog.csdn.net/20180704211604860?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMzNDcyNzY1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="创建项目与配置环境后各部分组件"></p>
+<p>item文件是存储数据的</p>
+<ul>
+<li><p>在setting文件（程序启动被首先检查的文件）</p>
+<ul>
+<li><p>BOT_NAME = 爬虫的名字</p>
+</li>
+<li><p>ROBOTSTXT_OBEY = 网络君子协议君子协议（不遵守）， 布尔</p>
+</li>
+<li><p>CONCURRENT_REQUESTS = 爬虫的并发量</p>
+</li>
+<li><p>DOWOLOAD_DELAY = 下载延迟，一般是1.5或2，小项目不用管</p>
+</li>
+<li><p>COOKLES_ENABLED = cookiede的使用，布尔</p>
+</li>
+<li><p>DEFAULT_REQUEST_HEADERS = 默认请求头</p>
+</li>
+<li><p>ITEM_PIPELINES = 管道文件</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>### setting文件详解
+
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br> <br><span class="hljs-comment"># Scrapy settings for TestSpider project</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># For simplicity, this file contains only settings considered important or</span><br><span class="hljs-comment"># commonly used. You can find more settings consulting the documentation:</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/settings.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br> <br>BOT_NAME = <span class="hljs-string">'TestSpider'</span><br> <br>SPIDER_MODULES = [<span class="hljs-string">'TestSpider.spiders'</span>]<br>NEWSPIDER_MODULE = <span class="hljs-string">'TestSpider.spiders'</span><br> <br> <br><span class="hljs-comment"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span><br><span class="hljs-comment">#USER_AGENT = 'TestSpider (+http://www.yourdomain.com)'</span><br> <br>USER_AGENT = <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0'</span><br> <br><span class="hljs-comment"># Obey robots.txt rules</span><br><span class="hljs-comment"># Scrapy框架默认遵守 robots.txt 协议规则，robots规定了一个网站中，哪些地址可以请求，哪些地址不能请求。</span><br><span class="hljs-comment"># 默认是True，设置为False不遵守这个协议。</span><br>ROBOTSTXT_OBEY = <span class="hljs-literal">False</span><br> <br> <br><span class="hljs-comment"># Configure maximum concurrent requests performed by Scrapy (default: 16)</span><br><span class="hljs-comment"># 配置scrapy的请求连接数，默认会同时并发16个请求。</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS = 10</span><br> <br><span class="hljs-comment"># Configure a delay for requests for the same website (default: 0)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay</span><br><span class="hljs-comment"># See also autothrottle settings and docs</span><br> <br><span class="hljs-comment"># 下载延时，请求和请求之间的间隔，降低爬取速度，default: 0</span><br><span class="hljs-comment"># DOWNLOAD_DELAY = 3</span><br> <br> <br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN：针对网站(主域名)设置的最大请求并发数。</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP：某一个IP的最大请求并发数。</span><br><span class="hljs-comment"># The download delay setting will honor only one of:</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN = 16</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP = 16</span><br> <br> <br><span class="hljs-comment"># Disable cookies (enabled by default)</span><br><span class="hljs-comment"># 是否启用Cookie的配置，默认是可以使用Cookie的。主要是针对一些网站是禁用Cookie的。</span><br><span class="hljs-comment"># COOKIES_ENABLED = False</span><br> <br><span class="hljs-comment"># Disable Telnet Console (enabled by default)</span><br><span class="hljs-comment">#TELNETCONSOLE_ENABLED = False</span><br> <br> <br><span class="hljs-comment"># Override the default request headers:</span><br> <br><span class="hljs-comment"># 配置默认的请求头Headers.</span><br><span class="hljs-comment"># DEFAULT_REQUEST_HEADERS = &#123;</span><br><span class="hljs-comment">#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',</span><br><span class="hljs-comment">#   'Accept-Language': 'en',</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># Enable or disable spider middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br> <br><span class="hljs-comment"># 配置自定义爬虫中间件，scrapy也默认启用了一些爬虫中间件，可以在这个配置中关闭。</span><br><span class="hljs-comment"># SPIDER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'TestSpider.middlewares.TestspiderSpiderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># 下载中间件，配置自定义的中间件或者取消Scrapy默认启用的中间件。</span><br><span class="hljs-comment"># Enable or disable downloader middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment"># DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'TestSpider.middlewares.TestspiderDownloaderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># Enable or disable extensions</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/extensions.html</span><br><span class="hljs-comment"># EXTENSIONS = &#123;</span><br><span class="hljs-comment">#    'scrapy.extensions.telnet.TelnetConsole': None,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># Configure item pipelines</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br> <br><span class="hljs-comment"># 配置自定义的PIPELINES，或者取消PIPELINES默认启用的中间件。</span><br><span class="hljs-comment"># ITEM_PIPELINES = &#123;</span><br><span class="hljs-comment">#    'TestSpider.pipelines.TestspiderPipeline': 300,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># 限速配置</span><br><span class="hljs-comment"># Enable and configure the AutoThrottle extension (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/autothrottle.html</span><br> <br><span class="hljs-comment"># 是否开启自动限速</span><br><span class="hljs-comment"># AUTOTHROTTLE_ENABLED = True</span><br> <br> <br><span class="hljs-comment"># The initial download delay</span><br><span class="hljs-comment"># 配置初始url的下载延时</span><br><span class="hljs-comment"># AUTOTHROTTLE_START_DELAY = 5</span><br> <br> <br><span class="hljs-comment"># The maximum download delay to be set in case of high latencies</span><br><span class="hljs-comment"># 配置最大请求时间</span><br><span class="hljs-comment"># AUTOTHROTTLE_MAX_DELAY = 60</span><br> <br> <br><span class="hljs-comment"># 配置请求和请求之间的下载间隔，单位是秒</span><br><span class="hljs-comment"># The average number of requests Scrapy should be sending in parallel to</span><br><span class="hljs-comment"># each remote server</span><br><span class="hljs-comment"># AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0</span><br> <br> <br><span class="hljs-comment"># Enable showing throttling stats for every response received:</span><br><span class="hljs-comment"># AUTOTHROTTLE_DEBUG = False</span><br> <br> <br><span class="hljs-comment"># 关于Http缓存的配置，默认是不启用。</span><br><span class="hljs-comment"># 对于同一个页面的请求进行数据的缓存，如果后续还有相同的请求，直接从缓存中进行获取。</span><br><span class="hljs-comment"># Enable and configure HTTP caching (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings</span><br><span class="hljs-comment">#HTTPCACHE_ENABLED = True</span><br><span class="hljs-comment">#HTTPCACHE_EXPIRATION_SECS = 0</span><br><span class="hljs-comment">#HTTPCACHE_DIR = 'httpcache'</span><br><span class="hljs-comment">#HTTPCACHE_IGNORE_HTTP_CODES = []</span><br><span class="hljs-comment">#HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'</span><br></code></pre></td></tr></table></figure>
+
+
+
+### scrapy爬虫之spider类（示例 一：爬取糗事百科）
+
+- 创建爬虫项目：scrapy startproject xiushi
+- 创建爬虫文件:   scrapy genSpider xiushiSpider  qiushidabaike.com
+
+#### item 部分
+
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Define here the models for your scraped items</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># See documentation in:</span><br><span class="hljs-comment"># https://doc.scrapy.org/en/latest/topics/items.html</span><br><br><span class="hljs-keyword">import</span> scrapy<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XiushiItem</span><span class="hljs-params">(scrapy.Item)</span>:</span><br>    <span class="hljs-comment"># define the fields for your item here like:</span><br>    <span class="hljs-comment"># name = scrapy.Field()</span><br>    title = scrapy.Field()<br>    text = scrapy.Field()<br></code></pre></td></tr></table></figure>
+
+#### setting 部分
+
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Scrapy settings for xiushi project</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># For simplicity, this file contains only settings considered important or</span><br><span class="hljs-comment"># commonly used. You can find more settings consulting the documentation:</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/settings.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><br>BOT_NAME = <span class="hljs-string">'xiushi'</span><br><br>SPIDER_MODULES = [<span class="hljs-string">'xiushi.spiders'</span>]<br>NEWSPIDER_MODULE = <span class="hljs-string">'xiushi.spiders'</span><br><br><span class="hljs-comment"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span><br><span class="hljs-comment"># USER_AGENT = 'xiushi (+http://www.yourdomain.com)'</span><br><br><span class="hljs-comment"># Obey robots.txt rules</span><br>ROBOTSTXT_OBEY = <span class="hljs-literal">False</span><br><br><span class="hljs-comment"># Configure maximum concurrent requests performed by Scrapy (default: 16)</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS = 32</span><br><br><span class="hljs-comment"># Configure a delay for requests for the same website (default: 0)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay</span><br><span class="hljs-comment"># See also autothrottle settings and docs</span><br>DOWNLOAD_DELAY = <span class="hljs-number">1</span><br><span class="hljs-comment"># The download delay setting will honor only one of:</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN = 16</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP = 16</span><br><br><span class="hljs-comment"># Disable cookies (enabled by default)</span><br><span class="hljs-comment"># COOKIES_ENABLED = False</span><br><br><span class="hljs-comment"># Disable Telnet Console (enabled by default)</span><br><span class="hljs-comment"># TELNETCONSOLE_ENABLED = False</span><br><br><span class="hljs-comment"># Override the default request headers:</span><br>DEFAULT_REQUEST_HEADERS = &#123;<br>    <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span>,<br>    <span class="hljs-string">'Accept-Language'</span>: <span class="hljs-string">'en'</span>,<br>    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '</span><br>                  <span class="hljs-string">'Chrome/80.0.3987.163 Safari/537.36 '</span><br>&#125;<br><br><span class="hljs-comment"># Enable or disable spider middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><span class="hljs-comment"># SPIDER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'xiushi.middlewares.XiushiSpiderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable downloader middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment"># DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'xiushi.middlewares.XiushiDownloaderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable extensions</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/extensions.html</span><br><span class="hljs-comment"># EXTENSIONS = &#123;</span><br><span class="hljs-comment">#    'scrapy.extensions.telnet.TelnetConsole': None,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Configure item pipelines</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br>ITEM_PIPELINES = &#123;<br>   <span class="hljs-string">'xiushi.pipelines.XiushiPipeline'</span>: <span class="hljs-number">300</span>,<br>&#125;<br><br><span class="hljs-comment"># Enable and configure the AutoThrottle extension (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/autothrottle.html</span><br><span class="hljs-comment"># AUTOTHROTTLE_ENABLED = True</span><br><span class="hljs-comment"># The initial download delay</span><br><span class="hljs-comment"># AUTOTHROTTLE_START_DELAY = 5</span><br><span class="hljs-comment"># The maximum download delay to be set in case of high latencies</span><br><span class="hljs-comment"># AUTOTHROTTLE_MAX_DELAY = 60</span><br><span class="hljs-comment"># The average number of requests Scrapy should be sending in parallel to</span><br><span class="hljs-comment"># each remote server</span><br><span class="hljs-comment"># AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0</span><br><span class="hljs-comment"># Enable showing throttling stats for every response received:</span><br><span class="hljs-comment"># AUTOTHROTTLE_DEBUG = False</span><br><br><span class="hljs-comment"># Enable and configure HTTP caching (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings</span><br><span class="hljs-comment"># HTTPCACHE_ENABLED = True</span><br><span class="hljs-comment"># HTTPCACHE_EXPIRATION_SECS = 0</span><br><span class="hljs-comment"># HTTPCACHE_DIR = 'httpcache'</span><br><span class="hljs-comment"># HTTPCACHE_IGNORE_HTTP_CODES = []</span><br><span class="hljs-comment"># HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'</span><br></code></pre></td></tr></table></figure>
+
+#### spider 部分
+
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-keyword">import</span> scrapy<br><span class="hljs-keyword">from</span> xiushi.items <span class="hljs-keyword">import</span> XiushiItem<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XiushispiderSpider</span><span class="hljs-params">(scrapy.Spider)</span>:</span><br>    name = <span class="hljs-string">'xiushiSpider'</span><br>    allowed_domains = [<span class="hljs-string">'qiushidabaike.com'</span>]<br>    start_urls = [<span class="hljs-string">'http://qiushidabaike.com/index_1.html'</span>]<br>    base_domain = <span class="hljs-string">'http://qiushidabaike.com'</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self, response)</span>:</span><br>        duanzi = response.xpath(<span class="hljs-string">'//div[@class="main-left fl"]//dl'</span>)<br>        <span class="hljs-keyword">for</span> it <span class="hljs-keyword">in</span> duanzi:<br>            title = it.xpath(<span class="hljs-string">'./dt/span/a/text()'</span>).get().strip()<br>            text = it.xpath(<span class="hljs-string">'./dd[@class="content"]//text()'</span>).getall()<br>            text = <span class="hljs-string">""</span>.join(text).strip()<br>            item = XiushiItem(title=title, text=text)<br>            <span class="hljs-keyword">yield</span> item<br>        <span class="hljs-comment"># 进行翻页操作</span><br>        next_url = response.xpath(<span class="hljs-string">'//div[@class="page"]//a[@class="next"]/@href'</span>).get()<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> next_url:<br>            <span class="hljs-keyword">return</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">yield</span> scrapy.Request(self.base_domain+next_url, callback=self.parse)<br></code></pre></td></tr></table></figure>
+
+#### pipelines 部分
+
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Define your item pipelines here</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Don't forget to add your pipeline to the ITEM_PIPELINES setting</span><br><span class="hljs-comment"># See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br><span class="hljs-string">"""</span><br><span class="hljs-string"># 第一种方法，没进行json优化，但是看起来简单易操作</span><br><span class="hljs-string">import json</span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string">class XiushiPipeline(object):</span><br><span class="hljs-string">    def __init__(self):</span><br><span class="hljs-string">        self.fp = open('duanzi.json', 'w', encoding='utf-8')</span><br><span class="hljs-string"></span><br><span class="hljs-string">    def open_spider(self, spider):</span><br><span class="hljs-string">        print('爬虫开始了...')</span><br><span class="hljs-string"></span><br><span class="hljs-string">    def process_item(self, item, spider):</span><br><span class="hljs-string">        item_json = json.dumps(dict(item),  ensure_ascii=False)</span><br><span class="hljs-string">        self.fp.write(item_json+'\n')</span><br><span class="hljs-string">        return item</span><br><span class="hljs-string"></span><br><span class="hljs-string">    def close_spider(self, spider):</span><br><span class="hljs-string">        self.fp.close()</span><br><span class="hljs-string">        print("爬虫结束了...")</span><br><span class="hljs-string">"""</span><br><span class="hljs-comment"># 方案二，json优化，结果是每个字典存储在列表中</span><br><span class="hljs-comment">#        好处是满足json规则，坏处是数据量较大时比较耗内存</span><br><span class="hljs-comment"># ''' 自我感觉这种方法不咋地 '''</span><br><span class="hljs-comment"># from scrapy.exporters import JsonItemExporter</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># class XiushiPipeline(object):</span><br><span class="hljs-comment">#     def __init__(self):</span><br><span class="hljs-comment">#         # 注意此时以二进制形式写入</span><br><span class="hljs-comment">#         self.fp = open('duanzi.json', 'wb')</span><br><span class="hljs-comment">#         self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8')</span><br><span class="hljs-comment">#         self.exporter.start_exporting()</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     def open_spider(self, spider):</span><br><span class="hljs-comment">#         print('爬虫开始了...')</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     def process_item(self, item, spider):</span><br><span class="hljs-comment">#         self.exporter.export_item(item)</span><br><span class="hljs-comment">#         return item</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     def close_spider(self, spider):</span><br><span class="hljs-comment">#         self.exporter.finish_exporting()</span><br><span class="hljs-comment">#         self.fp.close()</span><br><span class="hljs-comment">#         print("爬虫结束了...")</span><br><br><span class="hljs-string">'''方案三'''</span><br><span class="hljs-keyword">from</span> scrapy.exporters <span class="hljs-keyword">import</span> JsonLinesItemExporter<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XiushiPipeline</span><span class="hljs-params">(object)</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span><br>        <span class="hljs-comment"># 注意此时以二进制形式写入</span><br>        self.fp = open(<span class="hljs-string">'duanzi.json'</span>, <span class="hljs-string">'wb'</span>)<br>        self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=<span class="hljs-literal">False</span>, encoding=<span class="hljs-string">'utf-8'</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open_spider</span><span class="hljs-params">(self, spider)</span>:</span><br>        print(<span class="hljs-string">'爬虫开始了...'</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self, item, spider)</span>:</span><br>        self.exporter.export_item(item)<br>        <span class="hljs-keyword">return</span> item<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close_spider</span><span class="hljs-params">(self, spider)</span>:</span><br>        self.fp.close()<br>        print(<span class="hljs-string">"爬虫结束了..."</span>)<br></code></pre></td></tr></table></figure>
+
+* 可以在总文件中创建.py文件，代替爬虫开始命令 scrapy crawl xiushiSpider (注意应在爬虫目录下执行该命令)
+
+  * ```python
+    from scrapy import cmdline
+
+    cmdline.execute(&quot;scrapy crawl xiushiSpider&quot;.split())
+    # cmdline.execute([&quot;scrapy&quot;, &apos;crawl&apos;, &apos;xiushiSpider&apos;])
+    <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>        <br><br># 爬虫第六天<br><br>### scrapy 框架之spider类（示例二.爬取优美散文）<br><br>- item部分<br><br>&#96;&#96;&#96;python<br># -*- coding: utf-8 -*-<br><br># Define here the models for your scraped items<br>#<br># See documentation in:<br># https:&#x2F;&#x2F;doc.scrapy.org&#x2F;en&#x2F;latest&#x2F;topics&#x2F;items.html<br><br>import scrapy<br><br><br>class ProseItem(scrapy.Item):<br>    # define the fields for your item here like:<br>    # name &#x3D; scrapy.Field()<br>    title &#x3D; scrapy.Field()<br>    text &#x3D; scrapy.Field()<br></code></pre></td></tr></table></figure></code></pre><ul>
+<li>settings部分</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Scrapy settings for prose project</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># For simplicity, this file contains only settings considered important or</span><br><span class="hljs-comment"># commonly used. You can find more settings consulting the documentation:</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/settings.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><br>BOT_NAME = <span class="hljs-string">'prose'</span><br><br>SPIDER_MODULES = [<span class="hljs-string">'prose.spiders'</span>]<br>NEWSPIDER_MODULE = <span class="hljs-string">'prose.spiders'</span><br><br><span class="hljs-comment"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span><br><span class="hljs-comment"># USER_AGENT = 'prose (+http://www.yourdomain.com)'</span><br><br><span class="hljs-comment"># Obey robots.txt rules</span><br>ROBOTSTXT_OBEY = <span class="hljs-literal">False</span><br><br><span class="hljs-comment"># Configure maximum concurrent requests performed by Scrapy (default: 16)</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS = 32</span><br><br><span class="hljs-comment"># Configure a delay for requests for the same website (default: 0)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay</span><br><span class="hljs-comment"># See also autothrottle settings and docs</span><br>DOWNLOAD_DELAY = <span class="hljs-number">1</span><br><span class="hljs-comment"># The download delay setting will honor only one of:</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN = 16</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP = 16</span><br><br><span class="hljs-comment"># Disable cookies (enabled by default)</span><br><span class="hljs-comment"># COOKIES_ENABLED = False</span><br><br><span class="hljs-comment"># Disable Telnet Console (enabled by default)</span><br><span class="hljs-comment"># TELNETCONSOLE_ENABLED = False</span><br><br><span class="hljs-comment"># Override the default request headers:</span><br>DEFAULT_REQUEST_HEADERS = &#123;<br>    <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span>,<br>    <span class="hljs-string">'Accept-Language'</span>: <span class="hljs-string">'en'</span>,<br>    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '</span><br>                  <span class="hljs-string">'Chrome/80.0.3987.163 Safari/537.36 '</span><br>&#125;<br><br><span class="hljs-comment"># Enable or disable spider middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><span class="hljs-comment"># SPIDER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'prose.middlewares.ProseSpiderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable downloader middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment"># DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'prose.middlewares.ProseDownloaderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable extensions</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/extensions.html</span><br><span class="hljs-comment"># EXTENSIONS = &#123;</span><br><span class="hljs-comment">#    'scrapy.extensions.telnet.TelnetConsole': None,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Configure item pipelines</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br>ITEM_PIPELINES = &#123;<br>   <span class="hljs-string">'prose.pipelines.ProsePipeline'</span>: <span class="hljs-number">300</span>,<br>&#125;<br><br><span class="hljs-comment"># Enable and configure the AutoThrottle extension (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/autothrottle.html</span><br><span class="hljs-comment"># AUTOTHROTTLE_ENABLED = True</span><br><span class="hljs-comment"># The initial download delay</span><br><span class="hljs-comment"># AUTOTHROTTLE_START_DELAY = 5</span><br><span class="hljs-comment"># The maximum download delay to be set in case of high latencies</span><br><span class="hljs-comment"># AUTOTHROTTLE_MAX_DELAY = 60</span><br><span class="hljs-comment"># The average number of requests Scrapy should be sending in parallel to</span><br><span class="hljs-comment"># each remote server</span><br><span class="hljs-comment"># AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0</span><br><span class="hljs-comment"># Enable showing throttling stats for every response received:</span><br><span class="hljs-comment"># AUTOTHROTTLE_DEBUG = False</span><br><br><span class="hljs-comment"># Enable and configure HTTP caching (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings</span><br><span class="hljs-comment"># HTTPCACHE_ENABLED = True</span><br><span class="hljs-comment"># HTTPCACHE_EXPIRATION_SECS = 0</span><br><span class="hljs-comment"># HTTPCACHE_DIR = 'httpcache'</span><br><span class="hljs-comment"># HTTPCACHE_IGNORE_HTTP_CODES = []</span><br><span class="hljs-comment"># HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>proseSpider部分</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-keyword">import</span> scrapy<br><span class="hljs-keyword">from</span> prose.items <span class="hljs-keyword">import</span> ProseItem<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProsespiderSpider</span><span class="hljs-params">(scrapy.Spider)</span>:</span><br>    name = <span class="hljs-string">'proseSpider'</span><br>    allowed_domains = [<span class="hljs-string">'duwenzhang.com'</span>]<br>    start_urls = [<span class="hljs-string">'http://www.duwenzhang.com/wenzhang/shenghuosuibi/'</span>]<br>    base_url = <span class="hljs-string">'http://www.duwenzhang.com/wenzhang/shenghuosuibi/'</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self, response)</span>:</span><br>        <span class="hljs-comment"># xpath 选择不含有某一属性的标签</span><br>        url_list = response.xpath(<span class="hljs-string">'//center//tr[2]//td[(@valign) and not(@height)]/table'</span>)<br>        <span class="hljs-keyword">for</span> it <span class="hljs-keyword">in</span> url_list:<br>            title = it.xpath(<span class="hljs-string">'.//tr[2]//td[@height="26"]/b/a/text()'</span>).getall()<br>            text = it.xpath(<span class="hljs-string">'.//tr[4]/td[@style="padding-left:3px"]/text()'</span>).getall()<br>            text = <span class="hljs-string">""</span>.join(text).strip()<br>            item = ProseItem(title=title, text=text)<br>            <span class="hljs-keyword">yield</span> item<br>        <span class="hljs-comment"># //a[contains(text(), "百度搜索")]  【可以部分检索】</span><br>        <span class="hljs-comment"># //a[text()="文字内容"] 【需要填全】 xpath定位指定文本标签</span><br>        next_url = response.xpath(<span class="hljs-string">'//tr//a[text()="下一页"]/@href'</span>).get()<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> next_url:<br>            <span class="hljs-keyword">return</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">yield</span> scrapy.Request(self.base_url+next_url, callback=self.parse)<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>piplines 部分</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Define your item pipelines here</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Don't forget to add your pipeline to the ITEM_PIPELINES setting</span><br><span class="hljs-comment"># See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br><br><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">from</span> scrapy.exporters <span class="hljs-keyword">import</span> JsonLinesItemExporter<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProsePipeline</span><span class="hljs-params">(object)</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span><br>        self.fp = open(<span class="hljs-string">'prose.json'</span>, <span class="hljs-string">'wb'</span>)<br>        self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=<span class="hljs-literal">False</span>,<br>                                              encoding=<span class="hljs-string">'utf-8'</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open_spider</span><span class="hljs-params">(self, spider)</span>:</span><br>        print(<span class="hljs-string">'爬虫开始了...'</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self, item, spider)</span>:</span><br>        self.exporter.export_item(item)<br>        <span class="hljs-keyword">return</span> item<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close_spider</span><span class="hljs-params">(self, spider)</span>:</span><br>        self.fp.close()<br>        print(<span class="hljs-string">'爬虫结束了....'</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>爬虫</category>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>爬虫</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+</search>
