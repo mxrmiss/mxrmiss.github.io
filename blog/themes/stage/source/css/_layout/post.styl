@@ -1,0 +1,145 @@
+#post
+  width $stage-page-width
+  background #fff
+  float left
+  padding 17px 27px
+  position relative
+  .create
+    padding 0 0 17px 4px
+    time
+      padding-right 17px
+  .article-category-list li
+    list-style none
+    padding 0
+  .article-category-list
+    display inline-block
+    padding-left 17px
+    position relative
+    margin-right 17px
+    .article-category-list-child
+      display inline-block
+      padding-left 7px
+    a:hover
+      color $stage-theme-color
+    &::before
+      display inline-block
+      content: ''
+      width 11px
+      height 11px
+      background $stage-theme-color
+      border-radius 50%
+      position absolute
+      left 0px
+      top 7px  
+  .bottom-line
+    width 100%
+    border 1px dashed #ccc
+    margin 17px 0
+  h1:first-child
+    font-size 25px
+    padding-bottom 7px
+    font-weight 600
+    border-bottom 0 none
+    margin-top 0
+  .tags-category-list
+    padding-left 27px
+    font-size 12px
+    margin 27px 0
+    li
+      list-style none
+      padding 0
+  .tags-category-list-item
+    display inline-block
+    padding 2px 3px
+    background #f1f8ff
+    margin-right 24px
+    position relative
+    a
+      color #777
+      &:hover
+        color $stage-theme-color
+  .tags-category-list li:nth-child(even)
+    &::before
+      content: ''
+      display inline-block
+      border-right 20px solid #f1f8ff
+      border-bottom 20px solid rgba(0, 0, 0, 0)
+      position absolute
+      left -20px
+      top: 0px
+    &::after
+      content: ''
+      display inline-block
+      border-right 20px solid rgba(0, 0, 0, 0)
+      border-top 20px solid #f1f8ff
+      position absolute
+      right  -20px
+      top: 0px
+  .tags-category-list li:nth-child(odd)
+    &::before
+      content: ''
+      display inline-block
+      border-right 20px solid #f1f8ff
+      border-top 20px solid rgba(0, 0, 0, 0)
+      position absolute
+      left -20px
+      top: 0px
+    &::after
+      content: ''
+      display inline-block
+      border-right 20px solid rgba(0, 0, 0, 0)
+      border-bottom 20px solid #f1f8ff
+      position absolute
+      right  -20px
+      top: 0px
+#article-nav
+  height 70px
+  font-size 14px
+  a {
+    color: #777
+    &:hover {
+      color #222
+    }
+  }
+  position relative
+#article-nav-newer
+  float right
+  width 50%
+  box-sizing border-box
+  padding-right: 14px
+  text-align right
+  .article-nav-caption
+    position absolute
+    right 0
+    top 1px
+    font-family Consolas
+#article-nav-older
+  float: left
+  width 50%
+  box-sizing border-box
+  padding-left: 14px
+  .article-nav-caption
+    position absolute
+    left 0
+    top 1px
+    font-family Consolas
+#toc
+  width $stage-aside-width
+  float right
+  background #fff
+  position sticky
+  padding 10px
+  top 17px
+  h2
+    font-size 17px
+    font-weight 600
+    padding-bottom 7px
+  ol
+    font-size 14px
+    padding-left 4px
+    li
+      line-height 1.8
+      ol
+        padding-left 16px
+  .active
+    color: $stage-theme-color
