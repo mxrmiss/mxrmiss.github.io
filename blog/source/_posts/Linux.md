@@ -172,6 +172,34 @@ dnf install man-pages-zh-CN
 
 
 
+### kali内核更新安装
+
+1. 查看内核版本
+
+```
+uname -r
+```
+
+2. 检查linux是否安装对应的头文件
+
+```
+sudo apt-cache search linux-headers
+```
+
+3. 安装更新头文件
+
+```
+sudo apt install linux-headers-$(uname -r)
+```
+
+4. 内核头文件检测是否安装
+
+```
+sudo dpkg-query -s linux-headers-`uname -r`
+```
+
+
+
 ### vim命令
 
 1. :set number 显示行号
