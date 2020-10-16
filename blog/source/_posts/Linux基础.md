@@ -85,6 +85,13 @@ tags:
 sudo apt install cheese
 ```
 
+### 蓝牙
+
+```
+sudo service bluetooth start  //打开蓝牙配适器
+sudo service bluetooth stop   //关闭蓝牙配适器
+```
+
 
 
 ### 关于Anaconda的安装
@@ -145,6 +152,19 @@ apt-get install ttf-wqy-microhei
 - 谷歌输入法可以用，基于小企鹅输入法使用，但是也不咋地，毕竟是外国人做的中国输入法，不怎么走心
 - 推荐使用百度输入法，基于小企鹅输入法，首先上官网搜索压缩包，解压后找到安装包文件进行安装，最重要一点是安装后关机重启，重启后系统会自动帮助你进行百度输入法的一些个性化的设置，接着到输入法设置中应用百度输入法就OK了
 
+### wps字体问题
+
+- 使用wps for linux2019 时可能有些中文字体会出现乱码，原因是系统缺失相应的字体
+- 将Windows系统下的Windows目录中的Fonts文件夹复制到Linux系统中的/usr/share/fonts/目录下，再执行以下命令
+
+```
+sudo fc-cache -fv     //识别字体库
+
+fc-list :lang=zh-cn | sort    //确认是否安装
+```
+
+
+
 
 
 ### 关于vmware 虚拟机安装
@@ -153,6 +173,42 @@ apt-get install ttf-wqy-microhei
 2. chmod -x 下载的文件
 3. sudo bash 下载的文件
 4. 之后就可以在电脑中找到虚拟机，并进行下一步的安装操作
+
+### linux-vmware升级问题
+
+[解决 linux升级 导致VMware启动出现"before you can run vmware workstation, serveral modules must be complied and loaded into the runing kernel" 而无法卸载](https://www.cnblogs.com/wjshan0808/p/4110495.html)
+
+```
+# vmware-uninstall 
+You have gotten this message because you are either downgrading VMware
+Workstation, Player, or VIX, or because you attempted to run either
+vmware-uninstall or vmware-uninstall-vix.
+
+If you are downgrading, please uninstall all newer versions first, then
+install again.
+
+The vmware-uninstall* scripts have been deprecated.  Instead, please use
+the vmware-installer.
+
+Long form:
+      vmware-installer --uninstall-product PRODUCT
+Short form:
+      vmware-installer -u PRODUCT
+
+Where PRODUCT is one of vmware-workstation, vmware-player, or vmware-vix.
+
+For a list of which products are installed, you may run:
+      vmware-installer --list-products
+or:
+      vmware-installer -l
+
+
+# vmware-installer -l
+Product Name         Product Version     
+==================== ====================
+vmware-workstation   10.0.4.2249910      
+# vmware-installer -u vmware-workstation
+```
 
 
 

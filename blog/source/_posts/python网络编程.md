@@ -1,8 +1,22 @@
+---
+title: 网络编程
+date: 2020/10/16 
+comments: ture
+categories:
+- python
+tags:
+- 网络编程
+---
+
+
+
 # python网络编程
 
 ### 一、客户端
 
 #### TCP客户端
+
+<!--more-->
 
 ```python
 import socket

@@ -42,3 +42,5 @@ tags:
 # HTML中常用的标签
 
 ![image-20200625194436236](/home/blacksheep/.config/Typora/typora-user-images/image-20200625194436236.png)
+
+- span无语义标签与div标签的区别：div标签可以自动换行，span标签不行

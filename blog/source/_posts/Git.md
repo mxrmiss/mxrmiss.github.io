@@ -26,7 +26,8 @@ tags:
   ```
   git config --global core.quotepath false
   ```
-<!--more-->
+  <!--more-->
+
 - git 无法推送新文件到github仓库原因
 
   1. 可能仓库内已经有东西了，而且使用的推送命令不对
@@ -45,3 +46,13 @@ tags:
   2. 会产生一对公密和私密，存储在家目录下的 .ssh 目录中
   3. cat ～/.ssh/id_rsa.pub ，复制输出的公密内容至 github个人主页setting中的ssh中，并保存
   4. 以后clone仓库地址时就可以直接使用
+  
+- 向仓库更新文件基本命令
+
+```
+git status
+git add *
+git commit -m "内容描述"
+git push
+```
+
