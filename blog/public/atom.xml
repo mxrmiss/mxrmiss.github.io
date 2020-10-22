@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-03T02:55:02.789Z</updated>
+  <updated>2020-10-16T09:12:27.772Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,176 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux高级</title>
+    <link href="http://yoursite.com/2020/10/16/Linux%20%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/"/>
+    <id>http://yoursite.com/2020/10/16/Linux%20%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</id>
+    <published>2020-10-16T09:12:27.772Z</published>
+    <updated>2020-10-16T09:12:27.772Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Linux-高级程序设计&quot;&gt;&lt;a href=&quot;#Linux-高级程序设计&quot; class=&quot;headerlink&quot; title=&quot;Linux 高级程序设计&quot;&gt;&lt;/a&gt;Linux 高级程序设计&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV1Mk4y1z7Tw/?p=4&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;笔记参考视频链接&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;注：此笔记参考了视频教程中的内容，以及部分资料，仅供学习参考&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;一、shell编程&quot;&gt;&lt;a href=&quot;#一、shell编程&quot; class=&quot;headerlink&quot; title=&quot;一、shell编程&quot;&gt;&lt;/a&gt;一、shell编程&lt;/h2&gt;&lt;h3 id=&quot;1-1概述&quot;&gt;&lt;a href=&quot;#1-1概述&quot; class=&quot;headerlink&quot; title=&quot;1.1概述&quot;&gt;&lt;/a&gt;1.1概述&lt;/h3&gt;&lt;h4 id=&quot;1-1-1-shell作为应用程序&quot;&gt;&lt;a href=&quot;#1-1-1-shell作为应用程序&quot; class=&quot;headerlink&quot; title=&quot;1.1.1 shell作为应用程序&quot;&gt;&lt;/a&gt;1.1.1 shell作为应用程序&lt;/h4&gt;
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库(二)</title>
+    <link href="http://yoursite.com/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93(%E4%BA%8C)/"/>
+    <id>http://yoursite.com/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93(%E4%BA%8C)/</id>
+    <published>2020-10-16T09:12:27.772Z</published>
+    <updated>2020-10-16T09:12:27.772Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;数据库（二）&quot;&gt;&lt;a href=&quot;#数据库（二）&quot; class=&quot;headerlink&quot; title=&quot;数据库（二）&quot;&gt;&lt;/a&gt;数据库（二）&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV12b411K7Zu/?p=105&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;参考的相关视频资料连接&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;DML语言&quot;&gt;&lt;a href=&quot;#DML语言&quot; class=&quot;headerlink&quot; title=&quot;DML语言&quot;&gt;&lt;/a&gt;DML语言&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;数据操作语言：&lt;ul&gt;
+&lt;li&gt;插入：insert&lt;/li&gt;
+&lt;li&gt;修改：update&lt;/li&gt;
+&lt;li&gt;删除：delete&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;插入语句&quot;&gt;&lt;a href=&quot;#插入语句&quot; class=&quot;headerlink&quot; title=&quot;插入语句&quot;&gt;&lt;/a&gt;插入语句&lt;/h3&gt;&lt;h4 id=&quot;方式一：经典插入语句&quot;&gt;&lt;a href=&quot;#方式一：经典插入语句&quot; class=&quot;headerlink&quot; title=&quot;方式一：经典插入语句&quot;&gt;&lt;/a&gt;方式一：经典插入语句&lt;/h4&gt;
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="Mysql" scheme="http://yoursite.com/tags/Mysql/"/>
+    
+      <category term="SQL" scheme="http://yoursite.com/tags/SQL/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库</title>
+    <link href="http://yoursite.com/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>http://yoursite.com/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
+    <published>2020-10-16T09:12:27.772Z</published>
+    <updated>2020-10-16T09:12:27.772Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;数据库的学习（一）&quot;&gt;&lt;a href=&quot;#数据库的学习（一）&quot; class=&quot;headerlink&quot; title=&quot;数据库的学习（一）&quot;&gt;&lt;/a&gt;数据库的学习（一）&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV12b411K7Zu/?p=28&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;相关视频链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;数据库及其概念&quot;&gt;&lt;a href=&quot;#数据库及其概念&quot; class=&quot;headerlink&quot; title=&quot;数据库及其概念&quot;&gt;&lt;/a&gt;数据库及其概念&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;DB 数据库&lt;/li&gt;
+&lt;li&gt;DBMS 数据库管理系统，如Mysql， MongoDB 等，用来管理与操作DB&lt;/li&gt;
+&lt;li&gt;SQL  管理数据库的语言，几乎被所有的DBMS支持&lt;/li&gt;
+&lt;li&gt;DB是大宅子，DBMS是宅子管家，SQL是管家的指挥口令&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="Mysql" scheme="http://yoursite.com/tags/Mysql/"/>
+    
+      <category term="SQL" scheme="http://yoursite.com/tags/SQL/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>正则</title>
+    <link href="http://yoursite.com/2020/10/16/%E6%AD%A3%E5%88%99/"/>
+    <id>http://yoursite.com/2020/10/16/%E6%AD%A3%E5%88%99/</id>
+    <published>2020-10-16T09:12:27.772Z</published>
+    <updated>2020-10-16T09:12:27.772Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;#正则&lt;br&gt;-关于贪婪与非贪婪&lt;br&gt;    .&lt;em&gt;? 非贪婪，匹配到需要的就结束，不管后面是否有符合的&lt;br&gt;    .&lt;/em&gt;  贪婪，会一直匹配所有的符合项，直到匹配结束&lt;/p&gt;
+&lt;p&gt;compile
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>网络安全之网络基础</title>
+    <link href="http://yoursite.com/2020/10/16/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8B%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2020/10/16/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8B%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</id>
+    <published>2020-10-16T09:12:27.772Z</published>
+    <updated>2020-10-16T09:12:27.772Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;网络安全&quot;&gt;&lt;a href=&quot;#网络安全&quot; class=&quot;headerlink&quot; title=&quot;网络安全&quot;&gt;&lt;/a&gt;网络安全&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="网络协议" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="交换路由技术" scheme="http://yoursite.com/tags/%E4%BA%A4%E6%8D%A2%E8%B7%AF%E7%94%B1%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>网络编程</title>
+    <link href="http://yoursite.com/2020/10/16/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    <id>http://yoursite.com/2020/10/16/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</id>
+    <published>2020-10-15T16:00:00.000Z</published>
+    <updated>2020-10-16T09:15:45.956Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;python网络编程&quot;&gt;&lt;a href=&quot;#python网络编程&quot; class=&quot;headerlink&quot; title=&quot;python网络编程&quot;&gt;&lt;/a&gt;python网络编程&lt;/h1&gt;&lt;h3 id=&quot;一、客户端&quot;&gt;&lt;a href=&quot;#一、客户端&quot; class=&quot;headerlink&quot; title=&quot;一、客户端&quot;&gt;&lt;/a&gt;一、客户端&lt;/h3&gt;&lt;h4 id=&quot;TCP客户端&quot;&gt;&lt;a href=&quot;#TCP客户端&quot; class=&quot;headerlink&quot; title=&quot;TCP客户端&quot;&gt;&lt;/a&gt;TCP客户端&lt;/h4&gt;
+    
+    </summary>
+    
+    
+      <category term="python" scheme="http://yoursite.com/categories/python/"/>
+    
+    
+      <category term="网络编程" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Git &amp; Github</title>
     <link href="http://yoursite.com/2020/05/03/Git/"/>
     <id>http://yoursite.com/2020/05/03/Git/</id>
     <published>2020-05-03T01:08:28.000Z</published>
-    <updated>2020-05-03T02:55:02.789Z</updated>
+    <updated>2020-10-16T09:18:35.840Z</updated>
     
     <summary type="html">
     
@@ -43,40 +208,11 @@
   </entry>
   
   <entry>
-    <title>MongoDB</title>
-    <link href="http://yoursite.com/2020/05/03/mongod_note/"/>
-    <id>http://yoursite.com/2020/05/03/mongod_note/</id>
-    <published>2020-05-03T01:08:28.000Z</published>
-    <updated>2020-05-03T02:55:02.789Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;#关于MongoDB&lt;br&gt;    -安装&lt;br&gt;    -配置环境变量&lt;br&gt;        C:\Program Files\MongoDB\Server\4.2\bin&lt;br&gt;    -在C盘中创建一个文件夹 data&lt;br&gt;    -在data中创建1一个文件夹db&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;-打开cmd命令行窗口
-    -输入 mongod启动mongodb服务器
-    -32位注意：
-        启动服务器时，需要输入如下内容：
-            mongod --storageEngine=mmapv1
-        **注意！此内容32位用户只需在第一次使用mongodb时输入
-
-    -  mongod --dbpath数据库路径 --port 端口号        &lt;/code&gt;&lt;/pre&gt;
-    
-    </summary>
-    
-    
-      <category term="mongodb" scheme="http://yoursite.com/categories/mongodb/"/>
-    
-    
-      <category term="mongodb" scheme="http://yoursite.com/tags/mongodb/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Linux</title>
-    <link href="http://yoursite.com/2020/05/03/Linux/"/>
-    <id>http://yoursite.com/2020/05/03/Linux/</id>
+    <link href="http://yoursite.com/2020/05/03/Linux%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2020/05/03/Linux%E5%9F%BA%E7%A1%80/</id>
     <published>2020-05-03T01:08:28.000Z</published>
-    <updated>2020-05-03T02:55:02.789Z</updated>
+    <updated>2020-10-16T09:12:27.772Z</updated>
     
     <summary type="html">
     
@@ -109,29 +245,31 @@
   </entry>
   
   <entry>
-    <title>tcp/ip</title>
-    <link href="http://yoursite.com/2020/05/03/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
-    <id>http://yoursite.com/2020/05/03/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</id>
+    <title>MongoDB</title>
+    <link href="http://yoursite.com/2020/05/03/mongod_note/"/>
+    <id>http://yoursite.com/2020/05/03/mongod_note/</id>
     <published>2020-05-03T01:08:28.000Z</published>
-    <updated>2020-05-03T02:55:02.789Z</updated>
+    <updated>2020-10-16T09:12:27.772Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;网络协议&quot;&gt;&lt;a href=&quot;#网络协议&quot; class=&quot;headerlink&quot; title=&quot;网络协议&quot;&gt;&lt;/a&gt;网络协议&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://blog.sina.com.cn/s/blog_52ddfea30100nssx.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;相关博客&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;以太网&quot;&gt;&lt;a href=&quot;#以太网&quot; class=&quot;headerlink&quot; title=&quot;以太网&quot;&gt;&lt;/a&gt;以太网&lt;/h2&gt;&lt;h3 id=&quot;以太网术语&quot;&gt;&lt;a href=&quot;#以太网术语&quot; class=&quot;headerlink&quot; title=&quot;以太网术语&quot;&gt;&lt;/a&gt;以太网术语&lt;/h3&gt;&lt;p&gt;以太网遵循一组控制其基本操作的简单规则。为了更好地理解这些规则，了解基本的以太网术语十分重要。 &lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;介质——以太网设备连接到一个公共介质上，该介质为电气信号的传输提供了一条路径。历史上一直使用同轴铜电缆作为传输介质，但是目前双绞线或光纤更为多见。 &lt;/li&gt;
-&lt;li&gt;网段——我们将单个共享介质称作一个以太网段。 &lt;/li&gt;
-&lt;li&gt;节点——连接到网段的设备称作站点或节点。 &lt;/li&gt;
-&lt;li&gt;帧——节点使用称作帧的简短消息进行通信，帧是大小不固定的信息块。 帧类似于人类语言中的句子。在中文里，我们构造句子时会有一些规则，例如每个句子必须包含主语和谓语。以太网协议也规定了用于构造帧的一组规则。对于帧的最大和最小长度有明确规定，而且帧中必须包含一组必需的信息段。例如，每个帧必须包括目标地址和源地址，它们分别指出了消息的接收方和发送方。通过地址可标识唯一的节点，就像通过姓名可找出某个人一样。任何两个以太网设备都不应具有相同的地址。
+      &lt;p&gt;#关于MongoDB&lt;br&gt;    -安装&lt;br&gt;    -配置环境变量&lt;br&gt;        C:\Program Files\MongoDB\Server\4.2\bin&lt;br&gt;    -在C盘中创建一个文件夹 data&lt;br&gt;    -在data中创建1一个文件夹db&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-打开cmd命令行窗口
+    -输入 mongod启动mongodb服务器
+    -32位注意：
+        启动服务器时，需要输入如下内容：
+            mongod --storageEngine=mmapv1
+        **注意！此内容32位用户只需在第一次使用mongodb时输入
+
+    -  mongod --dbpath数据库路径 --port 端口号        &lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
     
-      <category term="网络协议" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+      <category term="mongodb" scheme="http://yoursite.com/categories/mongodb/"/>
     
     
-      <category term="网络协议" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+      <category term="mongodb" scheme="http://yoursite.com/tags/mongodb/"/>
     
   </entry>
   
@@ -140,7 +278,7 @@
     <link href="http://yoursite.com/2020/05/03/spider/"/>
     <id>http://yoursite.com/2020/05/03/spider/</id>
     <published>2020-05-03T01:08:28.000Z</published>
-    <updated>2020-05-03T02:55:02.789Z</updated>
+    <updated>2020-10-16T09:12:27.772Z</updated>
     
     <summary type="html">
     
@@ -166,11 +304,38 @@
   </entry>
   
   <entry>
+    <title>tcp/ip</title>
+    <link href="http://yoursite.com/2020/05/03/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+    <id>http://yoursite.com/2020/05/03/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</id>
+    <published>2020-05-03T01:08:28.000Z</published>
+    <updated>2020-10-16T09:12:27.772Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;网络协议&quot;&gt;&lt;a href=&quot;#网络协议&quot; class=&quot;headerlink&quot; title=&quot;网络协议&quot;&gt;&lt;/a&gt;网络协议&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://blog.sina.com.cn/s/blog_52ddfea30100nssx.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;相关博客&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;以太网&quot;&gt;&lt;a href=&quot;#以太网&quot; class=&quot;headerlink&quot; title=&quot;以太网&quot;&gt;&lt;/a&gt;以太网&lt;/h2&gt;&lt;h3 id=&quot;以太网术语&quot;&gt;&lt;a href=&quot;#以太网术语&quot; class=&quot;headerlink&quot; title=&quot;以太网术语&quot;&gt;&lt;/a&gt;以太网术语&lt;/h3&gt;&lt;p&gt;以太网遵循一组控制其基本操作的简单规则。为了更好地理解这些规则，了解基本的以太网术语十分重要。 &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;介质——以太网设备连接到一个公共介质上，该介质为电气信号的传输提供了一条路径。历史上一直使用同轴铜电缆作为传输介质，但是目前双绞线或光纤更为多见。 &lt;/li&gt;
+&lt;li&gt;网段——我们将单个共享介质称作一个以太网段。 &lt;/li&gt;
+&lt;li&gt;节点——连接到网段的设备称作站点或节点。 &lt;/li&gt;
+&lt;li&gt;帧——节点使用称作帧的简短消息进行通信，帧是大小不固定的信息块。 帧类似于人类语言中的句子。在中文里，我们构造句子时会有一些规则，例如每个句子必须包含主语和谓语。以太网协议也规定了用于构造帧的一组规则。对于帧的最大和最小长度有明确规定，而且帧中必须包含一组必需的信息段。例如，每个帧必须包括目标地址和源地址，它们分别指出了消息的接收方和发送方。通过地址可标识唯一的节点，就像通过姓名可找出某个人一样。任何两个以太网设备都不应具有相同的地址。
+    
+    </summary>
+    
+    
+      <category term="网络协议" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+    
+    
+      <category term="网络协议" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>管理学</title>
     <link href="http://yoursite.com/2020/05/03/%E7%AE%A1%E7%90%86%E5%AD%A6/"/>
     <id>http://yoursite.com/2020/05/03/%E7%AE%A1%E7%90%86%E5%AD%A6/</id>
     <published>2020-05-03T01:07:30.000Z</published>
-    <updated>2020-05-03T02:55:02.789Z</updated>
+    <updated>2020-10-16T09:12:27.772Z</updated>
     
     <summary type="html">
     
@@ -206,15 +371,44 @@
   </entry>
   
   <entry>
+    <title>HTML</title>
+    <link href="http://yoursite.com/2020/05/03/Web%E5%89%8D%E7%AB%AF_HTML/"/>
+    <id>http://yoursite.com/2020/05/03/Web%E5%89%8D%E7%AB%AF_HTML/</id>
+    <published>2020-05-03T00:46:40.000Z</published>
+    <updated>2020-10-16T09:12:27.772Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;HTML的基本结构&quot;&gt;&lt;a href=&quot;#HTML的基本结构&quot; class=&quot;headerlink&quot; title=&quot;HTML的基本结构&quot;&gt;&lt;/a&gt;HTML的基本结构&lt;/h1&gt;&lt;figure class=&quot;highlight
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Web前端" scheme="http://yoursite.com/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="HTML" scheme="http://yoursite.com/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
     <title>搭建个人博客</title>
     <link href="http://yoursite.com/2020/05/03/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     <id>http://yoursite.com/2020/05/03/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</id>
     <published>2020-05-03T00:46:40.000Z</published>
-    <updated>2020-05-04T06:51:32.652Z</updated>
+    <updated>2020-10-16T09:12:27.772Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;搭建静态页面个人博客&quot;&gt;&lt;a href=&quot;#搭建静态页面个人博客&quot; class=&quot;headerlink&quot; title=&quot;搭建静态页面个人博客&quot;&gt;&lt;/a&gt;搭建静态页面个人博客&lt;/h1&gt;&lt;h3 id=&quot;安装hexo&quot;&gt;&lt;a href=&quot;#安装hexo&quot; class=&quot;headerlink&quot; title=&quot;安装hexo&quot;&gt;&lt;/a&gt;安装hexo&lt;/h3&gt;&lt;ol&gt;
+      &lt;h1 id=&quot;搭建静态页面个人博客&quot;&gt;&lt;a href=&quot;#搭建静态页面个人博客&quot; class=&quot;headerlink&quot; title=&quot;搭建静态页面个人博客&quot;&gt;&lt;/a&gt;搭建静态页面个人博客&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/189fd945f38f&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;参考文献&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;参考文献&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;安装hexo&quot;&gt;&lt;a href=&quot;#安装hexo&quot; class=&quot;headerlink&quot; title=&quot;安装hexo&quot;&gt;&lt;/a&gt;安装hexo&lt;/h3&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;检查电脑是否有node.js&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;node -v&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
@@ -225,30 +419,6 @@
     
     
       <category term="blog" scheme="http://yoursite.com/tags/blog/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>正则</title>
-    <link href="http://yoursite.com/2020/05/02/%E6%AD%A3%E5%88%99/"/>
-    <id>http://yoursite.com/2020/05/02/%E6%AD%A3%E5%88%99/</id>
-    <published>2020-05-02T01:12:47.705Z</published>
-    <updated>2020-05-01T02:28:15.000Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;#正则&lt;br&gt;-关于贪婪与非贪婪&lt;br&gt;    .&lt;em&gt;? 非贪婪，匹配到需要的就结束，不管后面是否有符合的&lt;br&gt;    .&lt;/em&gt;  贪婪，会一直匹配所有的符合项，直到匹配结束&lt;/p&gt;
-&lt;p&gt;compile
-        
-      
-    
-    </summary>
-    
-    
     
   </entry>
   

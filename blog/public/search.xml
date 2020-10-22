@@ -9,7 +9,8 @@
 </li>
 <li><p>git status 无法显示中文</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">git config --global core.quotepath false<br></code></pre></td></tr></table></figure>
-<a id="more"></a></li>
+<a id="more"></a>
+</li>
 <li><p>git 无法推送新文件到github仓库原因</p>
 <ol>
 <li>可能仓库内已经有东西了，而且使用的推送命令不对</li>
@@ -28,7 +29,11 @@
 <li>以后clone仓库地址时就可以直接使用</li>
 </ol>
 </li>
+<li><p>向仓库更新文件基本命令</p>
+</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">git status<br>git add *<br>git commit -m &quot;内容描述&quot;<br>git push<br></code></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>Git</category>
@@ -38,251 +43,108 @@
       </tags>
   </entry>
   <entry>
-    <title>MongoDB</title>
-    <url>/2020/05/03/mongod_note/</url>
-    <content><![CDATA[<p>#关于MongoDB<br>    -安装<br>    -配置环境变量<br>        C:\Program Files\MongoDB\Server\4.2\bin<br>    -在C盘中创建一个文件夹 data<br>    -在data中创建1一个文件夹db</p>
-<pre><code>-打开cmd命令行窗口
-    -输入 mongod启动mongodb服务器
-    -32位注意：
-        启动服务器时，需要输入如下内容：
-            mongod --storageEngine=mmapv1
-        **注意！此内容32位用户只需在第一次使用mongodb时输入
-
-    -  mongod --dbpath数据库路径 --port 端口号        </code></pre><a id="more"></a>
-<pre><code>-再打开一个cmd窗口
-    -输入mongo 连接mongodb， 出现 &gt; 便为成功
-
--数据库（database）
-    -数据库的服务器
-        -服务器用来保存数据
-        -mongod 用来启动服务器
-
-    -数据库的客户端
-        -客户端用来操作服务器， 对数据进行增删改查的操作
-        -mongo 用来启动服务器
-
-    -将MongoDB设置为系统服务，可以自动在后台启动，不需要每次都手动启动
-        1、在C盘根目录创建data（前面步骤已创建）
-            在data下创建db和log文件夹
-        2、创建配置文件
-            在目录 C:\Program Files\MongoDB\Server\4.2下添加一个配置</code></pre>]]></content>
-      <categories>
-        <category>mongodb</category>
-      </categories>
-      <tags>
-        <tag>mongodb</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>搭建个人博客</title>
-    <url>/2020/05/03/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="搭建静态页面个人博客"><a href="#搭建静态页面个人博客" class="headerlink" title="搭建静态页面个人博客"></a>搭建静态页面个人博客</h1><h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><ol>
-<li><p>检查电脑是否有node.js</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">node -v<br></code></pre></td></tr></table></figure>
-<a id="more"></a>
-</li>
-<li><p>若没有则下载</p>
-</li>
-<li><p>安装npm</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">npm install -g hexo-cli<br>这样会报错<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-</li>
-</ol>
-<h3 id="解决错误："><a href="#解决错误：" class="headerlink" title="解决错误："></a>解决错误：</h3><p>Missing write access to /usr/local/lib/node_modules是没有写权限, npm官方给出的解决方案是新建一个有权限的文件夹, 在这个新文件夹中安装npm包. 这个方法不适用于Microsoft Windows系统.<br>在用户的根目录创建文件夹(名字不一定要是.npm-global, 可以自己起):</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">mkdir ~&#x2F;.npm-global<br></code></pre></td></tr></table></figure>
-
-
-
-<p>设置npm全局包的安装路径:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">npm config set prefix &#39;~&#x2F;.npm-global&#39;<br></code></pre></td></tr></table></figure>
-
-
-
-<p>在用户的根目录下查看有没有.profile文件, 如果没有就创建, 然后用文本编辑器打开, 加上以下一行, 保存:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">export PATH&#x3D;~&#x2F;.npm-global&#x2F;bin:$PATH<br></code></pre></td></tr></table></figure>
-
-
-
-<p>回到终端运行以下命令, 让配置生效:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">source &#x2F;etc&#x2F;profile<br></code></pre></td></tr></table></figure>
-
-
-
-<p>然后全局安装npm包就可以了.</p>
-<p><a href="https://blog.csdn.net/zhangxuekang/article/details/89075039" target="_blank" rel="noopener">原文链接</a></p>
-<ol start="2">
-<li><p>将 Hexo 所在的目录下的 node_modules 添加到环境变量之中即可直接使用 hexo <command>：</p>
-<p>echo ‘PATH=”$PATH:./node_modules/.bin”‘ &gt;&gt; ~/.profile</p>
-</li>
-<li><p>初始化博客框架</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"># 选择一个地方新建博客目录<br>npx hexo init blog<br><br># 生成博客文件夹中的moudle文件夹<br>npx hexo g<br><br># 进行本机器运行测试<br>npx hexo server<br></code></pre></td></tr></table></figure>
-
-
-
-<h3 id="主题切换"><a href="#主题切换" class="headerlink" title="主题切换"></a>主题切换</h3><ol>
-<li><p>去hexo官网下载主题，克隆到自己的仓库下</p>
-</li>
-<li><p>配置自己的站点文件（根目录下的_config.yml,不是主题下的），切换至自己的主题</p>
-<p>并且更改语言设置成zh-CN</p>
-</li>
-<li><p>在source文件夹下新建标签文件夹(tags)和分类文件夹(categories)以及about文件夹[内容为个人简介或声明],如果还需要其他的自己可以建，笔记文档放在_posts文件夹内</p>
-</li>
-</ol>
-<h3 id="博客与github挂钩"><a href="#博客与github挂钩" class="headerlink" title="博客与github挂钩"></a>博客与github挂钩</h3><ol>
-<li><p>在github上新建一个仓库，仓库名为    自己的github名.github.io</p>
-</li>
-<li><p>在自己的博客目录下的站点配置文件_config.yml中进行配置，在文件的末尾找到并进行修改：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">deploy:<br>	type: git<br>	repo: 仓库名称.git  (.git不能少)<br>	branch： master<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>安装git部署插件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>之后</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">npx hexo clean<br>npx hexo g<br># 进行网站部署<br>npx hexo d<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>大功告成</p>
-</li>
-</ol>
-<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><ol>
-<li><p>先去购买域名</p>
-</li>
-<li><p>进行域名注册</p>
-</li>
-<li><p>再进行域名解析（必要的环节）</p>
-<ul>
-<li>进入解析页面</li>
-<li>添加解析</li>
-<li>在命令行下ping自己的github和博客绑定的仓库</li>
-<li>得到ip地址之后添加到解析列表</li>
+    <title>Linux高级</title>
+    <url>/2020/10/16/Linux%20%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<h1 id="Linux-高级程序设计"><a href="#Linux-高级程序设计" class="headerlink" title="Linux 高级程序设计"></a>Linux 高级程序设计</h1><ul>
+<li><a href="https://www.bilibili.com/video/BV1Mk4y1z7Tw/?p=4" target="_blank" rel="noopener">笔记参考视频链接</a></li>
+<li>注：此笔记参考了视频教程中的内容，以及部分资料，仅供学习参考</li>
 </ul>
+<h2 id="一、shell编程"><a href="#一、shell编程" class="headerlink" title="一、shell编程"></a>一、shell编程</h2><h3 id="1-1概述"><a href="#1-1概述" class="headerlink" title="1.1概述"></a>1.1概述</h3><h4 id="1-1-1-shell作为应用程序"><a href="#1-1-1-shell作为应用程序" class="headerlink" title="1.1.1 shell作为应用程序"></a>1.1.1 shell作为应用程序</h4><a id="more"></a>
+
+<ul>
+<li>交互式地解释、执行用户输入的命令,将用户的操作翻译成机器可以识别的语言,完成相应功能称之为shell命令解析器 ，shell是用户和Linux内核之间的接口程序。 用户在提示符下输入的命令都由shell先解释，然后传给Linux核心。</li>
+<li>它调用了系统核心的大部分功能来执行程序、并以并行的方式协调各个程序的运行 。Linux系统中提供了好几种不同的shell命令解释器,如sh、ash、bash等。一般默认使用bash作为默认的解释器。我们后面编写的shell脚本,都是由上述shell命令解释器解释执行的。</li>
+</ul>
+<p><img src="/home/blacksheep/.config/Typora/typora-user-images/image-20200607170442735.png" alt="image-20200607170442735"></p>
+<p><img src="/home/blacksheep/.config/Typora/typora-user-images/image-20200607170727415.png" alt="image-20200607170727415"></p>
+<h4 id="1-1-2-shell作为程序设计语言"><a href="#1-1-2-shell作为程序设计语言" class="headerlink" title="1.1.2 shell作为程序设计语言"></a>1.1.2 shell作为程序设计语言</h4><ul>
+<li>简称shell脚本，用任意文本编译器添加内容，再授予权限即可使用，与一些编程语言相类似</li>
+<li>/etc/profile 此文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行,系统的公共环境变量在这里设置 ，开始自启动的程序,一般也在这里设置</li>
+<li>~/.bashrc用户自己的家目录中的.bashrc 登录时会自动调用,打开任意终端时也会自动调用。这个文件一般设置与个人用户有关的环境变量,如交叉编译器的路径等等</li>
+<li>用户编写,需要手动调用的 例如我们上面编写的脚本都属于此类 无论是系统调用的还是需要我们自己调用的,其语法规则都一样</li>
+</ul>
+<h3 id="1-2-shell语法"><a href="#1-2-shell语法" class="headerlink" title="1.2 shell语法"></a>1.2 shell语法</h3><h4 id="1-2-1-脚本的定义与执行"><a href="#1-2-1-脚本的定义与执行" class="headerlink" title="1.2.1 脚本的定义与执行"></a>1.2.1 脚本的定义与执行</h4><ol>
+<li>定义以开头:#!/bin/sh #!用来声明脚本由什么shell解释,否则使用默认shell</li>
+<li>单个”#”号代表注释当前行</li>
+<li>执行: chmod + x test.sh ./test.sh 增加可执行权限后执行 </li>
+<li>bash test.sh 直接指定使用bash解释test.sh </li>
+<li>.  test.sh(source test.sh) 使用当前shell读取解释test.sh</li>
+<li>脚本的书写不能包含空格</li>
+</ol>
+<h4 id="1-2-2-变量"><a href="#1-2-2-变量" class="headerlink" title="1.2.2 变量"></a>1.2.2 变量</h4><ol>
+<li><p>自定义变量<br>定义变量 变量名=变量值 如:num=10 </p>
 </li>
-<li><p>进入博客的source目录下，新建名为 CNAME 的文件，在里面写入自己申请的域名</p>
+<li><p>引用变量 $变量名<br> 如:i=$num 把变量num的值付给变量i </p>
 </li>
-<li><p>进入blog，依次输入</p>
+<li><p>显示变量 使用echo命令可以显示单个变量取值 echo<br> $num </p>
+</li>
+<li><p>清除变量 使用unset命令清除变量 unset varname</p>
+</li>
+<li><p>变量的其它用法: read string 从键盘输入一个字符串付给变量</p>
+</li>
+<li><p>string readonly var=100 定义一个只读变量,只能在定义时初始化,以后不能改变,不能被清除。 </p>
+</li>
+<li><p>export var=300 使用export说明的变量,会被导出为环境变量,其它shell均可使用 注意:此时必须使用source 2_var.sh才可以生效</p>
+</li>
+<li><p>注意事项:</p>
+<ol>
+<li><p>变量名只能包含英文字母下划线,不能以数字开头 1_num=10 错误 num_1=20 正确</p>
+</li>
+<li><p>等号两边不能直接接空格符,若变量中本身就包含了空格,则整个字符串都要用双引号、或单引号括起来;双引号内的特殊字符可以保有变量特性,但是单引号内的特殊字符则仅为一般字符。name=aa bb //错误 name=”aa bb” //正确 echo “$name is me” //输出:aa bb is me echo’$name is me’ //输出:$name is me 例2: 2_var.sh</p>
 </li>
 </ol>
-   <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">npx hexo clean<br>npx hexo g<br>hexo d<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="1-2-3-环境变量（类似全局变量）"><a href="#1-2-3-环境变量（类似全局变量）" class="headerlink" title="1.2.3 环境变量（类似全局变量）"></a>1.2.3 环境变量（类似全局变量）</h4><ol>
+<li>shell在开始执行时就已经定义了一些和系统的工作环境有关的变量，我们可以在shell中直接使用$name引用</li>
+<li>定义：一般在~/bashrc或/etc/profile文件中（系统自动调用的脚本）使用export设置，允许用户后来修改</li>
+<li>设置环境变量：</li>
+</ol>
+<ul>
+<li>临时设置：使用export命令</li>
+<li>永久设置：需要在配置文件（~/bashrc或/etc/profile文件）中进行设置即可，设置完毕后需要通过source命令配置文件立即生效</li>
+</ul>
+<ol start="4">
+<li>预设变量：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">$#:传给shell脚本参数的数量 <br>$*:传给shell脚本参数的内容 $1、$2、$3、...、$9:运行脚本时传递给其的参数,用空格隔开<br>$?:命令执行后返回的状态 &quot;$?&quot;用于检查上一个命令执行是否正确(在Linux中,命令退出状态为0表示该命令正确执行,任何非0值表示命令出错)。<br>$0:当前执行的进程名 $$:当前进程的进程号 <br>&quot;$$&quot;变量最常见的用途是用作临时文件的名字以保证临时文件不会重复<br></code></pre></td></tr></table></figure>
 
-<ol start="6">
-<li>大功告成.</li>
+<ol start="5">
+<li>符号的特殊用法：</li>
+</ol>
+<ul>
+<li>双引号里的变量会被引用解释</li>
+<li>单引号里的字符会被直接当成字符串使用</li>
+<li>反引号：获取一个shell命令的输出结果，或者将该结果赋予一个变量再去使用，单引号的使用必须在双引号内才会被解释，不能放在单引号内</li>
+<li>转义符使用时必须在echo后面加-e</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">echo -e &quot;this \n is \n an apple&quot;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>小括号：里面的内容由子shell完成，不影响不影响当前shell中的变量</li>
+<li>大括号：在当前shell中执行会影响当前变量</li>
+</ul>
+<h4 id="1-2-4-条件测试语句"><a href="#1-2-4-条件测试语句" class="headerlink" title="1.2.4 条件测试语句"></a>1.2.4 条件测试语句</h4><ol>
+<li><p>为什么要测试？相当于代码中的局部调试</p>
+</li>
+<li><p>test命令：用于测试字符串、文件状态和数字</p>
+</li>
+<li><p>test命令的俩种形式：</p>
+<p>​            test或 [ condition ]  //方括号中的条件俩边必须要加空格</p>
+</li>
+<li></li>
 </ol>
 ]]></content>
       <categories>
-        <category>blog</category>
+        <category>Linux</category>
       </categories>
       <tags>
-        <tag>blog</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>正则</title>
-    <url>/2020/05/02/%E6%AD%A3%E5%88%99/</url>
-    <content><![CDATA[<p>#正则<br>-关于贪婪与非贪婪<br>    .<em>? 非贪婪，匹配到需要的就结束，不管后面是否有符合的<br>    .</em>  贪婪，会一直匹配所有的符合项，直到匹配结束</p>
-<p>compile 最好不要使用，这是多此一举，直接re.findall进行正则匹配</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>管理学</title>
-    <url>/2020/05/03/%E7%AE%A1%E7%90%86%E5%AD%A6/</url>
-    <content><![CDATA[<h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><ol>
-<li><p>管理学的产生与发展。</p>
-</li>
-<li><p>学习管理学的意义、理论指导、科学思维以及基本方法。</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3></li>
-</ol>
-<h2 id="第一章-管理学导论"><a href="#第一章-管理学导论" class="headerlink" title="第一章 管理学导论"></a>第一章 管理学导论</h2><ol>
-<li><p>理解组织与管理的内涵。</p>
-</li>
-<li><p>认识组织的特征、企业的特征。</p>
-</li>
-<li><p>管理工作的主要内容。</p>
-</li>
-<li><p>理解管理的本质。</p>
-</li>
-<li><p>如何理解管理的科学性与艺术性。</p>
-</li>
-<li><p>管理的基本原理、基本方法与工具。</p>
-</li>
-<li><p>认识理性分析与直觉判断的关系。</p>
-<a id="more"></a>
-
-</li>
-</ol>
-<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><h2 id="第二章-管理理论的历史演变"><a href="#第二章-管理理论的历史演变" class="headerlink" title="第二章 管理理论的历史演变"></a>第二章 管理理论的历史演变</h2><ol>
-<li><p>理解泰勒科学管理的基本思想。</p>
-</li>
-<li><p>理解法约尔的一般管理理论的主要思想。</p>
-</li>
-<li><p>理解韦伯组织理论在管理实践中的意义。</p>
-</li>
-<li><p>组织协调机制主要有哪些形式？</p>
-</li>
-<li><p>理解组织合法性的内涵以及对组织结构变化的影响。</p>
-</li>
-<li><p>现代系统与权变管理理论的主要思想。</p>
-</li>
-<li><p>理解西蒙决策理论的主要观点。 </p>
-</li>
-</ol>
-<h2 id="第三章-决策与决策过程"><a href="#第三章-决策与决策过程" class="headerlink" title="第三章 决策与决策过程"></a>第三章 决策与决策过程</h2><ol>
-<li><p>如何理解决策，决策有哪些基本特征？</p>
-</li>
-<li><p>理解决策与计划之间的关系。</p>
-</li>
-<li><p>不同的决策类型及其异同之处。</p>
-</li>
-<li><p>理解一般的决策过程是如何制定的。</p>
-</li>
-<li><p>决策的影响因素有哪些？</p>
-</li>
-<li><p>按照不同准则分别选择最优决策方案。</p>
-</li>
-</ol>
-<h2 id="第四章-环境分析于理性决策"><a href="#第四章-环境分析于理性决策" class="headerlink" title="第四章 环境分析于理性决策"></a>第四章 环境分析于理性决策</h2><ol>
-<li><p>理解组织与环境的关系。</p>
-</li>
-<li><p>环境分析有哪些主要方法？</p>
-</li>
-<li><p>理性决策、非理性决策和行为决策。</p>
-</li>
-<li><p>决策方案生成的主要方法是什么？</p>
-</li>
-<li><p>用决策树方法来评价和选择一个具体的决策方案。</p>
-</li>
-<li><p>用蒂蒙斯教授的机会评价框架评价一个创新或创业机会。</p>
-</li>
-</ol>
-<h2 id="第五章-决策的事实与调整"><a href="#第五章-决策的事实与调整" class="headerlink" title="第五章 决策的事实与调整"></a>第五章 决策的事实与调整</h2><ol>
-<li><p>理解计划与决策的区别。 </p>
-</li>
-<li><p>掌握目标管理的基本主张和特点。</p>
-</li>
-</ol>
-<h2 id="第六章-组织与设计"><a href="#第六章-组织与设计" class="headerlink" title="第六章 组织与设计"></a>第六章 组织与设计</h2><ol>
-<li><p>理解组织结构设计包括哪些内容。</p>
-</li>
-<li><p>理解机械式组织与有机式组织的区别。</p>
-</li>
-<li><p>理解正式组织与非正式组织的整合。</p>
-</li>
-</ol>
-<h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3>]]></content>
-      <categories>
-        <category>管理学</category>
-      </categories>
-      <tags>
-        <tag>管理学</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
     <title>Linux</title>
-    <url>/2020/05/03/Linux/</url>
+    <url>/2020/05/03/Linux%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<p><a href="https://book.apeland.cn/details/189/" target="_blank" rel="noopener">本笔记的友情链接</a></p>
 <h2 id="常用目录介绍"><a href="#常用目录介绍" class="headerlink" title="常用目录介绍"></a>常用目录介绍</h2><ol>
 <li>boot    存放启动文件</li>
@@ -332,6 +194,12 @@
 <h3 id="安装内核头文件"><a href="#安装内核头文件" class="headerlink" title="安装内核头文件"></a>安装内核头文件</h3><ul>
 <li>输入命令：apt-get install linux-headers-$(uname -r)或者直接敲apt-get install linux-headers-在这时候你按键盘上的tab键，找你本系统的头文件安装即可</li>
 </ul>
+<h3 id="安装照相机"><a href="#安装照相机" class="headerlink" title="安装照相机"></a>安装照相机</h3><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">sudo apt install cheese<br></code></pre></td></tr></table></figure>
+
+<h3 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h3><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">sudo service bluetooth start  &#x2F;&#x2F;打开蓝牙配适器<br>sudo service bluetooth stop   &#x2F;&#x2F;关闭蓝牙配适器<br></code></pre></td></tr></table></figure>
+
+
+
 <h3 id="关于Anaconda的安装"><a href="#关于Anaconda的安装" class="headerlink" title="关于Anaconda的安装"></a>关于Anaconda的安装</h3><ul>
 <li><p>在清华镜像站下载Anaconda</p>
 </li>
@@ -369,12 +237,32 @@
 </ul>
 </li>
 </ul>
+<h3 id="关于输入法的问题"><a href="#关于输入法的问题" class="headerlink" title="关于输入法的问题"></a>关于输入法的问题</h3><ul>
+<li>搜狗输入法兼容性不咋地，反正安装了很多遍都不行</li>
+<li>谷歌输入法可以用，基于小企鹅输入法使用，但是也不咋地，毕竟是外国人做的中国输入法，不怎么走心</li>
+<li>推荐使用百度输入法，基于小企鹅输入法，首先上官网搜索压缩包，解压后找到安装包文件进行安装，最重要一点是安装后关机重启，重启后系统会自动帮助你进行百度输入法的一些个性化的设置，接着到输入法设置中应用百度输入法就OK了</li>
+</ul>
+<h3 id="wps字体问题"><a href="#wps字体问题" class="headerlink" title="wps字体问题"></a>wps字体问题</h3><ul>
+<li>使用wps for linux2019 时可能有些中文字体会出现乱码，原因是系统缺失相应的字体</li>
+<li>将Windows系统下的Windows目录中的Fonts文件夹复制到Linux系统中的/usr/share/fonts/目录下，再执行以下命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">sudo fc-cache -fv     &#x2F;&#x2F;识别字体库<br><br>fc-list :lang&#x3D;zh-cn | sort    &#x2F;&#x2F;确认是否安装<br></code></pre></td></tr></table></figure>
+
+
+
+
+
 <h3 id="关于vmware-虚拟机安装"><a href="#关于vmware-虚拟机安装" class="headerlink" title="关于vmware 虚拟机安装"></a>关于vmware 虚拟机安装</h3><ol>
 <li>官网下载虚拟机最新版本</li>
 <li>chmod -x 下载的文件</li>
 <li>sudo bash 下载的文件</li>
 <li>之后就可以在电脑中找到虚拟机，并进行下一步的安装操作</li>
 </ol>
+<h3 id="linux-vmware升级问题"><a href="#linux-vmware升级问题" class="headerlink" title="linux-vmware升级问题"></a>linux-vmware升级问题</h3><p><a href="https://www.cnblogs.com/wjshan0808/p/4110495.html" target="_blank" rel="noopener">解决 linux升级 导致VMware启动出现”before you can run vmware workstation, serveral modules must be complied and loaded into the runing kernel” 而无法卸载</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"># vmware-uninstall <br>You have gotten this message because you are either downgrading VMware<br>Workstation, Player, or VIX, or because you attempted to run either<br>vmware-uninstall or vmware-uninstall-vix.<br><br>If you are downgrading, please uninstall all newer versions first, then<br>install again.<br><br>The vmware-uninstall* scripts have been deprecated.  Instead, please use<br>the vmware-installer.<br><br>Long form:<br>      vmware-installer --uninstall-product PRODUCT<br>Short form:<br>      vmware-installer -u PRODUCT<br><br>Where PRODUCT is one of vmware-workstation, vmware-player, or vmware-vix.<br><br>For a list of which products are installed, you may run:<br>      vmware-installer --list-products<br>or:<br>      vmware-installer -l<br><br><br># vmware-installer -l<br>Product Name         Product Version     <br>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>vmware-workstation   10.0.4.2249910      <br># vmware-installer -u vmware-workstation<br></code></pre></td></tr></table></figure>
+
+
+
 <h3 id="man-中文手册下载"><a href="#man-中文手册下载" class="headerlink" title="man 中文手册下载"></a>man 中文手册下载</h3><ol>
 <li>Debian / Ubuntu安装</li>
 </ol>
@@ -394,6 +282,28 @@
 <li>Fedora:</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">dnf update<br>dnf install man-pages-zh-CN<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="kali内核更新安装"><a href="#kali内核更新安装" class="headerlink" title="kali内核更新安装"></a>kali内核更新安装</h3><ol>
+<li>查看内核版本</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">uname -r<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>检查linux是否安装对应的头文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">sudo apt-cache search linux-headers<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>安装更新头文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">sudo apt install linux-headers-$(uname -r)<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>内核头文件检测是否安装</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">sudo dpkg-query -s linux-headers-&#96;uname -r&#96;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -429,96 +339,75 @@
       </tags>
   </entry>
   <entry>
-    <title>tcp/ip</title>
-    <url>/2020/05/03/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[<h1 id="网络协议"><a href="#网络协议" class="headerlink" title="网络协议"></a>网络协议</h1><p><a href="http://blog.sina.com.cn/s/blog_52ddfea30100nssx.html" target="_blank" rel="noopener">相关博客</a></p>
-<h2 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h2><h3 id="以太网术语"><a href="#以太网术语" class="headerlink" title="以太网术语"></a>以太网术语</h3><p>以太网遵循一组控制其基本操作的简单规则。为了更好地理解这些规则，了解基本的以太网术语十分重要。 </p>
+    <title>HTML</title>
+    <url>/2020/05/03/Web%E5%89%8D%E7%AB%AF_HTML/</url>
+    <content><![CDATA[<h1 id="HTML的基本结构"><a href="#HTML的基本结构" class="headerlink" title="HTML的基本结构"></a>HTML的基本结构</h1><figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>     #文档类型声明<br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charest</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>网页标题<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>   #一个网页只有一个标题<br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-comment">&lt;!--网页内容，可以是文本或图像等--&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+
 <ol>
-<li>介质——以太网设备连接到一个公共介质上，该介质为电气信号的传输提供了一条路径。历史上一直使用同轴铜电缆作为传输介质，但是目前双绞线或光纤更为多见。 </li>
-<li>网段——我们将单个共享介质称作一个以太网段。 </li>
-<li>节点——连接到网段的设备称作站点或节点。 </li>
-<li>帧——节点使用称作帧的简短消息进行通信，帧是大小不固定的信息块。 帧类似于人类语言中的句子。在中文里，我们构造句子时会有一些规则，例如每个句子必须包含主语和谓语。以太网协议也规定了用于构造帧的一组规则。对于帧的最大和最小长度有明确规定，而且帧中必须包含一组必需的信息段。例如，每个帧必须包括目标地址和源地址，它们分别指出了消息的接收方和发送方。通过地址可标识唯一的节点，就像通过姓名可找出某个人一样。任何两个以太网设备都不应具有相同的地址。<a id="more"></a>
-####TCP/IP协议原理图及解释</li>
+<li><head>
+</li>
 </ol>
-<p><a href="http://s3.sinaimg.cn/middle/52ddfea3t998861108572&690" target="_blank" rel="noopener">原理图链接</a></p>
-<p><strong>应用层（FTP协议）:</strong></p>
-<p>首先我们说说应用层，应用层就像在特定城市特定大厦特定房间内的某一个用户，应用层之间的通讯就像两个不同用户之间发送的信，这个信是点对点的，从一个用户（某一主机内特定应用程序）到另外一个特定用户（另一主机内特定应用程序）。一个主机（大厦）内可能有很多应用程序（客户），我们如何区分它们呢，实际生活中我们用房间号，在电脑内部区分不同应用程序我们用端口号。</p>
-<p><strong>传输层(TCP):</strong></p>
-<p>用户写好了信，需要给信套上信封，并且写好发件人所在大厦，和收件人所在大厦，实际生活中的大厦完全可以类比为我们的计算机和服务器。传输层（TCP）就是在两个不同主机之间传输信息的协议。</p>
-<p><strong>网络层(IP):</strong></p>
-<p>邮件准备好了，他首先会被送到本城市的快递公司，并且被打包，包裹上会写着源是重庆快递公司，目的是沈阳快递公司，但是重庆快递公司发现它不能直接发货到沈阳，需要通过北京快递公司进行中转。所以虽然目的是沈阳，但是他首先把这个包裹发给了北京。某个城市的快递公司就像IP协议，要抵达目的IP，需要查询路由表，如果发现目的地址不是直连就需要找下一跳。通过了解快递公司的工作，我们了解到IP协议是逐跳工作的。每一跳（路由器）根据目的IP地址查询下一跳，并且最终转发到目的地。</p>
-<p><strong>链路层（以太网）:</strong></p>
-<p>重庆快递公司已经知道他需要把包裹发给北京快递公司了，现在他就把包裹送到重庆火车站，搭上去往北京的火车，然后在北京火车站卸货。然后送到北京快递公司，北京快递公司再判断下一跳为沈阳快递公司，并且选择适当的传输方式，例如:汽车，最后通过这种传输方式送到目的地沈阳快递公司。链路层协议就像包裹的运输方式，我们可以选择以太网（火车），也可以选择令牌环（汽车）。并且链路层协议是逐介质的，从一个网卡（重庆火车站）到另外一个网卡（北京火车站）。<br>所以你会发现一个数据包从源到目的，IP地址总是不变的（源是重庆快递公司，目的是沈阳快递公司），但是链路层协议却在不断变化，第一跳源是重庆火车站，目的是北京火车站，第二跳源是北京汽车站，目的是沈阳汽车站。</p>
 <ul>
-<li><p>知名端口号一般都低于1024，客户端端口号是临时的</p>
-</li>
-<li><p>TCP对数据进行封装，并对数据的安全进行保障，IP对被TCP封装后的数据进行传输</p>
-</li>
-<li><p>UDP对数据进行包装时不会对数据是否丢包进行保障，丢包时不返回检查，例如聊天信息的传输</p>
-</li>
-<li><p>以太网的类型：0800  IP数据  （记）</p>
-<p>​                         0806  ARP请求/应答   (记)</p>
-<p>​                         8035  RARP请求/应答</p>
-</li>
-<li><p>以太网的MTU最大值是1500，当数据大小大于出口的MTU时，会进行切片，并可进行多次切片处理</p>
+<li>下面标签可以用在head部分：<title>  , <meta> , <link> , <style>, <script></li>
+<li><head> 标签中必须包含 <title>标签
+
+
 </li>
 </ul>
-<h2 id="关于IP首部"><a href="#关于IP首部" class="headerlink" title="关于IP首部"></a>关于IP首部</h2><p><a href="https://blog.csdn.net/Wu000999/article/details/88617237" target="_blank" rel="noopener">IP首部链接</a></p>
-<p><img src="https://img-blog.csdnimg.cn/20190317101238221.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1d1MDAwOTk5,size_16,color_FFFFFF,t_70" alt="img"></p>
+<ol start="2">
+<li><meta>
+
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">常见的meta标签有<br>1. keywords（关键字）keywords用来告诉搜索引擎你网页的关键字是什么<br>2. description（网站内容描述）description用来告诉搜索引擎你网站的主要内容<br>3. author（作者）标注网页的作者<br></code></pre></td></tr></table></figure>
+
+<h1 id="HTML中常用的标签"><a href="#HTML中常用的标签" class="headerlink" title="HTML中常用的标签"></a>HTML中常用的标签</h1><p><img src="/home/blacksheep/.config/Typora/typora-user-images/image-20200625194436236.png" alt="image-20200625194436236"></p>
 <ul>
-<li>详情点击上方链接（太难了。。。）</li>
+<li>span无语义标签与div标签的区别：div标签可以自动换行，span标签不行</li>
 </ul>
-<h2 id="MAC-地址与-IP-地址区别"><a href="#MAC-地址与-IP-地址区别" class="headerlink" title="MAC 地址与 IP 地址区别"></a>MAC 地址与 IP 地址区别</h2><ul>
-<li>IP 地址和 MAC 地址相同点是它们都唯一，不同的特点主要有：</li>
-</ul>
-<ol>
-<li>对于网络上的某一设备，如一台计算机或一台路由器，其 IP 地址是基于网络拓扑设计出的，同一台设备或计算机上，改动 IP 地址是很容易的（但必须唯一），而 MAC 则是生产厂商烧录好的，一般不能改动。我们可以根据需要给一台主机指定任意的 IP 地址，如我们可以给局域网上的某台计算机分配 IP 地址为 192.168.0.112 ，也可以将它改成 192.168.0.200。而任一网络设备（如网卡，路由器）一旦生产出来以后，其 MAC 地址不可由本地连接内的配置进行修改。如果一个计算机的网卡坏了，在更换网卡之后，该计算机的 MAC 地址就变了。</li>
-<li>长度不同。IP 地址为 32 位，MAC 地址为 48 位。</li>
-<li>分配依据不同。IP 地址的分配是基于网络拓扑，MAC 地址的分配是基于制造商。</li>
-<li>寻址协议层不同。IP 地址应用于 OSI 第三层，即网络层，而 MAC 地址应用在 OSI 第二层，即数据链路层。 数据链路层协议可以使数据从一个节点传递到相同链路的另一个节点上（通过 MAC 地址），而网络层协议使数据可以从一个网络传递到另一个网络上（ARP 根据目的 IP 地址，找到中间节点的 MAC 地址，通过中间节点传送，从而最终到达目的网络）。</li>
-<li><strong>MAC地址其实是可以修改的，网上能搜到</strong></li>
-</ol>
-<h3 id="数据传输时"><a href="#数据传输时" class="headerlink" title="数据传输时"></a>数据传输时</h3><ul>
-<li>IP视为标记，原IP和目的IP再数据传输的过程中是不变的</li>
-<li>MAC视为步骤，每次经过网关时，IP和原MAC不变，但是目的MAC却会改变</li>
-</ul>
-<h5 id="基于TCP的应用层协议："><a href="#基于TCP的应用层协议：" class="headerlink" title="基于TCP的应用层协议："></a>基于TCP的应用层协议：</h5><ul>
-<li>HTTP：80</li>
-<li>HTTPS：443</li>
-<li>FTP：20/21</li>
-<li>SSH：22</li>
-<li>TELNET：23</li>
-<li>SMTP/POP：25/110</li>
-</ul>
-<h3 id="通过tcp包中flags的值来判断tcp的状态"><a href="#通过tcp包中flags的值来判断tcp的状态" class="headerlink" title="通过tcp包中flags的值来判断tcp的状态"></a>通过tcp包中flags的值来判断tcp的状态</h3><p>在TCP层，有个FLAGS字段，这个字段有以下几个标识：SYN, FIN, ACK, PSH, RST, URG.</p>
-<p>其中，对于我们日常的分析有用的就是前面的五个字段。<br>它们的含义是：SYN表示建立连接，FIN表示关闭连接，ACK表示响应，PSH表示有 DATA数据传输，RST表示连接重置。</p>
-<p>其中，ACK是可能与SYN，FIN等同时使用的，比如SYN和ACK可能同时为1，它表示的就是建立连接之后的响应，如果只是单个的一个SYN，它表示的只是建立连接。TCP的几次握手就是通过这样的ACK表现出来的。但SYN与FIN是不会同时为1的，因为前者表示的是建立连接，而后者表示的是断开连接。RST一般是在FIN之后才会出现为1的情况，表示的是连接重置。一般地，当出现FIN包或RST包时，我们便认为客户端与服务器端断开了连接；而当出现SYN和SYN＋ACK包时，我们认为客户端与服务器建立了一个连接。</p>
-<p>PSH为1的情况，一般只出现在 DATA内容不为0的包中，也就是说PSH为1表示的是有真正的TCP数据包内容被传递。<br>TCP的连接建立和连接关闭，都是通过请求－响应的模式完成的。</p>
-<p>TCP三次握手：<br>TCP(Transmission Control Protocol)传输控制协议<br>TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接：</p>
-<p>位码即tcp标志位，有6种标示：SYN(synchronous建立联机) ACK(acknowledgement 确认) PSH(push传送) FIN(finish结束) RST(reset重置) URG(urgent紧急)Sequence number(顺序号码) Acknowledge number(确认号码)</p>
-<p>三次握手详解如下：<br>一个虚拟连接的建立是通过三次握手来实现的</p>
-<p>(B) –&gt; [SYN] –&gt; (A)<br>假如服务器A和客户机B通讯. 当A要和B通信时，B首先向A发一个SYN (Synchronize) 标记的包，告诉A请求建立连接.<br>注意: 一个 SYN包就是仅SYN标记设为1的TCP包(参见TCP包头Resources). 认识到这点很重要，只有当A受到B发来的SYN包，才可建立连接，除此之外别无他法。因此，如果你的防火墙丢弃所有的发往外网接口的SYN包，那么你将不能让外部任何主机主动建立连接。<br>(B) &lt;– [SYN /ACK] &lt;–(A)<br>接着，A收到后会发一个对SYN包的确认包(SYN/ACK)回去，表示对第一个SYN包的确认，并继续握手操作.<br>注意: SYN/ACK包是仅SYN 和 ACK 标记为1的包.<br>(B) –&gt; [ACK] –&gt; (A)<br>B收到SYN/ACK 包,B发一个确认包(ACK)，通知A连接已建立。至此，三次握手完成，一个TCP连接完成<br>Note: ACK包就是仅ACK 标记设为1的TCP包. 需要注意的是当三此握手完成、连接建立以后，TCP连接的每个包都会设置ACK位<br>握手阶段：<br>序号 方向 seq ack</p>
-<ol>
-<li>A-&gt;B 10000 0</li>
-<li>B-&gt;A 20000 10000+1=10001</li>
-<li>A-&gt;B 10001 20000+1=20001<br>解释：<br>1：A向B发起连接请求，以一个随机数初始化A的seq,这里假设为10000，此时ACK＝0<br>2：B收到A的连接请求后，也以一个随机数初始化B的seq，这里假设为20000，意思是：你的请求我已收到，我这方的数据流就从这个数开始。B的ACK是A的seq加1，即10000＋1＝10001<br>3：A收到B的回复后，它的seq是它的上个请求的seq加1，即10000＋1＝10001，意思也是：你的回复我收到了，我这方的数据流就从这个数开始。A此时的ACK是B的seq加1，即20000+1=20001<br>数据传输阶段：<br>序号　　方向　　　　　　seq ack size<br>23 A-&gt;B 40000 70000 1514<br>24 B-&gt;A 70000 40000+1514-54=41460 54<br>25 A-&gt;B 41460 70000+54-54=70000 1514<br>26 B-&gt;A 70000 41460+1514-54=42920 54<br>解释：<br>23:B接收到A发来的seq=40000,ack=70000,size=1514的数据包<br>24:于是B向A也发一个数据包，告诉B，你的上个包我收到了。B的seq就以它收到的数据包的ACK填充，ACK是它收到的数据包的SEQ加上数据包的大小(不包括以太网协议头，IP头，TCP头)，以证实B发过来的数据全收到了。<br>25:A在收到B发过来的ack为41460的数据包时，一看到41460，正好是它的上个数据包的seq加上包的大小，就明白，上次发送的数据包已安全到达。于是它再发一个数据包给B。这个正在发送的数据包的seq也以它收到的数据包的ACK填充，ACK就以它收到的数据包的seq(70000)加上包的size(54)填充,即ack=70000+54-54(全是头长，没数据项)。<br>其实在握手和结束时确认号应该是对方序列号加1,传输数据时则是对方序列号加上对方携带应用层数据的长度.如果从以太网包返回来计算所加的长度,就嫌走弯路了.<br>另外,如果对方没有数据过来,则自处己的确认号不变,序列号为上次的序列号加上本次应用层数据发送长度.</li>
-</ol>
-<p><img src="https://iknow-pic.cdn.bcebos.com/b219ebc4b74543a99d881d8113178a82b80114ef?x-bce-process=image/resize,m_lfit,w_600,h_800,limit_1" alt="img"></p>
-<p><a href="https://blog.csdn.net/hushengqiang/article/details/44180557" target="_blank" rel="noopener">原文链接</a></p>
-<h3 id="TCP-IP的四元组、五元组、七元组"><a href="#TCP-IP的四元组、五元组、七元组" class="headerlink" title="TCP/IP的四元组、五元组、七元组"></a>TCP/IP的四元组、五元组、七元组</h3><ol>
-<li><p>四元组是：源IP地址、目的IP地址、源端口、目的端口</p>
-</li>
-<li><p>五元组是:   源IP地址、目的IP地址、协议号、源端口、目的端口</p>
-</li>
-<li><p>七元组是:    源IP地址、目的IP地址、协议号、源端口、目的端口，服务类型以及接口索引</p>
-</li>
-</ol>
 ]]></content>
       <categories>
-        <category>网络协议</category>
+        <category>Web前端</category>
       </categories>
       <tags>
-        <tag>网络协议</tag>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>MongoDB</title>
+    <url>/2020/05/03/mongod_note/</url>
+    <content><![CDATA[<p>#关于MongoDB<br>    -安装<br>    -配置环境变量<br>        C:\Program Files\MongoDB\Server\4.2\bin<br>    -在C盘中创建一个文件夹 data<br>    -在data中创建1一个文件夹db</p>
+<pre><code>-打开cmd命令行窗口
+    -输入 mongod启动mongodb服务器
+    -32位注意：
+        启动服务器时，需要输入如下内容：
+            mongod --storageEngine=mmapv1
+        **注意！此内容32位用户只需在第一次使用mongodb时输入
+
+    -  mongod --dbpath数据库路径 --port 端口号        </code></pre><a id="more"></a>
+<pre><code>-再打开一个cmd窗口
+    -输入mongo 连接mongodb， 出现 &gt; 便为成功
+
+-数据库（database）
+    -数据库的服务器
+        -服务器用来保存数据
+        -mongod 用来启动服务器
+
+    -数据库的客户端
+        -客户端用来操作服务器， 对数据进行增删改查的操作
+        -mongo 用来启动服务器
+
+    -将MongoDB设置为系统服务，可以自动在后台启动，不需要每次都手动启动
+        1、在C盘根目录创建data（前面步骤已创建）
+            在data下创建db和log文件夹
+        2、创建配置文件
+            在目录 C:\Program Files\MongoDB\Server\4.2下添加一个配置</code></pre>]]></content>
+      <categories>
+        <category>mongodb</category>
+      </categories>
+      <tags>
+        <tag>mongodb</tag>
       </tags>
   </entry>
   <entry>
@@ -725,7 +614,7 @@
 <p>item文件是存储数据的</p>
 <ul>
 <li><p>在setting文件（程序启动被首先检查的文件）</p>
-<ul>
+</li>
 <li><p>BOT_NAME = 爬虫的名字</p>
 </li>
 <li><p>ROBOTSTXT_OBEY = 网络君子协议君子协议（不遵守）， 布尔</p>
@@ -741,43 +630,34 @@
 <li><p>ITEM_PIPELINES = 管道文件</p>
 </li>
 </ul>
+<h3 id="setting文件详解"><a href="#setting文件详解" class="headerlink" title="setting文件详解"></a>setting文件详解</h3>  <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br> <br><span class="hljs-comment"># Scrapy settings for TestSpider project</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># For simplicity, this file contains only settings considered important or</span><br><span class="hljs-comment"># commonly used. You can find more settings consulting the documentation:</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/settings.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br> <br>BOT_NAME = <span class="hljs-string">'TestSpider'</span><br> <br>SPIDER_MODULES = [<span class="hljs-string">'TestSpider.spiders'</span>]<br>NEWSPIDER_MODULE = <span class="hljs-string">'TestSpider.spiders'</span><br> <br> <br><span class="hljs-comment"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span><br><span class="hljs-comment">#USER_AGENT = 'TestSpider (+http://www.yourdomain.com)'</span><br> <br>USER_AGENT = <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0'</span><br> <br><span class="hljs-comment"># Obey robots.txt rules</span><br><span class="hljs-comment"># Scrapy框架默认遵守 robots.txt 协议规则，robots规定了一个网站中，哪些地址可以请求，哪些地址不能请求。</span><br><span class="hljs-comment"># 默认是True，设置为False不遵守这个协议。</span><br>ROBOTSTXT_OBEY = <span class="hljs-literal">False</span><br> <br> <br><span class="hljs-comment"># Configure maximum concurrent requests performed by Scrapy (default: 16)</span><br><span class="hljs-comment"># 配置scrapy的请求连接数，默认会同时并发16个请求。</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS = 10</span><br> <br><span class="hljs-comment"># Configure a delay for requests for the same website (default: 0)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay</span><br><span class="hljs-comment"># See also autothrottle settings and docs</span><br> <br><span class="hljs-comment"># 下载延时，请求和请求之间的间隔，降低爬取速度，default: 0</span><br><span class="hljs-comment"># DOWNLOAD_DELAY = 3</span><br> <br> <br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN：针对网站(主域名)设置的最大请求并发数。</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP：某一个IP的最大请求并发数。</span><br><span class="hljs-comment"># The download delay setting will honor only one of:</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN = 16</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP = 16</span><br> <br> <br><span class="hljs-comment"># Disable cookies (enabled by default)</span><br><span class="hljs-comment"># 是否启用Cookie的配置，默认是可以使用Cookie的。主要是针对一些网站是禁用Cookie的。</span><br><span class="hljs-comment"># COOKIES_ENABLED = False</span><br> <br><span class="hljs-comment"># Disable Telnet Console (enabled by default)</span><br><span class="hljs-comment">#TELNETCONSOLE_ENABLED = False</span><br> <br> <br><span class="hljs-comment"># Override the default request headers:</span><br> <br><span class="hljs-comment"># 配置默认的请求头Headers.</span><br><span class="hljs-comment"># DEFAULT_REQUEST_HEADERS = &#123;</span><br><span class="hljs-comment">#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',</span><br><span class="hljs-comment">#   'Accept-Language': 'en',</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># Enable or disable spider middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br> <br><span class="hljs-comment"># 配置自定义爬虫中间件，scrapy也默认启用了一些爬虫中间件，可以在这个配置中关闭。</span><br><span class="hljs-comment"># SPIDER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'TestSpider.middlewares.TestspiderSpiderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># 下载中间件，配置自定义的中间件或者取消Scrapy默认启用的中间件。</span><br><span class="hljs-comment"># Enable or disable downloader middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment"># DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'TestSpider.middlewares.TestspiderDownloaderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># Enable or disable extensions</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/extensions.html</span><br><span class="hljs-comment"># EXTENSIONS = &#123;</span><br><span class="hljs-comment">#    'scrapy.extensions.telnet.TelnetConsole': None,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># Configure item pipelines</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br> <br><span class="hljs-comment"># 配置自定义的PIPELINES，或者取消PIPELINES默认启用的中间件。</span><br><span class="hljs-comment"># ITEM_PIPELINES = &#123;</span><br><span class="hljs-comment">#    'TestSpider.pipelines.TestspiderPipeline': 300,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># 限速配置</span><br><span class="hljs-comment"># Enable and configure the AutoThrottle extension (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/autothrottle.html</span><br> <br><span class="hljs-comment"># 是否开启自动限速</span><br><span class="hljs-comment"># AUTOTHROTTLE_ENABLED = True</span><br> <br> <br><span class="hljs-comment"># The initial download delay</span><br><span class="hljs-comment"># 配置初始url的下载延时</span><br><span class="hljs-comment"># AUTOTHROTTLE_START_DELAY = 5</span><br> <br> <br><span class="hljs-comment"># The maximum download delay to be set in case of high latencies</span><br><span class="hljs-comment"># 配置最大请求时间</span><br><span class="hljs-comment"># AUTOTHROTTLE_MAX_DELAY = 60</span><br> <br> <br><span class="hljs-comment"># 配置请求和请求之间的下载间隔，单位是秒</span><br><span class="hljs-comment"># The average number of requests Scrapy should be sending in parallel to</span><br><span class="hljs-comment"># each remote server</span><br><span class="hljs-comment"># AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0</span><br> <br> <br><span class="hljs-comment"># Enable showing throttling stats for every response received:</span><br><span class="hljs-comment"># AUTOTHROTTLE_DEBUG = False</span><br> <br> <br><span class="hljs-comment"># 关于Http缓存的配置，默认是不启用。</span><br><span class="hljs-comment"># 对于同一个页面的请求进行数据的缓存，如果后续还有相同的请求，直接从缓存中进行获取。</span><br><span class="hljs-comment"># Enable and configure HTTP caching (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings</span><br><span class="hljs-comment">#HTTPCACHE_ENABLED = True</span><br><span class="hljs-comment">#HTTPCACHE_EXPIRATION_SECS = 0</span><br><span class="hljs-comment">#HTTPCACHE_DIR = 'httpcache'</span><br><span class="hljs-comment">#HTTPCACHE_IGNORE_HTTP_CODES = []</span><br><span class="hljs-comment">#HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="scrapy爬虫之spider类（示例-一：爬取糗事百科）"><a href="#scrapy爬虫之spider类（示例-一：爬取糗事百科）" class="headerlink" title="scrapy爬虫之spider类（示例 一：爬取糗事百科）"></a>scrapy爬虫之spider类（示例 一：爬取糗事百科）</h3><ul>
+<li><p>创建爬虫项目：scrapy startproject xiushi</p>
+</li>
+<li><p>创建爬虫文件:   scrapy genSpider xiushiSpider  qiushidabaike.com</p>
+<h4 id="item-部分"><a href="#item-部分" class="headerlink" title="item 部分"></a>item 部分</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Define here the models for your scraped items</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># See documentation in:</span><br><span class="hljs-comment"># https://doc.scrapy.org/en/latest/topics/items.html</span><br><br><span class="hljs-keyword">import</span> scrapy<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XiushiItem</span><span class="hljs-params">(scrapy.Item)</span>:</span><br>    <span class="hljs-comment"># define the fields for your item here like:</span><br>    <span class="hljs-comment"># name = scrapy.Field()</span><br>    title = scrapy.Field()<br>    text = scrapy.Field()<br></code></pre></td></tr></table></figure>
+
+<h4 id="setting-部分"><a href="#setting-部分" class="headerlink" title="setting 部分"></a>setting 部分</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Scrapy settings for xiushi project</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># For simplicity, this file contains only settings considered important or</span><br><span class="hljs-comment"># commonly used. You can find more settings consulting the documentation:</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/settings.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><br>BOT_NAME = <span class="hljs-string">'xiushi'</span><br><br>SPIDER_MODULES = [<span class="hljs-string">'xiushi.spiders'</span>]<br>NEWSPIDER_MODULE = <span class="hljs-string">'xiushi.spiders'</span><br><br><span class="hljs-comment"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span><br><span class="hljs-comment"># USER_AGENT = 'xiushi (+http://www.yourdomain.com)'</span><br><br><span class="hljs-comment"># Obey robots.txt rules</span><br>ROBOTSTXT_OBEY = <span class="hljs-literal">False</span><br><br><span class="hljs-comment"># Configure maximum concurrent requests performed by Scrapy (default: 16)</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS = 32</span><br><br><span class="hljs-comment"># Configure a delay for requests for the same website (default: 0)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay</span><br><span class="hljs-comment"># See also autothrottle settings and docs</span><br>DOWNLOAD_DELAY = <span class="hljs-number">1</span><br><span class="hljs-comment"># The download delay setting will honor only one of:</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN = 16</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP = 16</span><br><br><span class="hljs-comment"># Disable cookies (enabled by default)</span><br><span class="hljs-comment"># COOKIES_ENABLED = False</span><br><br><span class="hljs-comment"># Disable Telnet Console (enabled by default)</span><br><span class="hljs-comment"># TELNETCONSOLE_ENABLED = False</span><br><br><span class="hljs-comment"># Override the default request headers:</span><br>DEFAULT_REQUEST_HEADERS = &#123;<br>    <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span>,<br>    <span class="hljs-string">'Accept-Language'</span>: <span class="hljs-string">'en'</span>,<br>    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '</span><br>                  <span class="hljs-string">'Chrome/80.0.3987.163 Safari/537.36 '</span><br>&#125;<br><br><span class="hljs-comment"># Enable or disable spider middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><span class="hljs-comment"># SPIDER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'xiushi.middlewares.XiushiSpiderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable downloader middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment"># DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'xiushi.middlewares.XiushiDownloaderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable extensions</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/extensions.html</span><br><span class="hljs-comment"># EXTENSIONS = &#123;</span><br><span class="hljs-comment">#    'scrapy.extensions.telnet.TelnetConsole': None,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Configure item pipelines</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br>ITEM_PIPELINES = &#123;<br>   <span class="hljs-string">'xiushi.pipelines.XiushiPipeline'</span>: <span class="hljs-number">300</span>,<br>&#125;<br><br><span class="hljs-comment"># Enable and configure the AutoThrottle extension (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/autothrottle.html</span><br><span class="hljs-comment"># AUTOTHROTTLE_ENABLED = True</span><br><span class="hljs-comment"># The initial download delay</span><br><span class="hljs-comment"># AUTOTHROTTLE_START_DELAY = 5</span><br><span class="hljs-comment"># The maximum download delay to be set in case of high latencies</span><br><span class="hljs-comment"># AUTOTHROTTLE_MAX_DELAY = 60</span><br><span class="hljs-comment"># The average number of requests Scrapy should be sending in parallel to</span><br><span class="hljs-comment"># each remote server</span><br><span class="hljs-comment"># AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0</span><br><span class="hljs-comment"># Enable showing throttling stats for every response received:</span><br><span class="hljs-comment"># AUTOTHROTTLE_DEBUG = False</span><br><br><span class="hljs-comment"># Enable and configure HTTP caching (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings</span><br><span class="hljs-comment"># HTTPCACHE_ENABLED = True</span><br><span class="hljs-comment"># HTTPCACHE_EXPIRATION_SECS = 0</span><br><span class="hljs-comment"># HTTPCACHE_DIR = 'httpcache'</span><br><span class="hljs-comment"># HTTPCACHE_IGNORE_HTTP_CODES = []</span><br><span class="hljs-comment"># HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="spider-部分"><a href="#spider-部分" class="headerlink" title="spider 部分"></a>spider 部分</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-keyword">import</span> scrapy<br><span class="hljs-keyword">from</span> xiushi.items <span class="hljs-keyword">import</span> XiushiItem<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XiushispiderSpider</span><span class="hljs-params">(scrapy.Spider)</span>:</span><br>    name = <span class="hljs-string">'xiushiSpider'</span><br>    allowed_domains = [<span class="hljs-string">'qiushidabaike.com'</span>]<br>    start_urls = [<span class="hljs-string">'http://qiushidabaike.com/index_1.html'</span>]<br>    base_domain = <span class="hljs-string">'http://qiushidabaike.com'</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self, response)</span>:</span><br>        duanzi = response.xpath(<span class="hljs-string">'//div[@class="main-left fl"]//dl'</span>)<br>        <span class="hljs-keyword">for</span> it <span class="hljs-keyword">in</span> duanzi:<br>            title = it.xpath(<span class="hljs-string">'./dt/span/a/text()'</span>).get().strip()<br>            text = it.xpath(<span class="hljs-string">'./dd[@class="content"]//text()'</span>).getall()<br>            text = <span class="hljs-string">""</span>.join(text).strip()<br>            item = XiushiItem(title=title, text=text)<br>            <span class="hljs-keyword">yield</span> item<br>        <span class="hljs-comment"># 进行翻页操作</span><br>        next_url = response.xpath(<span class="hljs-string">'//div[@class="page"]//a[@class="next"]/@href'</span>).get()<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> next_url:<br>            <span class="hljs-keyword">return</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">yield</span> scrapy.Request(self.base_domain+next_url, callback=self.parse)<br></code></pre></td></tr></table></figure>
+
+<h4 id="pipelines-部分"><a href="#pipelines-部分" class="headerlink" title="pipelines 部分"></a>pipelines 部分</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Define your item pipelines here</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Don't forget to add your pipeline to the ITEM_PIPELINES setting</span><br><span class="hljs-comment"># See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br><span class="hljs-string">"""</span><br><span class="hljs-string"># 第一种方法，没进行json优化，但是看起来简单易操作</span><br><span class="hljs-string">import json</span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string">class XiushiPipeline(object):</span><br><span class="hljs-string">    def __init__(self):</span><br><span class="hljs-string">        self.fp = open('duanzi.json', 'w', encoding='utf-8')</span><br><span class="hljs-string"></span><br><span class="hljs-string">    def open_spider(self, spider):</span><br><span class="hljs-string">        print('爬虫开始了...')</span><br><span class="hljs-string"></span><br><span class="hljs-string">    def process_item(self, item, spider):</span><br><span class="hljs-string">        item_json = json.dumps(dict(item),  ensure_ascii=False)</span><br><span class="hljs-string">        self.fp.write(item_json+'\n')</span><br><span class="hljs-string">        return item</span><br><span class="hljs-string"></span><br><span class="hljs-string">    def close_spider(self, spider):</span><br><span class="hljs-string">        self.fp.close()</span><br><span class="hljs-string">        print("爬虫结束了...")</span><br><span class="hljs-string">"""</span><br><span class="hljs-comment"># 方案二，json优化，结果是每个字典存储在列表中</span><br><span class="hljs-comment">#        好处是满足json规则，坏处是数据量较大时比较耗内存</span><br><span class="hljs-comment"># ''' 自我感觉这种方法不咋地 '''</span><br><span class="hljs-comment"># from scrapy.exporters import JsonItemExporter</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># class XiushiPipeline(object):</span><br><span class="hljs-comment">#     def __init__(self):</span><br><span class="hljs-comment">#         # 注意此时以二进制形式写入</span><br><span class="hljs-comment">#         self.fp = open('duanzi.json', 'wb')</span><br><span class="hljs-comment">#         self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8')</span><br><span class="hljs-comment">#         self.exporter.start_exporting()</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     def open_spider(self, spider):</span><br><span class="hljs-comment">#         print('爬虫开始了...')</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     def process_item(self, item, spider):</span><br><span class="hljs-comment">#         self.exporter.export_item(item)</span><br><span class="hljs-comment">#         return item</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     def close_spider(self, spider):</span><br><span class="hljs-comment">#         self.exporter.finish_exporting()</span><br><span class="hljs-comment">#         self.fp.close()</span><br><span class="hljs-comment">#         print("爬虫结束了...")</span><br><br><span class="hljs-string">'''方案三'''</span><br><span class="hljs-keyword">from</span> scrapy.exporters <span class="hljs-keyword">import</span> JsonLinesItemExporter<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XiushiPipeline</span><span class="hljs-params">(object)</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span><br>        <span class="hljs-comment"># 注意此时以二进制形式写入</span><br>        self.fp = open(<span class="hljs-string">'duanzi.json'</span>, <span class="hljs-string">'wb'</span>)<br>        self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=<span class="hljs-literal">False</span>, encoding=<span class="hljs-string">'utf-8'</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open_spider</span><span class="hljs-params">(self, spider)</span>:</span><br>        print(<span class="hljs-string">'爬虫开始了...'</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self, item, spider)</span>:</span><br>        self.exporter.export_item(item)<br>        <span class="hljs-keyword">return</span> item<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close_spider</span><span class="hljs-params">(self, spider)</span>:</span><br>        self.fp.close()<br>        print(<span class="hljs-string">"爬虫结束了..."</span>)<br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-<pre><code>### setting文件详解
+<ul>
+<li>可以在总文件中创建.py文件，代替爬虫开始命令 scrapy crawl xiushiSpider (注意应在爬虫目录下执行该命令)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> scrapy <span class="hljs-keyword">import</span> cmdline<br><br>cmdline.execute(<span class="hljs-string">"scrapy crawl xiushiSpider"</span>.split())<br><span class="hljs-comment"># cmdline.execute(["scrapy", 'crawl', 'xiushiSpider'])</span><br></code></pre></td></tr></table></figure>
 
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br> <br><span class="hljs-comment"># Scrapy settings for TestSpider project</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># For simplicity, this file contains only settings considered important or</span><br><span class="hljs-comment"># commonly used. You can find more settings consulting the documentation:</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/settings.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br> <br>BOT_NAME = <span class="hljs-string">'TestSpider'</span><br> <br>SPIDER_MODULES = [<span class="hljs-string">'TestSpider.spiders'</span>]<br>NEWSPIDER_MODULE = <span class="hljs-string">'TestSpider.spiders'</span><br> <br> <br><span class="hljs-comment"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span><br><span class="hljs-comment">#USER_AGENT = 'TestSpider (+http://www.yourdomain.com)'</span><br> <br>USER_AGENT = <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0'</span><br> <br><span class="hljs-comment"># Obey robots.txt rules</span><br><span class="hljs-comment"># Scrapy框架默认遵守 robots.txt 协议规则，robots规定了一个网站中，哪些地址可以请求，哪些地址不能请求。</span><br><span class="hljs-comment"># 默认是True，设置为False不遵守这个协议。</span><br>ROBOTSTXT_OBEY = <span class="hljs-literal">False</span><br> <br> <br><span class="hljs-comment"># Configure maximum concurrent requests performed by Scrapy (default: 16)</span><br><span class="hljs-comment"># 配置scrapy的请求连接数，默认会同时并发16个请求。</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS = 10</span><br> <br><span class="hljs-comment"># Configure a delay for requests for the same website (default: 0)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay</span><br><span class="hljs-comment"># See also autothrottle settings and docs</span><br> <br><span class="hljs-comment"># 下载延时，请求和请求之间的间隔，降低爬取速度，default: 0</span><br><span class="hljs-comment"># DOWNLOAD_DELAY = 3</span><br> <br> <br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN：针对网站(主域名)设置的最大请求并发数。</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP：某一个IP的最大请求并发数。</span><br><span class="hljs-comment"># The download delay setting will honor only one of:</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN = 16</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP = 16</span><br> <br> <br><span class="hljs-comment"># Disable cookies (enabled by default)</span><br><span class="hljs-comment"># 是否启用Cookie的配置，默认是可以使用Cookie的。主要是针对一些网站是禁用Cookie的。</span><br><span class="hljs-comment"># COOKIES_ENABLED = False</span><br> <br><span class="hljs-comment"># Disable Telnet Console (enabled by default)</span><br><span class="hljs-comment">#TELNETCONSOLE_ENABLED = False</span><br> <br> <br><span class="hljs-comment"># Override the default request headers:</span><br> <br><span class="hljs-comment"># 配置默认的请求头Headers.</span><br><span class="hljs-comment"># DEFAULT_REQUEST_HEADERS = &#123;</span><br><span class="hljs-comment">#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',</span><br><span class="hljs-comment">#   'Accept-Language': 'en',</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># Enable or disable spider middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br> <br><span class="hljs-comment"># 配置自定义爬虫中间件，scrapy也默认启用了一些爬虫中间件，可以在这个配置中关闭。</span><br><span class="hljs-comment"># SPIDER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'TestSpider.middlewares.TestspiderSpiderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># 下载中间件，配置自定义的中间件或者取消Scrapy默认启用的中间件。</span><br><span class="hljs-comment"># Enable or disable downloader middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment"># DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'TestSpider.middlewares.TestspiderDownloaderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># Enable or disable extensions</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/extensions.html</span><br><span class="hljs-comment"># EXTENSIONS = &#123;</span><br><span class="hljs-comment">#    'scrapy.extensions.telnet.TelnetConsole': None,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># Configure item pipelines</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br> <br><span class="hljs-comment"># 配置自定义的PIPELINES，或者取消PIPELINES默认启用的中间件。</span><br><span class="hljs-comment"># ITEM_PIPELINES = &#123;</span><br><span class="hljs-comment">#    'TestSpider.pipelines.TestspiderPipeline': 300,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># 限速配置</span><br><span class="hljs-comment"># Enable and configure the AutoThrottle extension (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/autothrottle.html</span><br> <br><span class="hljs-comment"># 是否开启自动限速</span><br><span class="hljs-comment"># AUTOTHROTTLE_ENABLED = True</span><br> <br> <br><span class="hljs-comment"># The initial download delay</span><br><span class="hljs-comment"># 配置初始url的下载延时</span><br><span class="hljs-comment"># AUTOTHROTTLE_START_DELAY = 5</span><br> <br> <br><span class="hljs-comment"># The maximum download delay to be set in case of high latencies</span><br><span class="hljs-comment"># 配置最大请求时间</span><br><span class="hljs-comment"># AUTOTHROTTLE_MAX_DELAY = 60</span><br> <br> <br><span class="hljs-comment"># 配置请求和请求之间的下载间隔，单位是秒</span><br><span class="hljs-comment"># The average number of requests Scrapy should be sending in parallel to</span><br><span class="hljs-comment"># each remote server</span><br><span class="hljs-comment"># AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0</span><br> <br> <br><span class="hljs-comment"># Enable showing throttling stats for every response received:</span><br><span class="hljs-comment"># AUTOTHROTTLE_DEBUG = False</span><br> <br> <br><span class="hljs-comment"># 关于Http缓存的配置，默认是不启用。</span><br><span class="hljs-comment"># 对于同一个页面的请求进行数据的缓存，如果后续还有相同的请求，直接从缓存中进行获取。</span><br><span class="hljs-comment"># Enable and configure HTTP caching (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings</span><br><span class="hljs-comment">#HTTPCACHE_ENABLED = True</span><br><span class="hljs-comment">#HTTPCACHE_EXPIRATION_SECS = 0</span><br><span class="hljs-comment">#HTTPCACHE_DIR = 'httpcache'</span><br><span class="hljs-comment">#HTTPCACHE_IGNORE_HTTP_CODES = []</span><br><span class="hljs-comment">#HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'</span><br></code></pre></td></tr></table></figure>
+<h1 id="爬虫第六天"><a href="#爬虫第六天" class="headerlink" title="爬虫第六天"></a>爬虫第六天</h1><h3 id="scrapy-框架之spider类（示例二-爬取优美散文）"><a href="#scrapy-框架之spider类（示例二-爬取优美散文）" class="headerlink" title="scrapy 框架之spider类（示例二.爬取优美散文）"></a>scrapy 框架之spider类（示例二.爬取优美散文）</h3><ul>
+<li>item部分</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Define here the models for your scraped items</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># See documentation in:</span><br><span class="hljs-comment"># https://doc.scrapy.org/en/latest/topics/items.html</span><br><br><span class="hljs-keyword">import</span> scrapy<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProseItem</span><span class="hljs-params">(scrapy.Item)</span>:</span><br>    <span class="hljs-comment"># define the fields for your item here like:</span><br>    <span class="hljs-comment"># name = scrapy.Field()</span><br>    title = scrapy.Field()<br>    text = scrapy.Field()<br></code></pre></td></tr></table></figure>
 
 
 
-### scrapy爬虫之spider类（示例 一：爬取糗事百科）
-
-- 创建爬虫项目：scrapy startproject xiushi
-- 创建爬虫文件:   scrapy genSpider xiushiSpider  qiushidabaike.com
-
-#### item 部分
-
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Define here the models for your scraped items</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># See documentation in:</span><br><span class="hljs-comment"># https://doc.scrapy.org/en/latest/topics/items.html</span><br><br><span class="hljs-keyword">import</span> scrapy<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XiushiItem</span><span class="hljs-params">(scrapy.Item)</span>:</span><br>    <span class="hljs-comment"># define the fields for your item here like:</span><br>    <span class="hljs-comment"># name = scrapy.Field()</span><br>    title = scrapy.Field()<br>    text = scrapy.Field()<br></code></pre></td></tr></table></figure>
-
-#### setting 部分
-
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Scrapy settings for xiushi project</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># For simplicity, this file contains only settings considered important or</span><br><span class="hljs-comment"># commonly used. You can find more settings consulting the documentation:</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/settings.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><br>BOT_NAME = <span class="hljs-string">'xiushi'</span><br><br>SPIDER_MODULES = [<span class="hljs-string">'xiushi.spiders'</span>]<br>NEWSPIDER_MODULE = <span class="hljs-string">'xiushi.spiders'</span><br><br><span class="hljs-comment"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span><br><span class="hljs-comment"># USER_AGENT = 'xiushi (+http://www.yourdomain.com)'</span><br><br><span class="hljs-comment"># Obey robots.txt rules</span><br>ROBOTSTXT_OBEY = <span class="hljs-literal">False</span><br><br><span class="hljs-comment"># Configure maximum concurrent requests performed by Scrapy (default: 16)</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS = 32</span><br><br><span class="hljs-comment"># Configure a delay for requests for the same website (default: 0)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay</span><br><span class="hljs-comment"># See also autothrottle settings and docs</span><br>DOWNLOAD_DELAY = <span class="hljs-number">1</span><br><span class="hljs-comment"># The download delay setting will honor only one of:</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN = 16</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP = 16</span><br><br><span class="hljs-comment"># Disable cookies (enabled by default)</span><br><span class="hljs-comment"># COOKIES_ENABLED = False</span><br><br><span class="hljs-comment"># Disable Telnet Console (enabled by default)</span><br><span class="hljs-comment"># TELNETCONSOLE_ENABLED = False</span><br><br><span class="hljs-comment"># Override the default request headers:</span><br>DEFAULT_REQUEST_HEADERS = &#123;<br>    <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span>,<br>    <span class="hljs-string">'Accept-Language'</span>: <span class="hljs-string">'en'</span>,<br>    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '</span><br>                  <span class="hljs-string">'Chrome/80.0.3987.163 Safari/537.36 '</span><br>&#125;<br><br><span class="hljs-comment"># Enable or disable spider middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><span class="hljs-comment"># SPIDER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'xiushi.middlewares.XiushiSpiderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable downloader middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment"># DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'xiushi.middlewares.XiushiDownloaderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable extensions</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/extensions.html</span><br><span class="hljs-comment"># EXTENSIONS = &#123;</span><br><span class="hljs-comment">#    'scrapy.extensions.telnet.TelnetConsole': None,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Configure item pipelines</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br>ITEM_PIPELINES = &#123;<br>   <span class="hljs-string">'xiushi.pipelines.XiushiPipeline'</span>: <span class="hljs-number">300</span>,<br>&#125;<br><br><span class="hljs-comment"># Enable and configure the AutoThrottle extension (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/autothrottle.html</span><br><span class="hljs-comment"># AUTOTHROTTLE_ENABLED = True</span><br><span class="hljs-comment"># The initial download delay</span><br><span class="hljs-comment"># AUTOTHROTTLE_START_DELAY = 5</span><br><span class="hljs-comment"># The maximum download delay to be set in case of high latencies</span><br><span class="hljs-comment"># AUTOTHROTTLE_MAX_DELAY = 60</span><br><span class="hljs-comment"># The average number of requests Scrapy should be sending in parallel to</span><br><span class="hljs-comment"># each remote server</span><br><span class="hljs-comment"># AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0</span><br><span class="hljs-comment"># Enable showing throttling stats for every response received:</span><br><span class="hljs-comment"># AUTOTHROTTLE_DEBUG = False</span><br><br><span class="hljs-comment"># Enable and configure HTTP caching (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings</span><br><span class="hljs-comment"># HTTPCACHE_ENABLED = True</span><br><span class="hljs-comment"># HTTPCACHE_EXPIRATION_SECS = 0</span><br><span class="hljs-comment"># HTTPCACHE_DIR = 'httpcache'</span><br><span class="hljs-comment"># HTTPCACHE_IGNORE_HTTP_CODES = []</span><br><span class="hljs-comment"># HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'</span><br></code></pre></td></tr></table></figure>
-
-#### spider 部分
-
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-keyword">import</span> scrapy<br><span class="hljs-keyword">from</span> xiushi.items <span class="hljs-keyword">import</span> XiushiItem<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XiushispiderSpider</span><span class="hljs-params">(scrapy.Spider)</span>:</span><br>    name = <span class="hljs-string">'xiushiSpider'</span><br>    allowed_domains = [<span class="hljs-string">'qiushidabaike.com'</span>]<br>    start_urls = [<span class="hljs-string">'http://qiushidabaike.com/index_1.html'</span>]<br>    base_domain = <span class="hljs-string">'http://qiushidabaike.com'</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self, response)</span>:</span><br>        duanzi = response.xpath(<span class="hljs-string">'//div[@class="main-left fl"]//dl'</span>)<br>        <span class="hljs-keyword">for</span> it <span class="hljs-keyword">in</span> duanzi:<br>            title = it.xpath(<span class="hljs-string">'./dt/span/a/text()'</span>).get().strip()<br>            text = it.xpath(<span class="hljs-string">'./dd[@class="content"]//text()'</span>).getall()<br>            text = <span class="hljs-string">""</span>.join(text).strip()<br>            item = XiushiItem(title=title, text=text)<br>            <span class="hljs-keyword">yield</span> item<br>        <span class="hljs-comment"># 进行翻页操作</span><br>        next_url = response.xpath(<span class="hljs-string">'//div[@class="page"]//a[@class="next"]/@href'</span>).get()<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> next_url:<br>            <span class="hljs-keyword">return</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">yield</span> scrapy.Request(self.base_domain+next_url, callback=self.parse)<br></code></pre></td></tr></table></figure>
-
-#### pipelines 部分
-
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Define your item pipelines here</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Don't forget to add your pipeline to the ITEM_PIPELINES setting</span><br><span class="hljs-comment"># See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br><span class="hljs-string">"""</span><br><span class="hljs-string"># 第一种方法，没进行json优化，但是看起来简单易操作</span><br><span class="hljs-string">import json</span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string">class XiushiPipeline(object):</span><br><span class="hljs-string">    def __init__(self):</span><br><span class="hljs-string">        self.fp = open('duanzi.json', 'w', encoding='utf-8')</span><br><span class="hljs-string"></span><br><span class="hljs-string">    def open_spider(self, spider):</span><br><span class="hljs-string">        print('爬虫开始了...')</span><br><span class="hljs-string"></span><br><span class="hljs-string">    def process_item(self, item, spider):</span><br><span class="hljs-string">        item_json = json.dumps(dict(item),  ensure_ascii=False)</span><br><span class="hljs-string">        self.fp.write(item_json+'\n')</span><br><span class="hljs-string">        return item</span><br><span class="hljs-string"></span><br><span class="hljs-string">    def close_spider(self, spider):</span><br><span class="hljs-string">        self.fp.close()</span><br><span class="hljs-string">        print("爬虫结束了...")</span><br><span class="hljs-string">"""</span><br><span class="hljs-comment"># 方案二，json优化，结果是每个字典存储在列表中</span><br><span class="hljs-comment">#        好处是满足json规则，坏处是数据量较大时比较耗内存</span><br><span class="hljs-comment"># ''' 自我感觉这种方法不咋地 '''</span><br><span class="hljs-comment"># from scrapy.exporters import JsonItemExporter</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># class XiushiPipeline(object):</span><br><span class="hljs-comment">#     def __init__(self):</span><br><span class="hljs-comment">#         # 注意此时以二进制形式写入</span><br><span class="hljs-comment">#         self.fp = open('duanzi.json', 'wb')</span><br><span class="hljs-comment">#         self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8')</span><br><span class="hljs-comment">#         self.exporter.start_exporting()</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     def open_spider(self, spider):</span><br><span class="hljs-comment">#         print('爬虫开始了...')</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     def process_item(self, item, spider):</span><br><span class="hljs-comment">#         self.exporter.export_item(item)</span><br><span class="hljs-comment">#         return item</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     def close_spider(self, spider):</span><br><span class="hljs-comment">#         self.exporter.finish_exporting()</span><br><span class="hljs-comment">#         self.fp.close()</span><br><span class="hljs-comment">#         print("爬虫结束了...")</span><br><br><span class="hljs-string">'''方案三'''</span><br><span class="hljs-keyword">from</span> scrapy.exporters <span class="hljs-keyword">import</span> JsonLinesItemExporter<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XiushiPipeline</span><span class="hljs-params">(object)</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span><br>        <span class="hljs-comment"># 注意此时以二进制形式写入</span><br>        self.fp = open(<span class="hljs-string">'duanzi.json'</span>, <span class="hljs-string">'wb'</span>)<br>        self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=<span class="hljs-literal">False</span>, encoding=<span class="hljs-string">'utf-8'</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open_spider</span><span class="hljs-params">(self, spider)</span>:</span><br>        print(<span class="hljs-string">'爬虫开始了...'</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self, item, spider)</span>:</span><br>        self.exporter.export_item(item)<br>        <span class="hljs-keyword">return</span> item<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close_spider</span><span class="hljs-params">(self, spider)</span>:</span><br>        self.fp.close()<br>        print(<span class="hljs-string">"爬虫结束了..."</span>)<br></code></pre></td></tr></table></figure>
-
-* 可以在总文件中创建.py文件，代替爬虫开始命令 scrapy crawl xiushiSpider (注意应在爬虫目录下执行该命令)
-
-  * ```python
-    from scrapy import cmdline
-
-    cmdline.execute(&quot;scrapy crawl xiushiSpider&quot;.split())
-    # cmdline.execute([&quot;scrapy&quot;, &apos;crawl&apos;, &apos;xiushiSpider&apos;])
-    <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"><br>        <br><br># 爬虫第六天<br><br>### scrapy 框架之spider类（示例二.爬取优美散文）<br><br>- item部分<br><br>&#96;&#96;&#96;python<br># -*- coding: utf-8 -*-<br><br># Define here the models for your scraped items<br>#<br># See documentation in:<br># https:&#x2F;&#x2F;doc.scrapy.org&#x2F;en&#x2F;latest&#x2F;topics&#x2F;items.html<br><br>import scrapy<br><br><br>class ProseItem(scrapy.Item):<br>    # define the fields for your item here like:<br>    # name &#x3D; scrapy.Field()<br>    title &#x3D; scrapy.Field()<br>    text &#x3D; scrapy.Field()<br></code></pre></td></tr></table></figure></code></pre><ul>
+<ul>
 <li>settings部分</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Scrapy settings for prose project</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># For simplicity, this file contains only settings considered important or</span><br><span class="hljs-comment"># commonly used. You can find more settings consulting the documentation:</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/settings.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><br>BOT_NAME = <span class="hljs-string">'prose'</span><br><br>SPIDER_MODULES = [<span class="hljs-string">'prose.spiders'</span>]<br>NEWSPIDER_MODULE = <span class="hljs-string">'prose.spiders'</span><br><br><span class="hljs-comment"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span><br><span class="hljs-comment"># USER_AGENT = 'prose (+http://www.yourdomain.com)'</span><br><br><span class="hljs-comment"># Obey robots.txt rules</span><br>ROBOTSTXT_OBEY = <span class="hljs-literal">False</span><br><br><span class="hljs-comment"># Configure maximum concurrent requests performed by Scrapy (default: 16)</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS = 32</span><br><br><span class="hljs-comment"># Configure a delay for requests for the same website (default: 0)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay</span><br><span class="hljs-comment"># See also autothrottle settings and docs</span><br>DOWNLOAD_DELAY = <span class="hljs-number">1</span><br><span class="hljs-comment"># The download delay setting will honor only one of:</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN = 16</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP = 16</span><br><br><span class="hljs-comment"># Disable cookies (enabled by default)</span><br><span class="hljs-comment"># COOKIES_ENABLED = False</span><br><br><span class="hljs-comment"># Disable Telnet Console (enabled by default)</span><br><span class="hljs-comment"># TELNETCONSOLE_ENABLED = False</span><br><br><span class="hljs-comment"># Override the default request headers:</span><br>DEFAULT_REQUEST_HEADERS = &#123;<br>    <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span>,<br>    <span class="hljs-string">'Accept-Language'</span>: <span class="hljs-string">'en'</span>,<br>    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '</span><br>                  <span class="hljs-string">'Chrome/80.0.3987.163 Safari/537.36 '</span><br>&#125;<br><br><span class="hljs-comment"># Enable or disable spider middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><span class="hljs-comment"># SPIDER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'prose.middlewares.ProseSpiderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable downloader middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment"># DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'prose.middlewares.ProseDownloaderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable extensions</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/extensions.html</span><br><span class="hljs-comment"># EXTENSIONS = &#123;</span><br><span class="hljs-comment">#    'scrapy.extensions.telnet.TelnetConsole': None,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Configure item pipelines</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br>ITEM_PIPELINES = &#123;<br>   <span class="hljs-string">'prose.pipelines.ProsePipeline'</span>: <span class="hljs-number">300</span>,<br>&#125;<br><br><span class="hljs-comment"># Enable and configure the AutoThrottle extension (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/autothrottle.html</span><br><span class="hljs-comment"># AUTOTHROTTLE_ENABLED = True</span><br><span class="hljs-comment"># The initial download delay</span><br><span class="hljs-comment"># AUTOTHROTTLE_START_DELAY = 5</span><br><span class="hljs-comment"># The maximum download delay to be set in case of high latencies</span><br><span class="hljs-comment"># AUTOTHROTTLE_MAX_DELAY = 60</span><br><span class="hljs-comment"># The average number of requests Scrapy should be sending in parallel to</span><br><span class="hljs-comment"># each remote server</span><br><span class="hljs-comment"># AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0</span><br><span class="hljs-comment"># Enable showing throttling stats for every response received:</span><br><span class="hljs-comment"># AUTOTHROTTLE_DEBUG = False</span><br><br><span class="hljs-comment"># Enable and configure HTTP caching (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings</span><br><span class="hljs-comment"># HTTPCACHE_ENABLED = True</span><br><span class="hljs-comment"># HTTPCACHE_EXPIRATION_SECS = 0</span><br><span class="hljs-comment"># HTTPCACHE_DIR = 'httpcache'</span><br><span class="hljs-comment"># HTTPCACHE_IGNORE_HTTP_CODES = []</span><br><span class="hljs-comment"># HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'</span><br></code></pre></td></tr></table></figure>
@@ -804,6 +684,1292 @@
       <tags>
         <tag>爬虫</tag>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络编程</title>
+    <url>/2020/10/16/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="python网络编程"><a href="#python网络编程" class="headerlink" title="python网络编程"></a>python网络编程</h1><h3 id="一、客户端"><a href="#一、客户端" class="headerlink" title="一、客户端"></a>一、客户端</h3><h4 id="TCP客户端"><a href="#TCP客户端" class="headerlink" title="TCP客户端"></a>TCP客户端</h4><a id="more"></a>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> socket<br><br><span class="hljs-comment"># 建立变量：目标主机和目标端口</span><br>host = ***<br>port = ***<br><br><span class="hljs-comment"># 建立一个socket对象</span><br>client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br><br><span class="hljs-comment"># 连接客户端</span><br><span class="hljs-comment"># connect内的是一个元组，代表的是一个具体的地址</span><br>client.connect((host, port))<br><br><span class="hljs-comment"># 发送数据</span><br>client.send(<span class="hljs-string">"hello, world!"</span>)<br><br><span class="hljs-comment"># 接受数据</span><br><span class="hljs-comment"># 最大接受1024字节数据</span><br>response = client.recv(<span class="hljs-number">1024</span>)<br><br>print(response)<br><br><span class="hljs-comment"># 关闭套接字</span><br>client.close()<br></code></pre></td></tr></table></figure>
+
+<h4 id="UDP客户端"><a href="#UDP客户端" class="headerlink" title="UDP客户端"></a>UDP客户端</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> socket<br><br><span class="hljs-comment"># 建立变量：目标主机和目标端口</span><br>host = ***<br>port = ***<br><br><span class="hljs-comment"># 建立一个socket对象</span><br>client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)<br><br><span class="hljs-comment"># 连接客户端</span><br><span class="hljs-comment"># connect内的是一个元组，代表的是一个具体的地址</span><br>client.connect((host, port))<br><br><span class="hljs-comment"># 发送数据</span><br>client.sendto(<span class="hljs-string">"hello, world!"</span>, (host, port))<br><br><span class="hljs-comment"># 接收数据</span><br><span class="hljs-comment"># 最大接受1024字节数据</span><br>data, addr = client.recvfrom(<span class="hljs-number">1024</span>)<br><br>print(data)<br><br><span class="hljs-comment"># 关闭套接字</span><br>client.close()<br></code></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>网络编程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建个人博客</title>
+    <url>/2020/05/03/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="搭建静态页面个人博客"><a href="#搭建静态页面个人博客" class="headerlink" title="搭建静态页面个人博客"></a>搭建静态页面个人博客</h1><p><a href="https://www.jianshu.com/p/189fd945f38f" target="_blank" rel="noopener">参考文献</a></p>
+<p><a href="">参考文献</a></p>
+<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><ol>
+<li><p>检查电脑是否有node.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">node -v<br></code></pre></td></tr></table></figure>
+<a id="more"></a>
+</li>
+<li><p>若没有则下载</p>
+</li>
+<li><p>安装npm</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">npm install -g hexo-cli<br>这样会报错<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ol>
+<h3 id="解决错误："><a href="#解决错误：" class="headerlink" title="解决错误："></a>解决错误：</h3><p>Missing write access to /usr/local/lib/node_modules是没有写权限, npm官方给出的解决方案是新建一个有权限的文件夹, 在这个新文件夹中安装npm包. 这个方法不适用于Microsoft Windows系统.<br>在用户的根目录创建文件夹(名字不一定要是.npm-global, 可以自己起):</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">mkdir ~&#x2F;.npm-global<br></code></pre></td></tr></table></figure>
+
+
+
+<p>设置npm全局包的安装路径:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">npm config set prefix &#39;~&#x2F;.npm-global&#39;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>在用户的根目录下查看有没有.profile文件, 如果没有就创建, 然后用文本编辑器打开, 加上以下一行, 保存:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">export PATH&#x3D;~&#x2F;.npm-global&#x2F;bin:$PATH<br></code></pre></td></tr></table></figure>
+
+
+
+<p>回到终端运行以下命令, 让配置生效:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">source &#x2F;etc&#x2F;profile<br></code></pre></td></tr></table></figure>
+
+
+
+<p>然后全局安装npm包就可以了.</p>
+<p><a href="https://blog.csdn.net/zhangxuekang/article/details/89075039" target="_blank" rel="noopener">原文链接</a></p>
+<ol start="2">
+<li><p>将 Hexo 所在的目录下的 node_modules 添加到环境变量之中即可直接使用 hexo <command>：</p>
+<p>echo ‘PATH=”$PATH:./node_modules/.bin”‘ &gt;&gt; ~/.profile</p>
+</li>
+<li><p>初始化博客框架</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"># 选择一个地方新建博客目录<br>npx hexo init blog<br><br># 生成博客文件夹中的moudle文件夹<br>npx hexo g<br><br># 进行本机器运行测试<br>npx hexo server<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="主题切换"><a href="#主题切换" class="headerlink" title="主题切换"></a>主题切换</h3><ol>
+<li><p>去hexo官网下载主题，克隆到自己的仓库下</p>
+</li>
+<li><p>配置自己的站点文件（根目录下的_config.yml,不是主题下的），切换至自己的主题</p>
+<p>并且更改语言设置成zh-CN</p>
+</li>
+<li><p>在source文件夹下新建标签文件夹(tags)和分类文件夹(categories)以及about文件夹[内容为个人简介或声明],如果还需要其他的自己可以建，笔记文档放在_posts文件夹内</p>
+</li>
+</ol>
+<h3 id="博客与github挂钩"><a href="#博客与github挂钩" class="headerlink" title="博客与github挂钩"></a>博客与github挂钩</h3><ol>
+<li><p>在github上新建一个仓库，仓库名为    自己的github名.github.io</p>
+</li>
+<li><p>在自己的博客目录下的站点配置文件_config.yml中进行配置，在文件的末尾找到并进行修改：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">deploy:<br>	type: git<br>	repo: 仓库名称.git  (.git不能少)<br>	branch： master<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>安装git部署插件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>之后</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">npx hexo clean<br>npx hexo g<br># 进行网站部署<br>npx hexo d<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>大功告成</p>
+</li>
+</ol>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><ol>
+<li><p>先去购买域名</p>
+</li>
+<li><p>进行域名注册</p>
+</li>
+<li><p>再进行域名解析（必要的环节）</p>
+<ul>
+<li>进入解析页面</li>
+<li>添加解析</li>
+<li>在命令行下ping自己的github和博客绑定的仓库</li>
+<li>得到ip地址之后添加到解析列表</li>
+</ul>
+</li>
+<li><p>进入博客的source目录下，新建名为 CNAME 的文件，在里面写入自己申请的域名</p>
+</li>
+<li><p>进入blog，依次输入</p>
+</li>
+</ol>
+   <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">npx hexo clean<br>npx hexo g<br>hexo d<br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>大功告成.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库(二)</title>
+    <url>/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93(%E4%BA%8C)/</url>
+    <content><![CDATA[<h1 id="数据库（二）"><a href="#数据库（二）" class="headerlink" title="数据库（二）"></a>数据库（二）</h1><p><a href="https://www.bilibili.com/video/BV12b411K7Zu/?p=105" target="_blank" rel="noopener">参考的相关视频资料连接</a></p>
+<h2 id="DML语言"><a href="#DML语言" class="headerlink" title="DML语言"></a>DML语言</h2><ul>
+<li>数据操作语言：<ul>
+<li>插入：insert</li>
+<li>修改：update</li>
+<li>删除：delete</li>
+</ul>
+</li>
+</ul>
+<h3 id="插入语句"><a href="#插入语句" class="headerlink" title="插入语句"></a>插入语句</h3><h4 id="方式一：经典插入语句"><a href="#方式一：经典插入语句" class="headerlink" title="方式一：经典插入语句"></a>方式一：经典插入语句</h4><a id="more"></a>
+
+<ul>
+<li>语法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">insert into 表名（列名1, 列名2, ...）<br>values （值1, 值2, ...）;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>注意事项：<ol>
+<li>插入的值的类型与列的类型一致或兼容</li>
+<li>可以为NULL的列可以插入NULL值，不为NULL的列必须插入值</li>
+<li>列的顺序可以调换，但是插入的值必须和列相匹配</li>
+<li>列数和值得个数必须相一致</li>
+<li>可以省略列名，默认所有列，而且列的顺序和表中的顺序一致</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">insert into beauty<br>values(列1, 列2, ...);            &#x2F;&#x2F;省略列名，默认所有列<br></code></pre></td></tr></table></figure>
+
+<h4 id="方式二："><a href="#方式二：" class="headerlink" title="方式二："></a>方式二：</h4><ol>
+<li>语法：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">insert into 表名<br>set 列名1&#x3D;值1，列名2&#x3D;值2，...<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>案例:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">insert into beauty<br>set id&#x3D;19, name&#x3D;&#39;章子怡&#39;，phone&#x3D;&#39;110&#39;;<br></code></pre></td></tr></table></figure>
+
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ol>
+<li>方式一支持插入多行，方式二不行</li>
+<li>方式一支持子查询，方式二不行</li>
+</ol>
+<h3 id="修改语句"><a href="#修改语句" class="headerlink" title="修改语句"></a>修改语句</h3><h4 id="修改单表的记录（-重点）"><a href="#修改单表的记录（-重点）" class="headerlink" title="修改单表的记录（*重点）"></a>修改单表的记录（*重点）</h4><ol>
+<li>语法：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">update 表名<br>set 列&#x3D;新值，列&#x3D;新值，...<br>where 筛选条件；<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>案例：修改boys表中id号位2的名称为张飞，魅力值10</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">update boys set boyname&#x3D;&#39;张飞&#39;， usercp&#x3D;10<br>where id&#x3D;2;<br></code></pre></td></tr></table></figure>
+
+<h4 id="修改多表得记录-了解即可"><a href="#修改多表得记录-了解即可" class="headerlink" title="修改多表得记录(了解即可)"></a>修改多表得记录(了解即可)</h4><ol>
+<li>语法：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">sql92语法：<br>update 表1 别名， 表2 别名<br>set 列&#x3D;值，...<br>where 连接条件<br>and 筛选条件<br><br>sql99语法：<br>update 表1 别名<br>inner 连接类型 join 表2 别名<br>on 链接条件<br>set 列&#x3D;值，...<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="删除语句"><a href="#删除语句" class="headerlink" title="删除语句"></a>删除语句</h3><ol>
+<li>方式一：delete </li>
+</ol>
+<ul>
+<li>删除整行</li>
+<li>单表的删除</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">语法：<br>delete from 表名 where 筛选条件<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>案例：删除手机号以3结尾的女孩信息</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">delete from girls <br>where phon like &#39;%3&#39;;<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>方式二：truncate</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">语法：<br>truncate table 表名<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>案例：将魅力值&gt;100的男神信息删除</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">truncate table boys;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="DDL语言"><a href="#DDL语言" class="headerlink" title="DDL语言"></a>DDL语言</h2><ol>
+<li>DDL数据定义语言</li>
+<li>表和库的管理</li>
+</ol>
+<h3 id="库的操作"><a href="#库的操作" class="headerlink" title="库的操作"></a>库的操作</h3><ol>
+<li>库的创建</li>
+</ol>
+<ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">create database (if not exists)库名；<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>库的删除</li>
+</ol>
+<ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">drop database if exists 库名；<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="表的管理"><a href="#表的管理" class="headerlink" title="表的管理"></a>表的管理</h3><ol>
+<li>表的创建</li>
+</ol>
+<ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">create  table 表名(<br>	列名 列的类型【(长度) (约束)】，  &#x2F;&#x2F;长度和约束可选<br>	列名 列的类型【(长度) (约束)】，<br>	...<br>)；<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>案例：创建表Book</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">creat table book(<br>	id int, #编号<br>	bname varchar (20),  #图书名<br>	authorid int,  #作者编号<br>	publishdate datetime;  #出版日期<br>)；<br></code></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li>表的修改</li>
+</ol>
+<ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">alter table 表名 关键字 column 列名 列类型 约束<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>修改列名</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">&#x2F;&#x2F;参考上个案例，创建表book<br>alter table book change aolumn publish pubdate datetime;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>修改列的类型或约束</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">alter table book modify column pubtade timestamp;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>添加新列</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">alter table author add column annual double;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>删除列</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">alter table author drop column annual;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>修改表名</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">alter table  author rename to book_author;<br></code></pre></td></tr></table></figure>
+
+
+
+<ol start="3">
+<li>表的删除</li>
+</ol>
+<ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">drop table if exists book_author;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>通用的写法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">drop database if exists 旧库名；<br>create database 新库名；<br><br>drop table if exists 旧表名；<br>create table 表名（）；<br></code></pre></td></tr></table></figure>
+
+
+
+<ol start="4">
+<li>表的复制</li>
+</ol>
+<ul>
+<li>复制表的结构</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">create table copy like author;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>复制表的结构+数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">create table copy2<br>select * from author;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>只复制部分数据</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">create table copy3<br>select id, au_name<br>from autor<br>where nation&#x3D;&#39;中国&#39;；<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>复制部分结构</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">create table copy4<br>select id, au_name<br>from author<br>where 0;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="常见的数据类型"><a href="#常见的数据类型" class="headerlink" title="常见的数据类型"></a>常见的数据类型</h3><figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">数值型：<br>		整型<br>		小数：<br>			定点型<br>			浮点型<br>字符型：<br>		较短的文本：char、varchar<br>		较长的文本：text，blob（较长的二进制数据）<br>日期型<br></code></pre></td></tr></table></figure>
+
+<h4 id="整型"><a href="#整型" class="headerlink" title="整型"></a>整型</h4><ol>
+<li>分类：tinyint, smallint, mediumint, int\integer, bigint</li>
+<li>特点：</li>
+</ol>
+<ul>
+<li>如果不设置无符号还是有符号，默认是有符号，如果想设置无符号，还需要添加unsigned关键字</li>
+<li>如果插入的数值超出了整型的范围，则插入的值为整型类型的最大值</li>
+</ul>
+<h4 id="小数"><a href="#小数" class="headerlink" title="小数"></a>小数</h4><ol>
+<li>分类：</li>
+</ol>
+<ul>
+<li>浮点型： float(M, D) , double(M, D)</li>
+<li>定点型：dec(M, D) , decimal(M, D)</li>
+</ul>
+<ol start="2">
+<li>特点：</li>
+</ol>
+<ul>
+<li>M：整数部位+加小数部位的总长度</li>
+<li>D：小数部位长度</li>
+<li>如果超过范围，则插入临界值</li>
+<li>M，D可以省略，如果是decimal，则默认M是10,D是0，  若是float和double，则会根据插入数值的精度来决定</li>
+<li>定点型精确度较高，如果要求插入数值的精确度较高如货币运算则考虑使用定点型</li>
+</ul>
+<h4 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h4><p>较短的文本：char、varchar<br>较长的文本：text，blob（较长的二进制数据）</p>
+<ol>
+<li>特点：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">          写法        M的意思                      特点        空间的耗费    效率  <br>char     char(M)    最大的字符数，可以省略，默认为1  固定长度字符    比较耗费    较高<br>varchar  varchar(M) 最大的字符数，不可以省略        可变长度字符    比较节省    较低<br></code></pre></td></tr></table></figure>
+
+<h4 id="日期型"><a href="#日期型" class="headerlink" title="日期型"></a>日期型</h4><ol>
+<li><p>分类：date 只保存日期</p>
+<p>​            time 只保存时间</p>
+<p>​            year 只保存年</p>
+<p>​            datetime 保存日期+时间</p>
+<p>​            timestamp 保存日期+时间</p>
+</li>
+<li><p>特点：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">			字节   范围          时区等的影响<br>datetime     8    1000-9999         不受<br>timestamp    4    1970-2038          受<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="常见约束"><a href="#常见约束" class="headerlink" title="常见约束"></a>常见约束</h3><ol>
+<li><p>含义：一种限制，用于限制表中的数据，为了保证表中数据的准确性和可靠性</p>
+</li>
+<li><p>分类：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">1. not null: 非空用于保证该字段值不能为空<br>2. default： 默认，用于赋予该字段默认值<br>3. primary key: 主键，用于保证该字段的值具有唯一性，并且非空<br>4. unique：用于保证该字段的值的唯一性<br>5. check：检查约束【MySQL中不支持】 <br>6. foreing key:外键约束，用于限制俩个表的关系，用于保证该字段的值必须来自于主表的关联列的值，在从表添加外键约束，用于引用主表中某列的值<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>添加约束的时机：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">1. 创建表时<br>2. 修改表时<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>约束的添加分类：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">1. 列级约束：<br>	直接在字段名和类型后面追加约束类型即可<br>	六大约束语法上都支持，但外键约束没有效果<br>2. 表级约束：<br>	在所有字段的最下面：constraint 约束名 约束类型（字段名）<br>	除了非空、默认约束，其他都支持<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>主键与唯一：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">		保证唯一性   是否允许为空   一个表中可以有多少个    是否允许组合<br>主键		Y				N			一个				允许，不推荐<br>唯一		Y				Y			多个 				允许，不推荐<br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>外键约束</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">1. 要求在从表中设置外键关系<br>2. 从表的外键列的类型和主表的关联列的类型要求一致或兼容，名称无要求<br>3. 主表的关联列必须是一个key（一般是主键或唯一）<br>4. 插入数据时，先插入主表，再插入从表，删除时相反<br># 添加外键约束：<br>alter table stuinfo add constraint 表名字 foreing key(majorid) references major(id);<br></code></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>修改表时添加约束：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">1. 添加列级约束：<br>alter table 表名 modify column 字段名 字段类型 新约束<br>2. 添加表级约束：<br>alter table 表名 add [constraint 约束名] 约束类型（字段名） 【外键的引用】<br></code></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>修改表时删除约束：</li>
+</ol>
+<p><img src="https://s1.ax1x.com/2020/06/25/NBXJgK.png" alt="NBXJgK.png"></p>
+<h3 id="标识列"><a href="#标识列" class="headerlink" title="标识列"></a>标识列</h3><ol>
+<li>又称为自增长列，可以不用手动的插入值，系统提供默认的序列值</li>
+<li>特点：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">1. 标识列不一定要和主键搭配，但必须要和一个key搭配<br>2. 一个表至多只有一个标识列<br>3. 标识列的类型只能是数值型<br>4.标识列可以通过 set auto_increment_incremennt&#x3D; ;设置步长<br>	可以通过手动插入值，设置起始值<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>修改表时设置标识列</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">alter table 表名 modify column 字段值 类型 key名 auto_incerment;<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>修改表时删除标识列</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">alter table 表名 modify column 字段值 类型；<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="TCL语言"><a href="#TCL语言" class="headerlink" title="TCL语言"></a>TCL语言</h2><ol>
+<li><p>事务控制语言，一个或一组sql语句组成一个执行单元，这个执行单元要么全部执行，要么全部不执行，比如转账的过程</p>
+</li>
+<li><p>事务的特性</p>
+</li>
+</ol>
+<p><img src="https://s1.ax1x.com/2020/06/25/NBXYjO.png" alt="NBXYjO.png"></p>
+<ol start="3">
+<li>事务的创建</li>
+</ol>
+<p><img src="https://s1.ax1x.com/2020/06/25/NBX89x.png" alt="NBX89x.png"></p>
+<p><img src="https://s1.ax1x.com/2020/06/25/NBXNuD.png" alt="NBXNuD.png"></p>
+<ul>
+<li>实例</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2020/06/25/NBXG36.png" alt="NBXG36.png"></p>
+<ol start="5">
+<li>事务隔离级别</li>
+</ol>
+<p><img src="/home/blacksheep/%E5%9B%BE%E7%89%87/%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/image-20200626215014414.png" alt="image-20200626215014414"></p>
+<p><img src="/home/blacksheep/%E5%9B%BE%E7%89%87/%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/image-20200627183401294.png" alt="image-20200627183401294"></p>
+<ul>
+<li>MySQL中默认隔离级别 repeatable read</li>
+<li>oracle中默认级别 read committed</li>
+<li>查看隔离级别 ：select @@tx_isolation;</li>
+<li>设置隔离级别 ：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">set session 或 global transaction isolation level 隔离级别；<br></code></pre></td></tr></table></figure>
+
+
+
+<ol start="6">
+<li>savepoint 节点名，设置保存点</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"># 演示savepoint的使用<br>set autocommit &#x3D; 0;<br>start transaction;<br>delete from account where id&#x3D;25;<br>savepoint a;  #设置保存点<br>delete from account where id&#x3D;28;<br>rollback to a;  #回滚到保存点<br><br>select * from account;<br><br>结果：id&#x3D;28还在，id&#x3D;25没有<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>Mysql</tag>
+        <tag>SQL</tag>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据库</title>
+    <url>/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93/</url>
+    <content><![CDATA[<h1 id="数据库的学习（一）"><a href="#数据库的学习（一）" class="headerlink" title="数据库的学习（一）"></a>数据库的学习（一）</h1><ul>
+<li><a href="https://www.bilibili.com/video/BV12b411K7Zu/?p=28" target="_blank" rel="noopener">相关视频链接</a></li>
+</ul>
+<h2 id="数据库及其概念"><a href="#数据库及其概念" class="headerlink" title="数据库及其概念"></a>数据库及其概念</h2><ul>
+<li>DB 数据库</li>
+<li>DBMS 数据库管理系统，如Mysql， MongoDB 等，用来管理与操作DB</li>
+<li>SQL  管理数据库的语言，几乎被所有的DBMS支持</li>
+<li>DB是大宅子，DBMS是宅子管家，SQL是管家的指挥口令</li>
+</ul>
+<a id="more"></a>
+
+<h3 id="数据库管理的特点"><a href="#数据库管理的特点" class="headerlink" title="数据库管理的特点"></a>数据库管理的特点</h3><ol>
+<li>先将数据放到 “一张表” 中， 在将表放到仓库中</li>
+<li>一个数据库中存放多张表，每张表都有自己独特的名字，用来标识自己</li>
+<li>数据库中的每张表都有自己的类别，有自己的门派，参照python的  “类”</li>
+<li>表是由列组成，也称为字段，相当与python中的  “属性”</li>
+<li>表是按行储存的，每一行相当与python中的  ”对象“</li>
+</ol>
+<ul>
+<li>端口号port 3306</li>
+</ul>
+<h3 id="Linux-系统-Mysql-相关事项"><a href="#Linux-系统-Mysql-相关事项" class="headerlink" title="Linux 系统 Mysql 相关事项"></a>Linux 系统 Mysql 相关事项</h3><ul>
+<li><p>检查电脑是否存在Mysql ：whereis mysql  或者输入  mysql –version</p>
+</li>
+<li><p>systemctl start mysql.service 启动  或者 service mysql start<br>systemctl stop mysql.service 停止  或者 service mysql stop<br>systemctl restart mysql.service 重启</p>
+</li>
+<li><p>检查电脑是否启动或关闭数据库：ps aux | grep mysqld  或者  pidof mysqld<br><a href="https://blog.csdn.net/qq_31083947/article/details/90248565" target="_blank" rel="noopener">相关检查操作链接</a></p>
+</li>
+</ul>
+<h3 id="数据库常用命令"><a href="#数据库常用命令" class="headerlink" title="数据库常用命令"></a>数据库常用命令</h3><ol>
+<li>进入管理系统时时查看有那些数据库</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">show databases;<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>进入库</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">use 库的名称;<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>查看库里有哪些表</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">show tables;<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>从现在所在的库中查看别的库中存有的表</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">show tables from 库的名称;<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>查看现在在哪个库</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select database();<br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>查看表的内容</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">desc 表的名称;<br></code></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>创建表</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">create table 表名（<br>	列名 列类型，<br>	列名 列类型，<br>	...<br>)<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="SQL语法规范"><a href="#SQL语法规范" class="headerlink" title="SQL语法规范"></a>SQL语法规范</h3><ol>
+<li>不区分大小写，但建议关键字大写，表名，列名小写</li>
+<li>每行命令u最好用分号结尾</li>
+<li>每行命令根据需要，可以进行缩进，或换行</li>
+<li>SQL语法中索引从1开始</li>
+<li>注释 </li>
+</ol>
+<ul>
+<li>单行注释：#注释文字</li>
+<li>单行注释：– 注释文字（注意横杠后面有空格）</li>
+<li>多行注释：/× 注释文字 ×/</li>
+</ul>
+<h3 id="使用-DBMS-图形化界面以及命令行登录时出现错误解决"><a href="#使用-DBMS-图形化界面以及命令行登录时出现错误解决" class="headerlink" title="使用 DBMS 图形化界面以及命令行登录时出现错误解决"></a>使用 DBMS 图形化界面以及命令行登录时出现错误解决</h3><ul>
+<li><a href="https://www.cnblogs.com/leolztang/p/5094930.html" target="_blank" rel="noopener">原文链接</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">~$ mysql -u root -p<br>Enter password: <br>ERROR 1698 (28000): Access denied for user &#39;root&#39;@&#39;localhost&#39;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>解决</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain"># 强制登录<br>sudo mysql<br><br>select user, plugin from mysql.user;<br><br>update mysql.user set authentication_string&#x3D;PASSWORD(&#39;hero1314&#39;), plugin&#x3D;&#39;mysql_native_password&#39; where user&#x3D;&#39;root&#39;;<br><br>flush privileges;<br><br>sudo service mysql restart<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="数据库语言的学习"><a href="#数据库语言的学习" class="headerlink" title="数据库语言的学习"></a>数据库语言的学习</h2><h3 id="DQL语言的学习"><a href="#DQL语言的学习" class="headerlink" title="DQL语言的学习"></a>DQL语言的学习</h3><h4 id="1、基础查询"><a href="#1、基础查询" class="headerlink" title="1、基础查询"></a>1、基础查询</h4><ul>
+<li>语法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select 查询列表 from 表名;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>特点：</li>
+</ul>
+<ol>
+<li>查询列表可以是：表中的字段，常量值，表达式，函数</li>
+<li>查询结果是一个虚拟的表格，只是将结果用表格呈现出来而已</li>
+</ol>
+<ul>
+<li>查询字段</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select 字段一，字段二 from 表格;    &#x2F;&#x2F;字段之间用逗号隔开<br>select * from 表格;  &#x2F;&#x2F; 查询所有字段<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>着重号 `  （1的旁边的那个），用来标识字段</p>
+</li>
+<li><p>查询常量值：select ‘ 字符或字符串 ’ ;</p>
+</li>
+<li><p>起别名</p>
+<p>​    别名有空格时，应用空格将别名括起来</p>
+<p>​    注意：如果为表起了别名，则查询的字段就不能使用原来的表名去限定 </p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select 字段值 as 别名;  &#x2F;&#x2F; as可以省略<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>去重：在被查询的字段之前加上关键字 distinct</li>
+<li>+ 号的作用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select 100+90; &#x2F;&#x2F; 俩个操作数都为数值型，则做加法运算<br># 结果：190<br>select &#39;100&#39;+90;  &#x2F;&#x2F; 俩个数中若有一方为字符串，则将进行转换，若转换成功，则将继续做加法运算，若转换失败，则将字符型数值转换成再在进行加法运算<br># 结果：190<br>select null+10; &#x2F;&#x2F;若有一个方为null，则结果肯定为null<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>ifnull( ) 函数</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select IFNULL(字段，0) as 别名; &#x2F;&#x2F;若该字段真未NULL，则输出0,否则则输出该字段的值<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="2、条件查询"><a href="#2、条件查询" class="headerlink" title="2、条件查询"></a>2、条件查询</h4><ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select 查询列表 from 表名 where 筛选条件;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>分类：</li>
+</ul>
+<ol>
+<li><p>按表达条件筛选：</p>
+<p>​        逻辑运算符：&gt; , &lt;, =, &lt;&gt; , &lt;=, &gt;=</p>
+<p>​        注意：&lt;&gt;为不等于的意思</p>
+</li>
+<li><p>按逻辑表达式筛选：</p>
+<p>​        &amp;&amp;， ||， ！</p>
+<p>​        and，or，not   // SQL推荐使用</p>
+</li>
+<li><p>模糊查询</p>
+<p>​        like, between and, in, is null</p>
+<ul>
+<li>between and 等价与  &gt;=  and &lt;=</li>
+</ul>
+<p>模糊查询通常与通配符一起使用  (in 不支持)</p>
+<ul>
+<li><p>常见通配符：% 匹配任意一个或零个</p>
+<p>​                     _  (下划线) 匹配任意一个</p>
+<ul>
+<li>支持对通配符进行转义</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select 字段 from 表名 where like &#39;_$_&#39; escape &#39;$&#39;; &#x2F;&#x2F;使用$符号对下划线进行转义<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select × from 表名 where like %a%;<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>安全等于  &lt;=&gt; : 可以判断显示NULL</li>
+</ol>
+<h4 id="3、排序查询"><a href="#3、排序查询" class="headerlink" title="3、排序查询"></a>3、排序查询</h4><ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select 字段<br>from 表<br>where 筛选条件<br>order by 排序列表 asc|desc   &#x2F;&#x2F;不写关键字，默认是asc<br># asc 从低到高 （升序）<br># desc 从高到底 （降序）<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>支持别名排序， 运算表达式排序</li>
+<li>支持对多个列表进行先后排序查询，列表间用逗号隔开</li>
+<li>排序语句一般是放在查询语句的最后面</li>
+</ul>
+<h4 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h4><ul>
+<li>类似python中的方法</li>
+<li>函数可以嵌套使用</li>
+<li>分类：</li>
+</ul>
+<ol>
+<li>单行函数：concat, length, ifnull等</li>
+<li>分组函数：<ul>
+<li>功能：做统计使用，又称为统计函数，聚合函数，组函数</li>
+</ul>
+</li>
+</ol>
+<h5 id="单行函数"><a href="#单行函数" class="headerlink" title="单行函数"></a>单行函数</h5><h6 id="一、字符函数"><a href="#一、字符函数" class="headerlink" title="一、字符函数"></a>一、字符函数</h6><ol>
+<li>length </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select length(&#39;str&#39;);<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>concat ( ) 拼接函数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">concat(str1, str2 ,..., str n); &#x2F;&#x2F;拼接字符串字段进行查询，字段之间用逗号隔开<br># 若str中有值为NULL，则查询的所有值为NULL<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><p>upper( ), lower( ) :改变大小写</p>
+</li>
+<li><p>substr( ) ：截取字符函数</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select substr(&#39;今天买了个大白菜&#39;， 6);<br>结果: 大白菜<br>select substr(&#39;今天买了个大白菜&#39;， 3, 4);<br>结果: 买了<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>instr( ) :返回字串第一个字符的索引，没有则返回0</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select instr(&#39;今天买了个大白菜&#39;， &#39;大白菜&#39;);<br>结果：6<br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>trim( ) :去掉字段中的空格或指定字符</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select trim(&#39;烂的&#39; from &#39;今天买了个烂的大白菜&#39;);<br>结果：今天买了个大白菜<br></code></pre></td></tr></table></figure>
+
+<ol start="7">
+<li><p>lpad( ): 左填充指定长度的字符，</p>
+<p>rpad( ): 右填充指定长度的字符</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select ipad(&#39;大白菜&#39;, 6, &#39;*&#39;);<br>结果：×××大白菜<br>select rpad(&#39;大白菜&#39;, 6, &#39;*&#39;);<br>结果：大白菜×××<br></code></pre></td></tr></table></figure>
+
+<ol start="8">
+<li>replace 替换</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select replace(&#39;今天买了个大白菜&#39;, &#39;大白菜&#39;, &#39;胡萝卜&#39;);<br>结果：今天买了个胡萝卜<br></code></pre></td></tr></table></figure>
+
+<h6 id="二、数学函数"><a href="#二、数学函数" class="headerlink" title="二、数学函数"></a>二、数学函数</h6><ol>
+<li>round( ) : 四舍五入函数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select round(1.1236);  &#x2F;&#x2F;默认保留整数部分<br>结果：1<br>select round(1.1236, 3);  &#x2F;&#x2F;可指定保留小数部分<br>结果：1.124<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>ceil( ): 向上取整，返回 &gt;= 该函数的最小整数</li>
+<li>floor( ): 向下取整，返回  &lt;= 该函数的最大整数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select floor(-9.99);<br>结果：-10<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>truncate 截断函数，截断小数点后指定的位数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select truncate(1.123, 2);<br>结果：1.12<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>mod( ): 取模（取余）函数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select mod(10,3);<br>结果：1<br></code></pre></td></tr></table></figure>
+
+<h6 id="三、日期函数"><a href="#三、日期函数" class="headerlink" title="三、日期函数"></a>三、日期函数</h6><ol>
+<li>now( ) 返回当前系统日期+时间</li>
+<li>curdate( ) 返回当前系统日期，不返回时间</li>
+<li>curtime( ) 返回当前时间，不返回日期</li>
+<li>str_to_date( ) 将日期格式的字符转换成指定格式的日期</li>
+<li>date_format( ) 将日期转换成字符</li>
+</ol>
+<ul>
+<li>更多日期函数请上网搜索</li>
+</ul>
+<h6 id="四、流程控制函数"><a href="#四、流程控制函数" class="headerlink" title="四、流程控制函数"></a>四、流程控制函数</h6><ol>
+<li>if( ) :该函数起到的作用类似与python或C语言中的else if( )函数</li>
+<li>case( )： </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">case 要判断的字段或表达式    &#x2F;&#x2F; 选择函数——判断并选择显示一个<br>when 常量1 then 要显示的值1或语句1;  &#x2F;&#x2F;如果显示的是值，则不显示分号 <br>when 常量2 then 要显示的值2或语句2;<br>...<br>else 默认显示的值或语句<br>end<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">case<br>when 常量1 then 要显示的值1或语句1;  &#x2F;&#x2F;如果显示的是值，则不显示分号 <br>when 常量2 then 要显示的值2或语句2;<br>...<br>else 默认显示的值或语句<br>end<br></code></pre></td></tr></table></figure>
+
+<h6 id="五、其它函数"><a href="#五、其它函数" class="headerlink" title="五、其它函数"></a>五、其它函数</h6><ul>
+<li>其他函数太多，用时上网搜</li>
+</ul>
+<h5 id="分组函数"><a href="#分组函数" class="headerlink" title="分组函数"></a>分组函数</h5><ul>
+<li>功能：用作统计使用，又称为聚合函数或统计函数或组函数</li>
+<li>分类：sum 求和， avg 平均值， max， min， count 计算个数</li>
+<li>忽略 NULL值</li>
+<li>可以与distinct( )去重函数或其它函数搭配使用</li>
+<li>count( )详细介绍</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select count(*) from 表单;  &#x2F;&#x2F;统计总行数<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>和分组函数一同查询的字段要求是group by后的字段</li>
+</ul>
+<h4 id="4、分组查询"><a href="#4、分组查询" class="headerlink" title="4、分组查询"></a>4、分组查询</h4><ol>
+<li>语法：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select 分组函数，列（要求出现在group by的后面）<br>from 表<br>[where 筛选条件]<br>group by 分组的列表;<br>[order by 子句]<br><br>&#x2F;&#x2F; 查询列表必须特殊，要求是分组函数和group by 后出现的字段<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>简单的分组查询</li>
+</ul>
+<ol>
+<li>实例一：查询每个工种的最高工资</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select max(salary), job_id<br>from employees<br>group by job_id;<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>实例二：查询每个位置上的部门个数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select count(*), location_id<br>from departments<br>group by lacation_id;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>添加筛选条件的分组查询</li>
+</ul>
+<ol start="4">
+<li>实例三：查询邮箱中包含a字符的，每个部门的平均工资</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select avg(salsry), department_id<br>from employees<br>where email &#39;%a%&#39;<br>group by department_id;<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>实例四：查询有奖金的每个领导手下员工的最高工资</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select max(salary), manager_id<br>from employees<br>where commission_pct is ont null<br>group by manager_id;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>添加复杂筛选条件的分组查询</li>
+<li>分组后进行条件筛选的查询</li>
+</ul>
+<ol start="6">
+<li>实例五：查询哪个部门的员工个数&gt;2</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select count(*), depatment_id<br>from employees<br>group by department_id<br>having count(*)&gt;2;   &#x2F;&#x2F;用查询的结果再进行筛选时用having<br></code></pre></td></tr></table></figure>
+
+<h4 id="5、连接查询【-优先学习99语法-】"><a href="#5、连接查询【-优先学习99语法-】" class="headerlink" title="5、连接查询【 优先学习99语法 】"></a>5、连接查询【 优先学习99语法 】</h4><ol>
+<li><p>含义：又称多表查询，当查询的字段来自于多个表时，就会用到连接查询</p>
+</li>
+<li><p>笛卡尔乘积现象：表1有m行，表2有n行，结果有m×n行</p>
+<ol>
+<li>发生原因：没有有效的链接条件</li>
+<li>如何避免：添加有效的连接条件</li>
+</ol>
+</li>
+<li><p>按功能分类：</p>
+<ul>
+<li><p>内连接：等值连接</p>
+<p>​               非等值连接</p>
+<p>​               自连接</p>
+</li>
+<li><p>外连接：左外连接</p>
+<p>​               右外连接</p>
+<p>​               全外连接</p>
+</li>
+<li><p>交叉连接</p>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="SQL92语法"><a href="#SQL92语法" class="headerlink" title="SQL92语法"></a>SQL92语法</h5><p>(1) 等值查询</p>
+<ul>
+<li>查询员工名和对应的部门名</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select last_name, department_name<br>from employees, departments<br>where employees.&#39;department_id&#x3D;departments.&#39;department_id&#39;;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>多条件筛选连接查询<ul>
+<li>查询有奖金的员工名，部门名</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select last_name, department_name, commission_pct<br>from emplloees e, departments d<br>where e.&#39;department_id&#39;&#x3D;d.&#39;department_id&#39;<br>and e.&#39;commission_pct&#39; is not null;<br></code></pre></td></tr></table></figure>
+
+<p>(2) 非等值链接</p>
+<ul>
+<li>在等值链接的基础上将条件改为非等值就行</li>
+</ul>
+<p>(3) 自链接</p>
+<ul>
+<li><p>自己链接自己</p>
+</li>
+<li><p>实例:查询查询一张表中员工名和上级的名称</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select e.employee_id, e.last_name, m.employee_id, m.last_name<br>from employees e, employees m<br>where e.&#39;manager_id&#39;&#x3D;m.&#39;employee_id&#39;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="SQL99语法"><a href="#SQL99语法" class="headerlink" title="SQL99语法"></a>SQL99语法</h5><ul>
+<li><p>语法： select 查询列表</p>
+<p>​            from 表1 别名</p>
+<pre><code>[连接类型]  join 表2 别名</code></pre><p>​            on 连接条件</p>
+<p>​            where 筛选条件</p>
+<p>​            group by 分组</p>
+<p>​            having 筛选条件</p>
+<p>​            order by 排序条件</p>
+</li>
+</ul>
+<h6 id="内链接"><a href="#内链接" class="headerlink" title="内链接"></a>内链接</h6><ul>
+<li>语法：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select 查询列表<br>from 表1 别名<br>inner join 表2 别名<br>on 连接条件；<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>分类：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">内链接：inner<br>外链接<br>	左外：left【outer】  &#x2F;&#x2F;括号中outer可以省去<br>	右外：right 【outer】<br>	全外：full 【outer<br>交叉连接：cross<br></code></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li>等值查询（内连接）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">案例1 查询员工名、部门名<br>select last_name, department_name<br>from employees e<br>inner join departments d<br>on e.&#39;department_id&#39; &#x3D; d.&#39;department_id&#39;;<br></code></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li>非等值连接(内链接)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">案例1：查询员工的工资级别<br>select salary, grdae_level<br>from employees e<br>join job_grades g<br>on e.&#39;salary&#39; between g.&#39;lowest_sal&#39; and &#39;highest_sal&#39;;<br></code></pre></td></tr></table></figure>
+
+
+
+<ol start="3">
+<li>自连接（内连接）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">查询员工的名字，上级的名字,包含字符k的<br>select e.last_name, m.last_name<br>join employees m<br>on e.&#39;manager_id&#39; &#x3D; m.&#39;employee_id&#39;<br>where e.&#39;last_name&#39; like &#39;%k%&#39;;<br></code></pre></td></tr></table></figure>
+
+
+
+<h6 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h6><ul>
+<li>应用场景，一个表格有，一个表格没有</li>
+<li>特点：</li>
+</ul>
+<ol>
+<li><p>外连接的查询结果为主表中的所有记录</p>
+<p>如果从表中有和他匹配的，则显示匹配值</p>
+<p>如果从表中没有和它匹配的值，则显示null</p>
+<p>外连接查询结果=内链接结果+主表中有而从表中没有的记录</p>
+</li>
+<li><p>左外连接，left join左边的是主表</p>
+<p>右外连接，right join右边的是主表</p>
+<p>左外右外和俩个表都换一下顺序，可以实现同样的效果</p>
+</li>
+</ol>
+<ul>
+<li><p>主表：查询内容较多的表格</p>
+</li>
+<li><p>全外连接：全外连接=内连接的结果+表1中有但表2中没有的+表2中有但表1中没有的</p>
+</li>
+</ul>
+<h6 id="交叉连接"><a href="#交叉连接" class="headerlink" title="交叉连接"></a>交叉连接</h6><ul>
+<li>相当于用99语法实现的笛卡尔乘积</li>
+</ul>
+<p>图示：</p>
+<p><img src="https://s1.ax1x.com/2020/06/25/NBjOQf.png" alt="NBjOQf.png"></p>
+<p><img src="https://s1.ax1x.com/2020/06/25/NBjXy8.png" alt="NBjXy8.png"></p>
+<h4 id="6、子查询"><a href="#6、子查询" class="headerlink" title="6、子查询"></a>6、子查询</h4><ol>
+<li>含义：出现在其他语句中的select语句，称为子查询或内查询</li>
+<li>分类：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">按子查询出现的位置：<br>		select后面：<br>			仅仅支持标量子查询<br>		from后面：<br>			支持表子查询<br>		where或having后面： &#x2F;&#x2F; 重点<br>			标量子查询	   &#x2F;&#x2F;  重点<br>			列子查询		&#x2F;&#x2F; 重点<br>			行子查询		&#x2F;&#x2F; 重点<br>		exists后面（相关子查询）<br>			表子查询<br>按结果集的行列数不同：<br>		标量子查询：结果集只有一行一列<br>		列子查询：结果集有一列多行<br>		行子查询：结果集有一行多列<br>		表子查询：结果集有多行多列<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>（一）where或having后面</li>
+</ul>
+<ol>
+<li><p>标量子查询（单行子查询）</p>
+</li>
+<li><p>列子查询（多行子查询）</p>
+</li>
+<li><p>行子查询（多行多列）</p>
+</li>
+<li><p>特点：（1）子查询放在小括号内</p>
+<p>​           （2）子查询一般放在条件的右侧</p>
+<p>​            （3）标量子查询，一般搭配着单行操作符使用&lt;  &gt; =   &gt;=  &lt;=等</p>
+<p>​                     列子查询，一般搭配多行操作符使用 in, any,some, all</p>
+<p>​              (4)子查询的执行优先于主查询，因为主查询要用到子查询</p>
+</li>
+<li><p>标量子查询</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">案例：谁的工资比sam高？<br>#查询sam的工资<br>select salary<br>from employees<br>where last_name &#x3D; &#39;sam&#39;；<br><br>#查询员工的信息，满足salary &gt; sam工资 的结果<br>select *<br>from employees<br>where salary &gt;(<br>    select salary<br>    from employees      &#x2F;&#x2F;为更清晰的表达，子查询最好进行缩进<br>    where last_name &#x3D; &#39;sam&#39;  <br>)；<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">案例：返回公司工资最少的员工的last_name,job_id,salary<br>#查询公司的最低工资<br>select min(salary)<br>from empolyees;<br><br>#查询last_name, job_id, salary, 要求salary&#x3D; 公司的最低工资<br>select last_name, job_id, salary<br>from employees<br>where salary&#x3D;(<br>    select min(salary)<br>    from empolyees<br>);<br></code></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li>列子查询(多行子查询）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">案例：返回location_id是1400或1700的部门中的所有员工姓名<br>#查询location_id是1700或1400的部门编号<br>select department_id<br>from departments<br>where location_id in(1400, 1700);<br><br>#查询员工姓名，要求部门号是上个查询结果中的某一个<br>select employees<br>where department_id in(<br>    select department_id<br>    from departments<br>    where location_id in(1400, 1700)<br>);<br></code></pre></td></tr></table></figure>
+
+
+
+<ol start="3">
+<li><p>行子查询（多行多列）</p>
+<p>略</p>
+</li>
+</ol>
+<ul>
+<li>（二）放在select后面的标量子查询</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">案例：查询每个部门的员工个数<br>select d.*, (<br>	select count(*)<br>	from empolyees e<br>	where e.department_id &#x3D; d.&#39;department_id&#39;<br>) 个数<br>from departments d;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>（三）放在from后面<ul>
+<li>将子查询结果当成一张表，要求必须起别名</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">案例：查询每个部门的平均工资的平均等级<br>#查询每个部门的平均工资<br>select avg(salary), department_id<br>from employees<br>group by department_id<br><br>#连接上个查询结果集和job_grades表，筛选条件平均工资<br>select ag_dep.*, g.&#39;grade_level&#39;<br>from(<br>	select avg(salary), department_id<br>	from employees<br>	group by department_id<br>) ag_dep<br>inner join job_grades g<br>on ag_dep.ag between lowest_sal and highest_sal;<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>（四）放在exists后面（相关子查询）<ul>
+<li>能用exists的都能用in代替</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">语法：<br>	exists 完整的查询语句<br>结果：0或1   &#x2F;&#x2F;返回一个布尔值<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">案例：查询员工的部门名<br>select department_name<br>from departments d<br>where exists(<br>	select *<br>	from employees e<br>	where d.&#39;department_id&#39;&#x3D;e.&#39;depaertment_id&#39;<br>);<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="7、分页查询"><a href="#7、分页查询" class="headerlink" title="7、分页查询"></a>7、分页查询</h4><ol>
+<li>应用场景：当要显示的数据，一页显示不全，需要枫叶提交sql请求</li>
+<li>语法：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select 查询列表<br>from 表<br>连接类型 join 表2<br>on 连接条件<br>where 筛选条件<br>group by 分组字段<br>having 分组后的筛选<br>order by 排序的字段<br>limit offset, size;<br><br>offset要显示条目的起始索引（起始索引从0开始）<br>size 要显示的条目个数<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>案例：查询前五条员工信息</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select * from employees limit 0, 5;<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>案例2：查询11条—第25条</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select * from employees limit 10, 15;<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>案例3：有奖金的员工信息，并且工资较高的前10名显示出来</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select *<br>from employees<br>where commission_pic is not null<br>order by salsry desc<br>limit 10;<br></code></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>特点：</li>
+</ol>
+<ul>
+<li>limit语句放在查询语句德尔最后</li>
+<li>公式：要显示的页数page，每页的条目数size</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select 查询列表<br>from 表<br>limit (page-1)*size, size;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="8、联合查询"><a href="#8、联合查询" class="headerlink" title="8、联合查询"></a>8、联合查询</h4><ol>
+<li>union联合 ：将多个查询语句的结果合并成一个结果</li>
+<li>语法：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">查询语句1<br>union<br>查询语句2<br>union<br>...<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>案例：查询部门编号&gt;90或邮箱包含a的员工信息</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">select *<br>from employees<br>where email like &#39;%a%&#39; or deaprtment_id&gt;90;<br><br>select *<br>from employees<br>where email like &#39;%a%&#39;<br>union<br>select *<br>from employees<br>where deparment_id&gt;90;<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>特点：</li>
+</ol>
+<ul>
+<li>要求多条查询语句的查询列数是一致的</li>
+<li>要求多条查询语句的查询的每一列的类型和顺序最好一致</li>
+<li>union关键字默认去重，如果使用union all 可以包含重复选项</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>Mysql</tag>
+        <tag>SQL</tag>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>正则</title>
+    <url>/2020/10/16/%E6%AD%A3%E5%88%99/</url>
+    <content><![CDATA[<p>#正则<br>-关于贪婪与非贪婪<br>    .<em>? 非贪婪，匹配到需要的就结束，不管后面是否有符合的<br>    .</em>  贪婪，会一直匹配所有的符合项，直到匹配结束</p>
+<p>compile 最好不要使用，这是多此一举，直接re.findall进行正则匹配</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>管理学</title>
+    <url>/2020/05/03/%E7%AE%A1%E7%90%86%E5%AD%A6/</url>
+    <content><![CDATA[<h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><ol>
+<li><p>管理学的产生与发展。</p>
+</li>
+<li><p>学习管理学的意义、理论指导、科学思维以及基本方法。</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3></li>
+</ol>
+<h2 id="第一章-管理学导论"><a href="#第一章-管理学导论" class="headerlink" title="第一章 管理学导论"></a>第一章 管理学导论</h2><ol>
+<li><p>理解组织与管理的内涵。</p>
+</li>
+<li><p>认识组织的特征、企业的特征。</p>
+</li>
+<li><p>管理工作的主要内容。</p>
+</li>
+<li><p>理解管理的本质。</p>
+</li>
+<li><p>如何理解管理的科学性与艺术性。</p>
+</li>
+<li><p>管理的基本原理、基本方法与工具。</p>
+</li>
+<li><p>认识理性分析与直觉判断的关系。</p>
+<a id="more"></a>
+
+</li>
+</ol>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><h2 id="第二章-管理理论的历史演变"><a href="#第二章-管理理论的历史演变" class="headerlink" title="第二章 管理理论的历史演变"></a>第二章 管理理论的历史演变</h2><ol>
+<li><p>理解泰勒科学管理的基本思想。</p>
+</li>
+<li><p>理解法约尔的一般管理理论的主要思想。</p>
+</li>
+<li><p>理解韦伯组织理论在管理实践中的意义。</p>
+</li>
+<li><p>组织协调机制主要有哪些形式？</p>
+</li>
+<li><p>理解组织合法性的内涵以及对组织结构变化的影响。</p>
+</li>
+<li><p>现代系统与权变管理理论的主要思想。</p>
+</li>
+<li><p>理解西蒙决策理论的主要观点。 </p>
+</li>
+</ol>
+<h2 id="第三章-决策与决策过程"><a href="#第三章-决策与决策过程" class="headerlink" title="第三章 决策与决策过程"></a>第三章 决策与决策过程</h2><ol>
+<li><p>如何理解决策，决策有哪些基本特征？</p>
+</li>
+<li><p>理解决策与计划之间的关系。</p>
+</li>
+<li><p>不同的决策类型及其异同之处。</p>
+</li>
+<li><p>理解一般的决策过程是如何制定的。</p>
+</li>
+<li><p>决策的影响因素有哪些？</p>
+</li>
+<li><p>按照不同准则分别选择最优决策方案。</p>
+</li>
+</ol>
+<h2 id="第四章-环境分析于理性决策"><a href="#第四章-环境分析于理性决策" class="headerlink" title="第四章 环境分析于理性决策"></a>第四章 环境分析于理性决策</h2><ol>
+<li><p>理解组织与环境的关系。</p>
+</li>
+<li><p>环境分析有哪些主要方法？</p>
+</li>
+<li><p>理性决策、非理性决策和行为决策。</p>
+</li>
+<li><p>决策方案生成的主要方法是什么？</p>
+</li>
+<li><p>用决策树方法来评价和选择一个具体的决策方案。</p>
+</li>
+<li><p>用蒂蒙斯教授的机会评价框架评价一个创新或创业机会。</p>
+</li>
+</ol>
+<h2 id="第五章-决策的事实与调整"><a href="#第五章-决策的事实与调整" class="headerlink" title="第五章 决策的事实与调整"></a>第五章 决策的事实与调整</h2><ol>
+<li><p>理解计划与决策的区别。 </p>
+</li>
+<li><p>掌握目标管理的基本主张和特点。</p>
+</li>
+</ol>
+<h2 id="第六章-组织与设计"><a href="#第六章-组织与设计" class="headerlink" title="第六章 组织与设计"></a>第六章 组织与设计</h2><ol>
+<li><p>理解组织结构设计包括哪些内容。</p>
+</li>
+<li><p>理解机械式组织与有机式组织的区别。</p>
+</li>
+<li><p>理解正式组织与非正式组织的整合。</p>
+</li>
+</ol>
+<h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3>]]></content>
+      <categories>
+        <category>管理学</category>
+      </categories>
+      <tags>
+        <tag>管理学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tcp/ip</title>
+    <url>/2020/05/03/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[<h1 id="网络协议"><a href="#网络协议" class="headerlink" title="网络协议"></a>网络协议</h1><p><a href="http://blog.sina.com.cn/s/blog_52ddfea30100nssx.html" target="_blank" rel="noopener">相关博客</a></p>
+<h2 id="以太网"><a href="#以太网" class="headerlink" title="以太网"></a>以太网</h2><h3 id="以太网术语"><a href="#以太网术语" class="headerlink" title="以太网术语"></a>以太网术语</h3><p>以太网遵循一组控制其基本操作的简单规则。为了更好地理解这些规则，了解基本的以太网术语十分重要。 </p>
+<ol>
+<li>介质——以太网设备连接到一个公共介质上，该介质为电气信号的传输提供了一条路径。历史上一直使用同轴铜电缆作为传输介质，但是目前双绞线或光纤更为多见。 </li>
+<li>网段——我们将单个共享介质称作一个以太网段。 </li>
+<li>节点——连接到网段的设备称作站点或节点。 </li>
+<li>帧——节点使用称作帧的简短消息进行通信，帧是大小不固定的信息块。 帧类似于人类语言中的句子。在中文里，我们构造句子时会有一些规则，例如每个句子必须包含主语和谓语。以太网协议也规定了用于构造帧的一组规则。对于帧的最大和最小长度有明确规定，而且帧中必须包含一组必需的信息段。例如，每个帧必须包括目标地址和源地址，它们分别指出了消息的接收方和发送方。通过地址可标识唯一的节点，就像通过姓名可找出某个人一样。任何两个以太网设备都不应具有相同的地址。<a id="more"></a>
+####TCP/IP协议原理图及解释</li>
+</ol>
+<p><a href="http://s3.sinaimg.cn/middle/52ddfea3t998861108572&690" target="_blank" rel="noopener">原理图链接</a></p>
+<p><strong>应用层（FTP协议）:</strong></p>
+<p>首先我们说说应用层，应用层就像在特定城市特定大厦特定房间内的某一个用户，应用层之间的通讯就像两个不同用户之间发送的信，这个信是点对点的，从一个用户（某一主机内特定应用程序）到另外一个特定用户（另一主机内特定应用程序）。一个主机（大厦）内可能有很多应用程序（客户），我们如何区分它们呢，实际生活中我们用房间号，在电脑内部区分不同应用程序我们用端口号。</p>
+<p><strong>传输层(TCP):</strong></p>
+<p>用户写好了信，需要给信套上信封，并且写好发件人所在大厦，和收件人所在大厦，实际生活中的大厦完全可以类比为我们的计算机和服务器。传输层（TCP）就是在两个不同主机之间传输信息的协议。</p>
+<p><strong>网络层(IP):</strong></p>
+<p>邮件准备好了，他首先会被送到本城市的快递公司，并且被打包，包裹上会写着源是重庆快递公司，目的是沈阳快递公司，但是重庆快递公司发现它不能直接发货到沈阳，需要通过北京快递公司进行中转。所以虽然目的是沈阳，但是他首先把这个包裹发给了北京。某个城市的快递公司就像IP协议，要抵达目的IP，需要查询路由表，如果发现目的地址不是直连就需要找下一跳。通过了解快递公司的工作，我们了解到IP协议是逐跳工作的。每一跳（路由器）根据目的IP地址查询下一跳，并且最终转发到目的地。</p>
+<p><strong>链路层（以太网）:</strong></p>
+<p>重庆快递公司已经知道他需要把包裹发给北京快递公司了，现在他就把包裹送到重庆火车站，搭上去往北京的火车，然后在北京火车站卸货。然后送到北京快递公司，北京快递公司再判断下一跳为沈阳快递公司，并且选择适当的传输方式，例如:汽车，最后通过这种传输方式送到目的地沈阳快递公司。链路层协议就像包裹的运输方式，我们可以选择以太网（火车），也可以选择令牌环（汽车）。并且链路层协议是逐介质的，从一个网卡（重庆火车站）到另外一个网卡（北京火车站）。<br>所以你会发现一个数据包从源到目的，IP地址总是不变的（源是重庆快递公司，目的是沈阳快递公司），但是链路层协议却在不断变化，第一跳源是重庆火车站，目的是北京火车站，第二跳源是北京汽车站，目的是沈阳汽车站。</p>
+<ul>
+<li><p>知名端口号一般都低于1024，客户端端口号是临时的</p>
+</li>
+<li><p>TCP对数据进行封装，并对数据的安全进行保障，IP对被TCP封装后的数据进行传输</p>
+</li>
+<li><p>UDP对数据进行包装时不会对数据是否丢包进行保障，丢包时不返回检查，例如聊天信息的传输</p>
+</li>
+<li><p>以太网的类型：0800  IP数据  （记）</p>
+<p>​                         0806  ARP请求/应答   (记)</p>
+<p>​                         8035  RARP请求/应答</p>
+</li>
+<li><p>以太网的MTU最大值是1500，当数据大小大于出口的MTU时，会进行切片，并可进行多次切片处理</p>
+</li>
+</ul>
+<h2 id="关于IP首部"><a href="#关于IP首部" class="headerlink" title="关于IP首部"></a>关于IP首部</h2><p><a href="https://blog.csdn.net/Wu000999/article/details/88617237" target="_blank" rel="noopener">IP首部链接</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20190317101238221.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1d1MDAwOTk5,size_16,color_FFFFFF,t_70" alt="img"></p>
+<ul>
+<li>详情点击上方链接（太难了。。。）</li>
+</ul>
+<h2 id="MAC-地址与-IP-地址区别"><a href="#MAC-地址与-IP-地址区别" class="headerlink" title="MAC 地址与 IP 地址区别"></a>MAC 地址与 IP 地址区别</h2><ul>
+<li>IP 地址和 MAC 地址相同点是它们都唯一，不同的特点主要有：</li>
+</ul>
+<ol>
+<li>对于网络上的某一设备，如一台计算机或一台路由器，其 IP 地址是基于网络拓扑设计出的，同一台设备或计算机上，改动 IP 地址是很容易的（但必须唯一），而 MAC 则是生产厂商烧录好的，一般不能改动。我们可以根据需要给一台主机指定任意的 IP 地址，如我们可以给局域网上的某台计算机分配 IP 地址为 192.168.0.112 ，也可以将它改成 192.168.0.200。而任一网络设备（如网卡，路由器）一旦生产出来以后，其 MAC 地址不可由本地连接内的配置进行修改。如果一个计算机的网卡坏了，在更换网卡之后，该计算机的 MAC 地址就变了。</li>
+<li>长度不同。IP 地址为 32 位，MAC 地址为 48 位。</li>
+<li>分配依据不同。IP 地址的分配是基于网络拓扑，MAC 地址的分配是基于制造商。</li>
+<li>寻址协议层不同。IP 地址应用于 OSI 第三层，即网络层，而 MAC 地址应用在 OSI 第二层，即数据链路层。 数据链路层协议可以使数据从一个节点传递到相同链路的另一个节点上（通过 MAC 地址），而网络层协议使数据可以从一个网络传递到另一个网络上（ARP 根据目的 IP 地址，找到中间节点的 MAC 地址，通过中间节点传送，从而最终到达目的网络）。</li>
+<li><strong>MAC地址其实是可以修改的，网上能搜到</strong></li>
+</ol>
+<h3 id="数据传输时"><a href="#数据传输时" class="headerlink" title="数据传输时"></a>数据传输时</h3><ul>
+<li>IP视为标记，原IP和目的IP再数据传输的过程中是不变的</li>
+<li>MAC视为步骤，每次经过网关时，IP和原MAC不变，但是目的MAC却会改变</li>
+</ul>
+<h5 id="基于TCP的应用层协议："><a href="#基于TCP的应用层协议：" class="headerlink" title="基于TCP的应用层协议："></a>基于TCP的应用层协议：</h5><ul>
+<li>HTTP：80</li>
+<li>HTTPS：443</li>
+<li>FTP：20/21</li>
+<li>SSH：22</li>
+<li>TELNET：23</li>
+<li>SMTP/POP：25/110</li>
+</ul>
+<h3 id="通过tcp包中flags的值来判断tcp的状态"><a href="#通过tcp包中flags的值来判断tcp的状态" class="headerlink" title="通过tcp包中flags的值来判断tcp的状态"></a>通过tcp包中flags的值来判断tcp的状态</h3><p>在TCP层，有个FLAGS字段，这个字段有以下几个标识：SYN, FIN, ACK, PSH, RST, URG.</p>
+<p>其中，对于我们日常的分析有用的就是前面的五个字段。<br>它们的含义是：SYN表示建立连接，FIN表示关闭连接，ACK表示响应，PSH表示有 DATA数据传输，RST表示连接重置。</p>
+<p>其中，ACK是可能与SYN，FIN等同时使用的，比如SYN和ACK可能同时为1，它表示的就是建立连接之后的响应，如果只是单个的一个SYN，它表示的只是建立连接。TCP的几次握手就是通过这样的ACK表现出来的。但SYN与FIN是不会同时为1的，因为前者表示的是建立连接，而后者表示的是断开连接。RST一般是在FIN之后才会出现为1的情况，表示的是连接重置。一般地，当出现FIN包或RST包时，我们便认为客户端与服务器端断开了连接；而当出现SYN和SYN＋ACK包时，我们认为客户端与服务器建立了一个连接。</p>
+<p>PSH为1的情况，一般只出现在 DATA内容不为0的包中，也就是说PSH为1表示的是有真正的TCP数据包内容被传递。<br>TCP的连接建立和连接关闭，都是通过请求－响应的模式完成的。</p>
+<p>TCP三次握手：<br>TCP(Transmission Control Protocol)传输控制协议<br>TCP是主机对主机层的传输控制协议，提供可靠的连接服务，采用三次握手确认建立一个连接：</p>
+<p>位码即tcp标志位，有6种标示：SYN(synchronous建立联机) ACK(acknowledgement 确认) PSH(push传送) FIN(finish结束) RST(reset重置) URG(urgent紧急)Sequence number(顺序号码) Acknowledge number(确认号码)</p>
+<p>三次握手详解如下：<br>一个虚拟连接的建立是通过三次握手来实现的</p>
+<p>(B) –&gt; [SYN] –&gt; (A)<br>假如服务器A和客户机B通讯. 当A要和B通信时，B首先向A发一个SYN (Synchronize) 标记的包，告诉A请求建立连接.<br>注意: 一个 SYN包就是仅SYN标记设为1的TCP包(参见TCP包头Resources). 认识到这点很重要，只有当A受到B发来的SYN包，才可建立连接，除此之外别无他法。因此，如果你的防火墙丢弃所有的发往外网接口的SYN包，那么你将不能让外部任何主机主动建立连接。<br>(B) &lt;– [SYN /ACK] &lt;–(A)<br>接着，A收到后会发一个对SYN包的确认包(SYN/ACK)回去，表示对第一个SYN包的确认，并继续握手操作.<br>注意: SYN/ACK包是仅SYN 和 ACK 标记为1的包.<br>(B) –&gt; [ACK] –&gt; (A)<br>B收到SYN/ACK 包,B发一个确认包(ACK)，通知A连接已建立。至此，三次握手完成，一个TCP连接完成<br>Note: ACK包就是仅ACK 标记设为1的TCP包. 需要注意的是当三此握手完成、连接建立以后，TCP连接的每个包都会设置ACK位<br>握手阶段：<br>序号 方向 seq ack</p>
+<ol>
+<li>A-&gt;B 10000 0</li>
+<li>B-&gt;A 20000 10000+1=10001</li>
+<li>A-&gt;B 10001 20000+1=20001<br>解释：<br>1：A向B发起连接请求，以一个随机数初始化A的seq,这里假设为10000，此时ACK＝0<br>2：B收到A的连接请求后，也以一个随机数初始化B的seq，这里假设为20000，意思是：你的请求我已收到，我这方的数据流就从这个数开始。B的ACK是A的seq加1，即10000＋1＝10001<br>3：A收到B的回复后，它的seq是它的上个请求的seq加1，即10000＋1＝10001，意思也是：你的回复我收到了，我这方的数据流就从这个数开始。A此时的ACK是B的seq加1，即20000+1=20001<br>数据传输阶段：<br>序号　　方向　　　　　　seq ack size<br>23 A-&gt;B 40000 70000 1514<br>24 B-&gt;A 70000 40000+1514-54=41460 54<br>25 A-&gt;B 41460 70000+54-54=70000 1514<br>26 B-&gt;A 70000 41460+1514-54=42920 54<br>解释：<br>23:B接收到A发来的seq=40000,ack=70000,size=1514的数据包<br>24:于是B向A也发一个数据包，告诉B，你的上个包我收到了。B的seq就以它收到的数据包的ACK填充，ACK是它收到的数据包的SEQ加上数据包的大小(不包括以太网协议头，IP头，TCP头)，以证实B发过来的数据全收到了。<br>25:A在收到B发过来的ack为41460的数据包时，一看到41460，正好是它的上个数据包的seq加上包的大小，就明白，上次发送的数据包已安全到达。于是它再发一个数据包给B。这个正在发送的数据包的seq也以它收到的数据包的ACK填充，ACK就以它收到的数据包的seq(70000)加上包的size(54)填充,即ack=70000+54-54(全是头长，没数据项)。<br>其实在握手和结束时确认号应该是对方序列号加1,传输数据时则是对方序列号加上对方携带应用层数据的长度.如果从以太网包返回来计算所加的长度,就嫌走弯路了.<br>另外,如果对方没有数据过来,则自处己的确认号不变,序列号为上次的序列号加上本次应用层数据发送长度.</li>
+</ol>
+<p><img src="https://iknow-pic.cdn.bcebos.com/b219ebc4b74543a99d881d8113178a82b80114ef?x-bce-process=image/resize,m_lfit,w_600,h_800,limit_1" alt="img"></p>
+<p><a href="https://blog.csdn.net/hushengqiang/article/details/44180557" target="_blank" rel="noopener">原文链接</a></p>
+<h3 id="TCP-IP的四元组、五元组、七元组"><a href="#TCP-IP的四元组、五元组、七元组" class="headerlink" title="TCP/IP的四元组、五元组、七元组"></a>TCP/IP的四元组、五元组、七元组</h3><ol>
+<li><p>四元组是：源IP地址、目的IP地址、源端口、目的端口</p>
+</li>
+<li><p>五元组是:   源IP地址、目的IP地址、协议号、源端口、目的端口</p>
+</li>
+<li><p>七元组是:    源IP地址、目的IP地址、协议号、源端口、目的端口，服务类型以及接口索引</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>网络协议</category>
+      </categories>
+      <tags>
+        <tag>网络协议</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网络安全之网络基础</title>
+    <url>/2020/10/16/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E4%B9%8B%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[<h1 id="网络安全"><a href="#网络安全" class="headerlink" title="网络安全"></a>网络安全</h1><ul>
+<li><a href="https://www.bilibili.com/video/BV1i7411G7vm/?p=8" target="_blank" rel="noopener">相关视频链接</a></li>
+</ul>
+<h2 id="交换机与路由器"><a href="#交换机与路由器" class="headerlink" title="交换机与路由器"></a>交换机与路由器</h2><ul>
+<li>交换机——组建局域网的重要部分</li>
+<li>路由器——链接内网与外网</li>
+<li><a href="http://net.zol.com.cn/640/6403251.html" target="_blank" rel="noopener">相关文章链接</a></li>
+<li>子网掩码(netmask)——确定网段，在同一局域网中，网段相同的 IP 地址才能互相通信</li>
+<li>回环地址：127.0.0.1   ，相当与电脑自己的地址，通常用来ping自己的网卡是否正常</li>
+<li>一般网关的IP地址是网段+主机名的最后一位或第一位</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>网络协议</tag>
+        <tag>交换路由技术</tag>
       </tags>
   </entry>
 </search>

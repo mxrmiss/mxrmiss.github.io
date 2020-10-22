@@ -46,7 +46,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-Linux" class="article article-type-post" itemscope
+  <article id="post-Linux基础" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -63,7 +63,7 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/03/Linux/" class="article-date">
+      <a href="/2020/05/03/Linux%E5%9F%BA%E7%A1%80/" class="article-date">
   <time datetime="2020-05-03T01:08:28.000Z" itemprop="datePublished">2020-05-03</time>
 </a>
       
@@ -78,7 +78,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.4k</span>
+            <span class="post-count">3k</span>
         </span>
     </span>
 
@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">10 分钟</span>
+            <span class="post-count">12 分钟</span>
         </span>
     </span>
 </div>
@@ -161,6 +161,12 @@
 <h3 id="安装内核头文件"><a href="#安装内核头文件" class="headerlink" title="安装内核头文件"></a>安装内核头文件</h3><ul>
 <li>输入命令：apt-get install linux-headers-$(uname -r)或者直接敲apt-get install linux-headers-在这时候你按键盘上的tab键，找你本系统的头文件安装即可</li>
 </ul>
+<h3 id="安装照相机"><a href="#安装照相机" class="headerlink" title="安装照相机"></a>安装照相机</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo apt install cheese<br></code></pre></td></tr></table></figure>
+
+<h3 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo service bluetooth start  &#x2F;&#x2F;打开蓝牙配适器<br>sudo service bluetooth stop   &#x2F;&#x2F;关闭蓝牙配适器<br></code></pre></td></tr></table></figure>
+
+
+
 <h3 id="关于Anaconda的安装"><a href="#关于Anaconda的安装" class="headerlink" title="关于Anaconda的安装"></a>关于Anaconda的安装</h3><ul>
 <li><p>在清华镜像站下载Anaconda</p>
 </li>
@@ -198,12 +204,32 @@
 </ul>
 </li>
 </ul>
+<h3 id="关于输入法的问题"><a href="#关于输入法的问题" class="headerlink" title="关于输入法的问题"></a>关于输入法的问题</h3><ul>
+<li>搜狗输入法兼容性不咋地，反正安装了很多遍都不行</li>
+<li>谷歌输入法可以用，基于小企鹅输入法使用，但是也不咋地，毕竟是外国人做的中国输入法，不怎么走心</li>
+<li>推荐使用百度输入法，基于小企鹅输入法，首先上官网搜索压缩包，解压后找到安装包文件进行安装，最重要一点是安装后关机重启，重启后系统会自动帮助你进行百度输入法的一些个性化的设置，接着到输入法设置中应用百度输入法就OK了</li>
+</ul>
+<h3 id="wps字体问题"><a href="#wps字体问题" class="headerlink" title="wps字体问题"></a>wps字体问题</h3><ul>
+<li>使用wps for linux2019 时可能有些中文字体会出现乱码，原因是系统缺失相应的字体</li>
+<li>将Windows系统下的Windows目录中的Fonts文件夹复制到Linux系统中的/usr/share/fonts/目录下，再执行以下命令</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo fc-cache -fv     &#x2F;&#x2F;识别字体库<br><br>fc-list :lang&#x3D;zh-cn | sort    &#x2F;&#x2F;确认是否安装<br></code></pre></td></tr></table></figure>
+
+
+
+
+
 <h3 id="关于vmware-虚拟机安装"><a href="#关于vmware-虚拟机安装" class="headerlink" title="关于vmware 虚拟机安装"></a>关于vmware 虚拟机安装</h3><ol>
 <li>官网下载虚拟机最新版本</li>
 <li>chmod -x 下载的文件</li>
 <li>sudo bash 下载的文件</li>
 <li>之后就可以在电脑中找到虚拟机，并进行下一步的安装操作</li>
 </ol>
+<h3 id="linux-vmware升级问题"><a href="#linux-vmware升级问题" class="headerlink" title="linux-vmware升级问题"></a>linux-vmware升级问题</h3><p><a href="https://www.cnblogs.com/wjshan0808/p/4110495.html" target="_blank" rel="noopener">解决 linux升级 导致VMware启动出现”before you can run vmware workstation, serveral modules must be complied and loaded into the runing kernel” 而无法卸载</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs plain"># vmware-uninstall <br>You have gotten this message because you are either downgrading VMware<br>Workstation, Player, or VIX, or because you attempted to run either<br>vmware-uninstall or vmware-uninstall-vix.<br><br>If you are downgrading, please uninstall all newer versions first, then<br>install again.<br><br>The vmware-uninstall* scripts have been deprecated.  Instead, please use<br>the vmware-installer.<br><br>Long form:<br>      vmware-installer --uninstall-product PRODUCT<br>Short form:<br>      vmware-installer -u PRODUCT<br><br>Where PRODUCT is one of vmware-workstation, vmware-player, or vmware-vix.<br><br>For a list of which products are installed, you may run:<br>      vmware-installer --list-products<br>or:<br>      vmware-installer -l<br><br><br># vmware-installer -l<br>Product Name         Product Version     <br>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; &#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>vmware-workstation   10.0.4.2249910      <br># vmware-installer -u vmware-workstation<br></code></pre></td></tr></table></figure>
+
+
+
 <h3 id="man-中文手册下载"><a href="#man-中文手册下载" class="headerlink" title="man 中文手册下载"></a>man 中文手册下载</h3><ol>
 <li>Debian / Ubuntu安装</li>
 </ol>
@@ -223,6 +249,28 @@
 <li>Fedora:</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">dnf update<br>dnf install man-pages-zh-CN<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="kali内核更新安装"><a href="#kali内核更新安装" class="headerlink" title="kali内核更新安装"></a>kali内核更新安装</h3><ol>
+<li>查看内核版本</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">uname -r<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>检查linux是否安装对应的头文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo apt-cache search linux-headers<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>安装更新头文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo apt install linux-headers-$(uname -r)<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>内核头文件检测是否安装</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo dpkg-query -s linux-headers-&#96;uname -r&#96;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -313,7 +361,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/03/Linux/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/03/Linux%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -331,19 +379,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/05/03/mongod_note/" class="article-nav-link">
+      <a href="/2020/05/03/Git/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            MongoDB
+            Git &amp; Github
           
         </div>
       </a>
     
     
-      <a href="/2020/05/03/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="article-nav-link">
+      <a href="/2020/05/03/mongod_note/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">tcp/ip</div>
+        <div class="article-nav-title">MongoDB</div>
       </a>
     
   </nav>

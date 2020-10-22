@@ -1,5 +1,5 @@
 ---
-title: Linux
+title: Linux基础
 date: 2020/5/3 9:08:28
 comments: ture
 categories:
@@ -91,6 +91,40 @@ sudo apt install cheese
 sudo service bluetooth start  //打开蓝牙配适器
 sudo service bluetooth stop   //关闭蓝牙配适器
 ```
+
+### 关闭进程
+
+- 有时候应用被我们1关闭了，可它还在后台运行，这就要求我们手动关闭进程
+- kill -9 进程IP    //可利用htop命令查看进程IP
+- 若没有htop，可下载
+
+```
+sudo apt install htop
+```
+
+
+
+### 卸载 IntelliJ IDEA(类似卸载可参考)
+
+1. 寻找Intellij IDEA 里面是否有uninstall.sh文件，有就能直接卸载
+2. 若没有，则在里面找说明文档，找到相关配置文件所在的目录，将IntelliJ IDEA 文件夹及其相关配置文件一起删除
+3. 可能会存在开始菜单栏里依然有图标显示的问题，
+
+```
+cd ~/.local/share/applications
+```
+
+4. 之后在applications文件夹里找到相对应的配置文件删除即可
+
+
+
+
+
+### linux换源
+
+- 进入目录  /etc/apt/
+- sudo vim source.list
+- 上网寻找适合自己的源
 
 
 
