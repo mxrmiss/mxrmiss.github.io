@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-10-16T09:12:27.772Z</updated>
+  <updated>2020-10-22T05:18:36.064Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,136 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>win_10 开机自启文件夹</title>
+    <link href="http://yoursite.com/2020/10/22/win_10%20%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
+    <id>http://yoursite.com/2020/10/22/win_10%20%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E6%96%87%E4%BB%B6%E5%A4%B9/</id>
+    <published>2020-10-22T05:08:29.755Z</published>
+    <updated>2020-10-22T05:18:36.064Z</updated>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;所有用户的开机自启文件夹&quot;&gt;&lt;a href=&quot;#所有用户的开机自启文件夹&quot; class=&quot;headerlink&quot; title=&quot;所有用户的开机自启文件夹&quot;&gt;&lt;/a&gt;所有用户的开机自启文件夹&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;英文路径&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>bat批处理文件</title>
+    <link href="http://yoursite.com/2020/10/22/bat%E6%89%B9%E5%A4%84%E7%90%86%E6%96%87%E4%BB%B6/"/>
+    <id>http://yoursite.com/2020/10/22/bat%E6%89%B9%E5%A4%84%E7%90%86%E6%96%87%E4%BB%B6/</id>
+    <published>2020-10-22T04:22:40.155Z</published>
+    <updated>2020-10-22T05:20:04.880Z</updated>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;bat批处理命令及解释&quot;&gt;&lt;a href=&quot;#bat批处理命令及解释&quot; class=&quot;headerlink&quot; title=&quot;bat批处理命令及解释&quot;&gt;&lt;/a&gt;bat批处理命令及解释&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/xpwi/p/9626959.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;相关原文链接&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;一、批处理概念&quot;&gt;&lt;a href=&quot;#一、批处理概念&quot; class=&quot;headerlink&quot; title=&quot;一、批处理概念&quot;&gt;&lt;/a&gt;一、批处理概念&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;批处理文件：包含DOS命令的可编辑可执行文件&lt;/li&gt;
+&lt;li&gt;批处理：可以对某一对象批量操作的文件&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>反弹shell原理</title>
+    <link href="http://yoursite.com/2020/10/22/%E5%8F%8D%E5%BC%B9shell%E5%8E%9F%E7%90%86/"/>
+    <id>http://yoursite.com/2020/10/22/%E5%8F%8D%E5%BC%B9shell%E5%8E%9F%E7%90%86/</id>
+    <published>2020-10-21T17:17:51.870Z</published>
+    <updated>2020-10-22T05:18:52.252Z</updated>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;hr&gt;
+&lt;h1 id=&quot;反弹shell原理&quot;&gt;&lt;a href=&quot;#反弹shell原理&quot; class=&quot;headerlink&quot; title=&quot;反弹shell原理&quot;&gt;&lt;/a&gt;反弹shell原理&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/iouwenbo/p/11277453.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;相关原文链接&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;反弹shell定义&quot;&gt;&lt;a href=&quot;#反弹shell定义&quot; class=&quot;headerlink&quot; title=&quot;反弹shell定义&quot;&gt;&lt;/a&gt;反弹shell定义&lt;/h2&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown_doc_for_HBulider</title>
+    <link href="http://yoursite.com/2020/10/21/Markdown_HBuilderX/"/>
+    <id>http://yoursite.com/2020/10/21/Markdown_HBuilderX/</id>
+    <published>2020-10-21T01:08:28.000Z</published>
+    <updated>2020-10-21T03:41:14.597Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;markdown-更简洁、更高效&quot;&gt;&lt;a href=&quot;#markdown-更简洁、更高效&quot; class=&quot;headerlink&quot; title=&quot;markdown - 更简洁、更高效&quot;&gt;&lt;/a&gt;markdown - 更简洁、更高效&lt;/h1&gt;&lt;p&gt;=================================================&lt;/p&gt;
+&lt;p&gt;强烈建议开发者认真阅读本文档，掌握md及HBuilderX对md的强大支持。&lt;br&gt;&lt;em&gt;窄屏幕下，可按Alt+滚轮横向滚动&lt;/em&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Markdown" scheme="http://yoursite.com/categories/Markdown/"/>
+    
+    
+      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown_doc_for_Typora</title>
+    <link href="http://yoursite.com/2020/10/21/Markdown_Typora/"/>
+    <id>http://yoursite.com/2020/10/21/Markdown_Typora/</id>
+    <published>2020-10-20T16:00:00.000Z</published>
+    <updated>2020-10-21T03:40:34.261Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Markdown-For-Typora&quot;&gt;&lt;a href=&quot;#Markdown-For-Typora&quot; class=&quot;headerlink&quot; title=&quot;Markdown For Typora&quot;&gt;&lt;/a&gt;Markdown For Typora&lt;/h1&gt;&lt;h2 id=&quot;Overview&quot;&gt;&lt;a href=&quot;#Overview&quot; class=&quot;headerlink&quot; title=&quot;Overview&quot;&gt;&lt;/a&gt;Overview&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Markdown&lt;/strong&gt; is created by &lt;a href=&quot;http://daringfireball.net/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Daring Fireball&lt;/a&gt;; the original guideline is &lt;a href=&quot;http://daringfireball.net/projects/markdown/syntax&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;here&lt;/a&gt;. Its syntax, however, varies between different parsers or editors. &lt;strong&gt;Typora&lt;/strong&gt; is using &lt;a href=&quot;https://help.github.com/articles/github-flavored-markdown/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub Flavored Markdown&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Markdown" scheme="http://yoursite.com/categories/Markdown/"/>
+    
+    
+      <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>netcat使用</title>
+    <link href="http://yoursite.com/2020/10/20/%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80/"/>
+    <id>http://yoursite.com/2020/10/20/%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80/</id>
+    <published>2020-10-20T00:46:40.000Z</published>
+    <updated>2020-10-22T05:19:45.572Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;netcat命令选项&quot;&gt;&lt;a href=&quot;#netcat命令选项&quot; class=&quot;headerlink&quot; title=&quot;netcat命令选项&quot;&gt;&lt;/a&gt;netcat命令选项&lt;/h2&gt;&lt;h4 id=&quot;本文参考文章链接&quot;&gt;&lt;a href=&quot;#本文参考文章链接&quot; class=&quot;headerlink&quot; title=&quot;本文参考文章链接&quot;&gt;&lt;/a&gt;本文参考文章链接&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;https://www.fujieace.com/linux/nc-2.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;本文参考文章链接1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://jiajunhuang.com/articles/2020_09_19-linux_cmd_netcat.md.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;本文参考文章链接2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.cnblogs.com/lpfuture/p/5719066.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;本文参考文章链接3&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="网络安全" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="黑客技术" scheme="http://yoursite.com/tags/%E9%BB%91%E5%AE%A2%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux高级</title>
@@ -60,39 +190,6 @@
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;插入语句&quot;&gt;&lt;a href=&quot;#插入语句&quot; class=&quot;headerlink&quot; title=&quot;插入语句&quot;&gt;&lt;/a&gt;插入语句&lt;/h3&gt;&lt;h4 id=&quot;方式一：经典插入语句&quot;&gt;&lt;a href=&quot;#方式一：经典插入语句&quot; class=&quot;headerlink&quot; title=&quot;方式一：经典插入语句&quot;&gt;&lt;/a&gt;方式一：经典插入语句&lt;/h4&gt;
-    
-    </summary>
-    
-    
-      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-      <category term="Mysql" scheme="http://yoursite.com/tags/Mysql/"/>
-    
-      <category term="SQL" scheme="http://yoursite.com/tags/SQL/"/>
-    
-      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据库</title>
-    <link href="http://yoursite.com/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    <id>http://yoursite.com/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
-    <published>2020-10-16T09:12:27.772Z</published>
-    <updated>2020-10-16T09:12:27.772Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;数据库的学习（一）&quot;&gt;&lt;a href=&quot;#数据库的学习（一）&quot; class=&quot;headerlink&quot; title=&quot;数据库的学习（一）&quot;&gt;&lt;/a&gt;数据库的学习（一）&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV12b411K7Zu/?p=28&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;相关视频链接&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;数据库及其概念&quot;&gt;&lt;a href=&quot;#数据库及其概念&quot; class=&quot;headerlink&quot; title=&quot;数据库及其概念&quot;&gt;&lt;/a&gt;数据库及其概念&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;DB 数据库&lt;/li&gt;
-&lt;li&gt;DBMS 数据库管理系统，如Mysql， MongoDB 等，用来管理与操作DB&lt;/li&gt;
-&lt;li&gt;SQL  管理数据库的语言，几乎被所有的DBMS支持&lt;/li&gt;
-&lt;li&gt;DB是大宅子，DBMS是宅子管家，SQL是管家的指挥口令&lt;/li&gt;
-&lt;/ul&gt;
     
     </summary>
     
@@ -161,11 +258,44 @@
   </entry>
   
   <entry>
+    <title>数据库</title>
+    <link href="http://yoursite.com/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    <id>http://yoursite.com/2020/10/16/%E6%95%B0%E6%8D%AE%E5%BA%93/</id>
+    <published>2020-10-16T09:12:27.772Z</published>
+    <updated>2020-10-16T09:12:27.772Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;数据库的学习（一）&quot;&gt;&lt;a href=&quot;#数据库的学习（一）&quot; class=&quot;headerlink&quot; title=&quot;数据库的学习（一）&quot;&gt;&lt;/a&gt;数据库的学习（一）&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV12b411K7Zu/?p=28&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;相关视频链接&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;数据库及其概念&quot;&gt;&lt;a href=&quot;#数据库及其概念&quot; class=&quot;headerlink&quot; title=&quot;数据库及其概念&quot;&gt;&lt;/a&gt;数据库及其概念&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;DB 数据库&lt;/li&gt;
+&lt;li&gt;DBMS 数据库管理系统，如Mysql， MongoDB 等，用来管理与操作DB&lt;/li&gt;
+&lt;li&gt;SQL  管理数据库的语言，几乎被所有的DBMS支持&lt;/li&gt;
+&lt;li&gt;DB是大宅子，DBMS是宅子管家，SQL是管家的指挥口令&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="数据库" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+      <category term="Mysql" scheme="http://yoursite.com/tags/Mysql/"/>
+    
+      <category term="SQL" scheme="http://yoursite.com/tags/SQL/"/>
+    
+      <category term="数据库" scheme="http://yoursite.com/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>网络编程</title>
     <link href="http://yoursite.com/2020/10/16/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
     <id>http://yoursite.com/2020/10/16/python%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</id>
     <published>2020-10-15T16:00:00.000Z</published>
-    <updated>2020-10-16T09:15:45.956Z</updated>
+    <updated>2020-10-21T11:19:04.778Z</updated>
     
     <summary type="html">
     
@@ -186,7 +316,7 @@
     <link href="http://yoursite.com/2020/05/03/Git/"/>
     <id>http://yoursite.com/2020/05/03/Git/</id>
     <published>2020-05-03T01:08:28.000Z</published>
-    <updated>2020-10-16T09:18:35.840Z</updated>
+    <updated>2020-10-22T05:32:05.724Z</updated>
     
     <summary type="html">
     
@@ -208,11 +338,11 @@
   </entry>
   
   <entry>
-    <title>Linux</title>
+    <title>Linux基础</title>
     <link href="http://yoursite.com/2020/05/03/Linux%E5%9F%BA%E7%A1%80/"/>
     <id>http://yoursite.com/2020/05/03/Linux%E5%9F%BA%E7%A1%80/</id>
     <published>2020-05-03T01:08:28.000Z</published>
-    <updated>2020-10-16T09:12:27.772Z</updated>
+    <updated>2020-10-20T09:04:54.239Z</updated>
     
     <summary type="html">
     
@@ -331,6 +461,28 @@
   </entry>
   
   <entry>
+    <title>内网与外网简介</title>
+    <link href="http://yoursite.com/2020/05/03/%E5%86%85%E7%BD%91%E4%B8%8E%E5%A4%96%E7%BD%91%E7%AE%80%E4%BB%8B/"/>
+    <id>http://yoursite.com/2020/05/03/%E5%86%85%E7%BD%91%E4%B8%8E%E5%A4%96%E7%BD%91%E7%AE%80%E4%BB%8B/</id>
+    <published>2020-05-03T01:07:30.000Z</published>
+    <updated>2020-10-22T05:19:09.004Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;内网与外网&quot;&gt;&lt;a href=&quot;#内网与外网&quot; class=&quot;headerlink&quot; title=&quot;内网与外网&quot;&gt;&lt;/a&gt;内网与外网&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/147282153&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;原文链接&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;一、名词概念&quot;&gt;&lt;a href=&quot;#一、名词概念&quot; class=&quot;headerlink&quot; title=&quot;一、名词概念&quot;&gt;&lt;/a&gt;一、名词概念&lt;/h2&gt;&lt;h3 id=&quot;内网&quot;&gt;&lt;a href=&quot;#内网&quot; class=&quot;headerlink&quot; title=&quot;内网&quot;&gt;&lt;/a&gt;内网&lt;/h3&gt;
+    
+    </summary>
+    
+    
+      <category term="网络安全" scheme="http://yoursite.com/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="网络" scheme="http://yoursite.com/tags/%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>管理学</title>
     <link href="http://yoursite.com/2020/05/03/%E7%AE%A1%E7%90%86%E5%AD%A6/"/>
     <id>http://yoursite.com/2020/05/03/%E7%AE%A1%E7%90%86%E5%AD%A6/</id>
@@ -394,31 +546,6 @@
     
     
       <category term="HTML" scheme="http://yoursite.com/tags/HTML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建个人博客</title>
-    <link href="http://yoursite.com/2020/05/03/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
-    <id>http://yoursite.com/2020/05/03/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</id>
-    <published>2020-05-03T00:46:40.000Z</published>
-    <updated>2020-10-16T09:12:27.772Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;搭建静态页面个人博客&quot;&gt;&lt;a href=&quot;#搭建静态页面个人博客&quot; class=&quot;headerlink&quot; title=&quot;搭建静态页面个人博客&quot;&gt;&lt;/a&gt;搭建静态页面个人博客&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.jianshu.com/p/189fd945f38f&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;参考文献&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;&quot;&gt;参考文献&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;安装hexo&quot;&gt;&lt;a href=&quot;#安装hexo&quot; class=&quot;headerlink&quot; title=&quot;安装hexo&quot;&gt;&lt;/a&gt;安装hexo&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;检查电脑是否有node.js&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs plain&quot;&gt;node -v&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-    
-      <category term="blog" scheme="http://yoursite.com/categories/blog/"/>
-    
-    
-      <category term="blog" scheme="http://yoursite.com/tags/blog/"/>
     
   </entry>
   

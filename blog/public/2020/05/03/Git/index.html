@@ -78,7 +78,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">275</span>
+            <span class="post-count">310</span>
         </span>
     </span>
 
@@ -124,7 +124,7 @@
 <ol>
 <li>可能仓库内已经有东西了，而且使用的推送命令不对</li>
 <li>或是原来的仓库内的东西是通过网页进行上传的， 而不还是通过命令行进行上传的</li>
-<li>强制使用命令  “git commit 文件 +mster” 可能会使原仓库内的东西丢失，网上的教程都他妈的是骗人的</li>
+<li>强制使用命令  “git commit 文件 +mster” 可能会使原仓库内的东西丢失</li>
 </ol>
 </li>
 <li><p>查看git简单配置</p>
@@ -144,6 +144,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs plain">git status<br>git add *<br>git commit -m &quot;内容描述&quot;<br>git push<br></code></pre></td></tr></table></figure>
 
 
+
+<ul>
+<li><p>无法读取远程仓库</p>
+<p>删除blog文件夹下的隐藏文件 .deploy_git</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs plain">fatal: 无法读取远程仓库。<br><br>请确认您有正确的访问权限并且仓库存在。<br></code></pre></td></tr></table></figure>
       
       <!-- reward -->
       
@@ -237,7 +244,7 @@
     
       <a href="/2020/05/03/Linux%E5%9F%BA%E7%A1%80/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Linux</div>
+        <div class="article-nav-title">Linux基础</div>
       </a>
     
   </nav>

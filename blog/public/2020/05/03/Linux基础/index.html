@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Linux |  陈年往事
+    Linux基础 |  陈年往事
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -54,7 +54,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Linux
+  Linux基础
 </h1>
  
 
@@ -78,7 +78,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">3k</span>
+            <span class="post-count">3.2k</span>
         </span>
     </span>
 
@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">12 分钟</span>
+            <span class="post-count">13 分钟</span>
         </span>
     </span>
 </div>
@@ -165,8 +165,30 @@
 
 <h3 id="蓝牙"><a href="#蓝牙" class="headerlink" title="蓝牙"></a>蓝牙</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo service bluetooth start  &#x2F;&#x2F;打开蓝牙配适器<br>sudo service bluetooth stop   &#x2F;&#x2F;关闭蓝牙配适器<br></code></pre></td></tr></table></figure>
 
+<h3 id="关闭进程"><a href="#关闭进程" class="headerlink" title="关闭进程"></a>关闭进程</h3><ul>
+<li>有时候应用被我们1关闭了，可它还在后台运行，这就要求我们手动关闭进程</li>
+<li>kill -9 进程IP    //可利用htop命令查看进程IP</li>
+<li>若没有htop，可下载</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">sudo apt install htop<br></code></pre></td></tr></table></figure>
 
 
+
+<h3 id="卸载-IntelliJ-IDEA-类似卸载可参考"><a href="#卸载-IntelliJ-IDEA-类似卸载可参考" class="headerlink" title="卸载 IntelliJ IDEA(类似卸载可参考)"></a>卸载 IntelliJ IDEA(类似卸载可参考)</h3><ol>
+<li>寻找Intellij IDEA 里面是否有uninstall.sh文件，有就能直接卸载</li>
+<li>若没有，则在里面找说明文档，找到相关配置文件所在的目录，将IntelliJ IDEA 文件夹及其相关配置文件一起删除</li>
+<li>可能会存在开始菜单栏里依然有图标显示的问题，</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs plain">cd ~&#x2F;.local&#x2F;share&#x2F;applications<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>之后在applications文件夹里找到相对应的配置文件删除即可</li>
+</ol>
+<h3 id="linux换源"><a href="#linux换源" class="headerlink" title="linux换源"></a>linux换源</h3><ul>
+<li>进入目录  /etc/apt/</li>
+<li>sudo vim source.list</li>
+<li>上网寻找适合自己的源</li>
+</ul>
 <h3 id="关于Anaconda的安装"><a href="#关于Anaconda的安装" class="headerlink" title="关于Anaconda的安装"></a>关于Anaconda的安装</h3><ul>
 <li><p>在清华镜像站下载Anaconda</p>
 </li>

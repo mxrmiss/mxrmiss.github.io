@@ -35,5 +35,7 @@ C:\Users\username\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 C:\用户\username\AppData\Roaming\Microsoft\Windows\「开始」菜单\程序\启动
 ```
 
+- 打开隐藏文件夹的方法
 
+[![BFDqhV.png](https://s1.ax1x.com/2020/10/22/BFDqhV.png)](https://imgchr.com/i/BFDqhV)
 
