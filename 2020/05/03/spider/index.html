@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="技术" />
+   
+  <meta name="description" content="关于Linux, Python, 数据库， 网络安全等" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    python爬虫实战 |  陈年往事
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="陈年往事" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-spider" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  python爬虫实战
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/03/spider/" class="article-date">
+  <time datetime="2020-05-03T01:08:28.000Z" itemprop="datePublished">2020-05-03</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%88%AC%E8%99%AB/">爬虫</a> / <a class="article-category-link" href="/categories/%E7%88%AC%E8%99%AB/python/">python</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">7.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">36 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="爬虫第一天"><a href="#爬虫第一天" class="headerlink" title="爬虫第一天"></a>爬虫第一天</h1><ul>
+<li>urllib太过古老，因此不加以深入学习</li>
+</ul>
+<h3 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h3><p>requests模块：python中原生的一款基于网络请求的模块，功能强大，简单便捷，效率高。<br>作用：模拟浏览器发送请求。</p>
+<p>如何使用：（requests模块的编码流程）<br>    -指定url<br>    -发起请求（get或post）<br>    -获取响应数据<br>    -持久化存储（数据库或本地存储）</p>
+<p>环境安装：<br>    -pip或pycharm安装<br>    -anaconda自带（方便已装）</p>
+<a id="more"></a>
+
+<h3 id="实战编码："><a href="#实战编码：" class="headerlink" title="实战编码："></a><strong>实战编码：</strong></h3><pre><code>- 需求：爬取拉勾网首页的数据
+    示例：</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    <span class="hljs-comment">#step 1:指定url</span><br>    url = <span class="hljs-string">"https://www.lagou.com/jobs/6889986.html?show=96e52fa1d2134ad483eac5662bcc9fc6"</span><br><br>    <span class="hljs-comment">#step_2:发起请求</span><br>    <span class="hljs-comment">#get会返回一个响应对象</span><br>    response = requests.get(url=url)<br><br>    <span class="hljs-comment">#step_3:获取相应数据(.text返回的是字符串形式的响应数据)</span><br>    page_text = response.text<br>    print(page_text)<br><br>    <span class="hljs-comment">#step_4:持久化存储</span><br>    <span class="hljs-keyword">with</span> open(<span class="hljs-string">'./lagou.html'</span>, <span class="hljs-string">'w'</span>, encoding = <span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        fp.write(page_text)<br>    print(<span class="hljs-string">'爬取数据结束'</span>)<br></code></pre></td></tr></table></figure>
+<ul>
+<li><p>以上代码极有可能会被网站捕获，被识别出为爬虫，所以需要实施反爬虫策略</p>
+</li>
+<li><p>示例：<br>UA:User-Agent (请求载体的身份标识)<br>UA检测：门户网站的服务器会检测对应的载体身份标识，如果检测到请求的载体身份标识为某一款浏览器，<br>说明该请求是一个正常的请求。但是，如果监测到请求的载体身份标识不是基于某一款浏览器的，则表示<br>该请求为不正常的请求（爬虫），则服务器端就很有可能拒绝这次请求。<br>UA伪装:将对应的请求载体身份标识伪装成一款浏览器</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    <span class="hljs-comment"># UA伪装：将对应的User-Agent封装到一个字典中</span><br>    headers = &#123;<br>        <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>    &#125;<br><br>    url = <span class="hljs-string">'https://www.sogou.com/web?'</span><br><br>    <span class="hljs-comment">#处理url携带的参数：封装到字典中（参数为问号后面的）</span><br>    kw = input(<span class="hljs-string">'enter a word:'</span>)<br>    param = &#123;<br>        <span class="hljs-string">'query'</span>: kw<br>    &#125;<br><br>    <span class="hljs-comment"># 需求的响应返回的是一个对象，对象应实例化</span><br>    response = requests.get(url=url, params=param, headers=headers)<br><br>    <span class="hljs-comment"># 确认相应数据是txt类型的</span><br>    page_text = response.text<br>    fileName = kw+<span class="hljs-string">'.html'</span><br>    <span class="hljs-keyword">with</span> open(fileName, <span class="hljs-string">'w'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        fp.write(page_text)<br>    print(<span class="hljs-string">'保存成功。。。'</span>)<br></code></pre></td></tr></table></figure>
+
+<h1 id="爬虫第二天"><a href="#爬虫第二天" class="headerlink" title="爬虫第二天"></a>爬虫第二天</h1><h3 id="有关于ajax"><a href="#有关于ajax" class="headerlink" title="有关于ajax"></a>有关于ajax</h3><h4 id="爬取百度翻译的内容"><a href="#爬取百度翻译的内容" class="headerlink" title="爬取百度翻译的内容"></a>爬取百度翻译的内容</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> json<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    <span class="hljs-comment">#获取url</span><br>    post_url = <span class="hljs-string">'https://fanyi.baidu.com/sug'</span><br>    <span class="hljs-comment">#进行UA伪装</span><br>    headers = &#123;<br>        <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>    &#125;<br>    <span class="hljs-comment">#post请求的参数处理（同get请求一致）</span><br>    word = input(<span class="hljs-string">'输入你想翻译的东西:'</span>)<br>    data = &#123;<br>        <span class="hljs-string">'kw'</span>: word<br>    &#125;<br>    <span class="hljs-comment">#发送请求并生成响应</span><br>    response = requests.post(url=post_url, data=data, headers=headers)<br>    <span class="hljs-comment">#获取响应数据:</span><br>    <span class="hljs-comment">#json()方法返回的是obj （如果确认响应数据是json类型的）</span><br>    dic_obj = response.json()<br><br>    <span class="hljs-comment">#持久化存储</span><br>    filename = word+<span class="hljs-string">'.json'</span><br>    <span class="hljs-keyword">with</span> open(filename, <span class="hljs-string">'w'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        json.dump(dic_obj, fp=fp, ensure_ascii=<span class="hljs-literal">False</span>)<br><br>    <span class="hljs-comment">#将jaon格式转化成dict格式</span><br>    <span class="hljs-keyword">with</span> open(filename, <span class="hljs-string">'r'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        great = json.load(fp)<br><br>    <span class="hljs-comment">#将字典格式化输出(此字典中存在字典与列表的嵌套现象)</span><br>    <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> great.items():<br>        <span class="hljs-keyword">if</span> type(v) == list:<br>            <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> v:<br>                print(i)<br>        <span class="hljs-keyword">else</span>:<br>            print(k)<br>            print(v)<br><br>    print(<span class="hljs-string">'end...'</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="爬取豆瓣电影信息"><a href="#爬取豆瓣电影信息" class="headerlink" title="爬取豆瓣电影信息"></a>爬取豆瓣电影信息</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">##此处代码示例为失败的例子，未考虑到由ajax得到的页面依旧采用了ajax</span><br><br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> json<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    url = <span class="hljs-string">'https://movie.douban.com/j/chart/top_list'</span><br>    param = &#123;<br>        <span class="hljs-string">'type'</span>: <span class="hljs-string">' 24'</span>,<br>        <span class="hljs-string">'interval_id'</span>: <span class="hljs-string">' 100:90'</span>,<br>        <span class="hljs-string">'action'</span>: <span class="hljs-string">''</span>,<br>        <span class="hljs-string">'start'</span>: <span class="hljs-string">' 1'</span>,<br>        <span class="hljs-string">'limit'</span>: <span class="hljs-string">' 20'</span>,<br>    &#125;<br>    headers = &#123;<br>        <span class="hljs-string">'User-Agent'</span>:<span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>    &#125;<br><br>    response = requests.get(url=url, params=param, headers=headers)<br><br>    list_data = response.json()<br><br>    <span class="hljs-keyword">with</span> open(<span class="hljs-string">'./douban.json'</span>, <span class="hljs-string">'w'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        json.dump(list_data, fp, ensure_ascii=<span class="hljs-literal">False</span>)<br><br>    <span class="hljs-keyword">with</span> open(<span class="hljs-string">'./douban.json'</span>, <span class="hljs-string">'r'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        great = json.load(fp)<br><br>    print(great)<br></code></pre></td></tr></table></figure>
+<h1 id="爬虫学习第三天"><a href="#爬虫学习第三天" class="headerlink" title="爬虫学习第三天"></a>爬虫学习第三天</h1><h3 id="爬取国家药监总局部分信息"><a href="#爬取国家药监总局部分信息" class="headerlink" title="爬取国家药监总局部分信息"></a>爬取国家药监总局部分信息</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> json<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    url = <span class="hljs-string">'http://125.35.6.84:81/xk/itownet/portalAction.do?method=getXkzsList'</span><br>    url_2 = <span class="hljs-string">'http://125.35.6.84:81/xk/itownet/portalAction.do?method=getXkzsById'</span><br>    headers = &#123;<br>        <span class="hljs-string">'User-Agent'</span>:<span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>    &#125;<br>    <span class="hljs-comment">#爬取的页数</span><br>    page_ = input(<span class="hljs-string">"请输入您想爬取的信息页数："</span>)<br>    <span class="hljs-keyword">for</span> page <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, int(page_)+<span class="hljs-number">1</span>):<br>        data = &#123;<br>            <span class="hljs-string">'on'</span>: <span class="hljs-string">'true'</span>,<br>            <span class="hljs-string">'page'</span>: page,<br>            <span class="hljs-string">'pageSize'</span>: <span class="hljs-string">'15'</span>,<br>            <span class="hljs-string">'productName'</span>: <span class="hljs-string">''</span>,<br>            <span class="hljs-string">'conditionType'</span>: <span class="hljs-string">'1'</span>,<br>            <span class="hljs-string">'applyname'</span>: <span class="hljs-string">''</span>,<br>            <span class="hljs-string">'applysn'</span>: <span class="hljs-string">''</span>,<br>        &#125;<br>        <span class="hljs-comment">#id_list have many ids</span><br>        id_list = []<br>        message = []<br><br>        json_list = requests.post(url=url, data=data, headers=headers).json()<br>        <span class="hljs-comment">#id_a is a dict</span><br>        <span class="hljs-keyword">for</span> id_a <span class="hljs-keyword">in</span> json_list[<span class="hljs-string">"list"</span>]:<br>            id_list.append(id_a[<span class="hljs-string">"ID"</span>])<br>            <span class="hljs-comment">#id_b是id号</span><br>        <span class="hljs-keyword">for</span> id_b <span class="hljs-keyword">in</span> id_list:<br>                data_2 = &#123;<br>                    <span class="hljs-string">"id"</span>: str(id_b)<br>                &#125;<br>                detail_message = requests.post(url=url_2, data=data_2, headers=headers).json()<br>                print(detail_message)<br>                message.append(detail_message)<br>    <span class="hljs-keyword">with</span> open(<span class="hljs-string">'./药物信息.json'</span>, <span class="hljs-string">'w'</span>, encoding=<span class="hljs-string">'utf-8'</span>) <span class="hljs-keyword">as</span> fp:<br>        json.dump(message, fp, ensure_ascii=<span class="hljs-literal">False</span>)<br>    print(<span class="hljs-string">'end...'</span>)<br><br><span class="hljs-string">'''此代码爬取时间可能有些长，也有可能会出现Timeouterror错误，多试几次可能就可以了'''</span><br><span class="hljs-string">'''出现这种情况的原因是对方服务器拒绝请求（反爬虫），，，后续继续学习反反爬虫技术'''</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="数据解析概述"><a href="#数据解析概述" class="headerlink" title="数据解析概述"></a>数据解析概述</h3><ul>
+<li><p>聚焦爬虫：爬取页面中指定的页面内容</p>
+<pre><code>-编码流程
+    1、指定url
+    2、发起请求
+    3、获取相应数据
+    4、持久化存储</code></pre><p>-数据解析分类：</p>
+<pre><code>-正则
+-bs4
+-xpath</code></pre><p>-数据解析原理概述</p>
+<pre><code>-解析的局部的文本内容都会在标签之间或者标签对应的属性中进行存储
+-1、进行指定标签的定位
+-2、标签或者标签对应属性中存储的数据值进行提取（解析）</code></pre></li>
+</ul>
+<h3 id="图片的爬取代码"><a href="#图片的爬取代码" class="headerlink" title="图片的爬取代码"></a>图片的爬取代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-comment">#此处url为图片地址，而非链接【地址比链接短】</span><br>url = <span class="hljs-string">'https://tse4-mm.cn.bing.net/th/id/OIP.vLPcBX_5hWArkIbn_PqvYgHaGL?w=233&amp;h=195&amp;c=7&amp;o=5&amp;dpr=1.25&amp;pid=1.7'</span><br>headers = &#123;<br>        <span class="hljs-string">'user-agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>&#125;<br><span class="hljs-comment">#图片以二进制的形式存储，所以以.content形式接收，以jpg格式存</span><br>data_pict = requests.get(url=url, headers=headers).content<br><span class="hljs-keyword">with</span> open(<span class="hljs-string">'./beauty_pict.jpg'</span>, <span class="hljs-string">'wb'</span>) <span class="hljs-keyword">as</span> fp:<br>    fp.write(data_pict)<br></code></pre></td></tr></table></figure>
+
+<h1 id="爬虫第四天"><a href="#爬虫第四天" class="headerlink" title="爬虫第四天"></a>爬虫第四天</h1><h3 id="爬取百度图片（星空图片）"><a href="#爬取百度图片（星空图片）" class="headerlink" title="爬取百度图片（星空图片）"></a>爬取百度图片（星空图片）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> time<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    <span class="hljs-comment">#创建一个文件夹，存放图片</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-string">'./star_sky'</span>):<br>        os.mkdir(<span class="hljs-string">'./star_sky'</span>)<br>        <br>    url = <span class="hljs-string">'https://cn.bing.com/images/search?q=%E6%98%9F%E7%A9%BA%E5%9B%BE%E7%89%87&amp;qpvt=%e6%98%9f%e7%a9%ba%e5%9b%be%e7%89%87&amp;form=IGRE&amp;first=1&amp;cw=1117&amp;ch=714'</span><br>    headers = &#123;<br>            <span class="hljs-string">'user-agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>    &#125;<br>    data_pict = requests.get(url=url, headers=headers).text<br><br>    <span class="hljs-comment">#正则匹配</span><br>    ex = <span class="hljs-string">'&lt;a class=.*?murl&amp;quot;:&amp;quot;(.*?)&amp;quot;.*?&gt;'</span><br>    star_list = re.findall(ex, data_pict, re.S)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> star_list:<br>        url_2 = i<br>        <span class="hljs-comment">#请求到了图片的二进制数据</span><br>        data_2_pict = requests.get(url=url_2, headers=headers).content<br>        <span class="hljs-comment">#为图片设置名称</span><br>        img_name = url_2.split(<span class="hljs-string">"/"</span>)[<span class="hljs-number">-1</span>]<br>        img_path = <span class="hljs-string">'./star_sky/'</span> + img_name<br>        <span class="hljs-keyword">with</span> open(img_path, <span class="hljs-string">'wb'</span>) <span class="hljs-keyword">as</span> fp:<br>            fp.write(data_2_pict)<br>        print(img_name + <span class="hljs-string">'...successful'</span>)<br>        time.sleep(<span class="hljs-number">0.1</span>)<br><br>****************************************未完，，待更新********************************************<br></code></pre></td></tr></table></figure>
+<h3 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h3><ul>
+<li>xpath解析：最常用且最便捷高效的一种解析方式，具有通用性<pre><code>-xpath解析原理：
+    -1、实例化一个etree对象，且需要将被解析的页面源码数据加载到该对象中
+    -2、调用etree对象中的xpath方法结合着xpath表达式实现标签的定位和内容的捕获
+-如何实例化一个etree对象
+    *from lxml import etree
+    -1、将 本地的html文档中的源代码数据加载到etree对象中：
+        etree.parse(filepath)
+    -2、可以将从互联网上获取的数据加载到该对象中
+        etree.HTML(&apos;page_text&apos;)###page_text就是获取的响应数据
+    - xpath(&apos;xpath表达式&apos;)
+    -xpath表达式：
+            - / ：表示的是从根目录结点开始定位，表示的是一个层级
+                    - // : 表示的是多个层级或从任意位置开始定位（前提是//前面没有结点）
+                    -属性定位：tag[@attrName=&quot;attrValue&quot;]
+                    -索引定位：p[n] 索引是从1开始的
+                    -取文本：
+        - /text() 获取的是标签中直系的文本内容
+        - //text() 标签中非直系的文本内容（所有的文本内容）
+        -[0] 可以去除列表框
+            -取属性
+        -/@attrName</code></pre></li>
+</ul>
+<h3 id="xpath代码实战示例："><a href="#xpath代码实战示例：" class="headerlink" title="xpath代码实战示例："></a>xpath代码实战示例：</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#爬取妹子图片，总共有俩千多张</span><br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>    ii = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-string">'./girl'</span>):<br>        os.mkdir(<span class="hljs-string">'./girl'</span>)<br>    url_list = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">50</span>)]<br>    url_list[<span class="hljs-number">1</span>] = <span class="hljs-string">''</span><br><br>    <span class="hljs-keyword">for</span> page <span class="hljs-keyword">in</span> url_list:<br>        url = <span class="hljs-string">'https://www.lanvshen.com/zhongguo/'</span> + str(page) +<span class="hljs-string">'.html'</span><br>        headers = &#123;<br>            <span class="hljs-string">'User-Agent'</span> : <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>        &#125;<br>        get_text = requests.get(url=url, headers=headers)<br>        tree = etree.HTML(get_text.text)<br>        pict_ = tree.xpath(<span class="hljs-string">'//div[@class="hezi"]//li'</span>)<br>        <span class="hljs-keyword">for</span> it_ <span class="hljs-keyword">in</span> pict_:<br>            img_url = it_.xpath(<span class="hljs-string">'./a/img/@src'</span>)[<span class="hljs-number">0</span>]<br>            img_name = str(ii) + <span class="hljs-string">'.jpg'</span><br>            img = requests.get(url=img_url, headers=headers).content<br>            img_path = <span class="hljs-string">'./girl/'</span> + img_name<br>            <span class="hljs-keyword">with</span> open(img_path, <span class="hljs-string">'wb'</span>) <span class="hljs-keyword">as</span> fp:<br>                fp.write(img)<br>            print(img_name + <span class="hljs-string">'sccuessful...'</span>)<br>            ii = ii + <span class="hljs-number">1</span><br><br><span class="hljs-comment">##此代码存在许多不足之处，所爬取的图片都只是像素低的缩略图，并且下载速度较慢</span><br><span class="hljs-comment">##后期将学习爬取高清图片，并进行分布式爬取</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="ip代理"><a href="#ip代理" class="headerlink" title="ip代理"></a>ip代理</h3><ol>
+<li>代理的原理：在请求目的网站之前，先请求代理服务器，然后让代理服务器去请求目的网站，<br>代理服务器拿到目的网站的数据后，再转发给我们的代码</li>
+<li><a href="http://httpbin.org" target="_blank" rel="noopener">这个网站可以方便的查看http请求的一些参数</a> </li>
+<li>在代码中(requests模块)使用代理：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><br>url = <span class="hljs-string">'http://httpbin.org'</span><br>headers = &#123;<br>	<span class="hljs-string">'User-Anget'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'</span><br>&#125;<br><br><span class="hljs-comment">#设置代理</span><br>proxy = &#123;<br>	<span class="hljs-string">'http'</span>: <span class="hljs-string">'123.54.194.96:38661'</span><br>&#125;<br>get_text = requerts.get(url=url, headers=headers, proxies=proxy).text<br>print(get_text)<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>网络代理有付费和不需要付费的，不需要付费的不稳定，常常会失效</li>
+<li>代理的作用是防止我们在爬取服务器的数据时被反爬虫而被封禁导致我们<br>的 ip 不能用而采取的措施，选择代理应选择隐蔽性高，不透明的</li>
+</ol>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><ul>
+<li><p><a href="http://blog.sina.com.cn/s/blog_628571e601019uis.html" target="_blank" rel="noopener">cookie与session的差异</a></p>
+</li>
+<li><p><a href="http://mp.weixin.qq.com/s?__biz=MjM5NjA0NjgyMA==&mid=200538817&idx=2&sn=1147d48f2320fa37e82a7daef4f31c11#rd" target="_blank" rel="noopener">cookie技术深入</a>             </p>
+<ul>
+<li>Cookie是什么？     </li>
+</ul>
+<p>Cookie 是一小段文本信息，伴随着用户请求和页面在 Web 服务器和浏览器之间传递。<br>Cookie 包含每次用户访问站点时 Web 应用程序都可以读取的信息。</p>
+<ul>
+<li><p>为什么需要Cookie？ </p>
+<p>因为HTTP协议是无状态的，对于一个浏览器发出的多次请求，WEB服务器无法区分 是不是来源于同一个浏览器。<br>所以，需要额外的数据用于维护会话。Cookie 正是这样的一段随HTTP请求一起被传递的额外数据。</p>
+</li>
+<li><p>Cookie能做什么？ </p>
+<p>Cookie只是一段文本，所以它只能保存字符串。而且浏览器对它有大小限制以及 它会随着每次请求被发送到服务器，所以应该保证它<br>不要太大。Cookie的内容也是明文保存的，有些浏览器提供界面修改，所以， 不适合保存重要的或者涉及隐私的内容。</p>
+</li>
+<li><p>Cookie 的限制</p>
+<p>大多数浏览器支持最大为 4096 字节的 Cookie。由于这限制了 Cookie 的大小，最好用 Cookie 来存储少量数据，<br>或者存储用户 ID 之类的标识符。用户 ID 随后便可用于标识用户，以及从数据库或其他数据源中读取用户信息。<br>浏览器还限制站点可以在用户计算机上存储的 Cookie 的数量。大多数浏览器只允许每个站点存储 20 个 Cookie；<br>如果试图存储更多 Cookie，则最旧的 Cookie 便会被丢弃。有些浏览器还会对它们将接受的来自所有站点的 Cookie<br>总数作出绝对限制，通常为 300 个。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="C:/Users/Acer/Desktop/%E7%AC%94%E8%AE%B0/%E7%88%AC%E8%99%AB_day4_files/1.jpg" alt="Cookie示意图">    </p>
+<ul>
+<li>处理cookie<br>如果想要在多次请求中共享cookie，那么应该使用session</li>
+</ul>
+<h3 id="处理不信任的SSL证书"><a href="#处理不信任的SSL证书" class="headerlink" title="处理不信任的SSL证书"></a>处理不信任的SSL证书</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">resp = resquests.get(url=url, vrrify=<span class="hljs-literal">False</span>).content<br></code></pre></td></tr></table></figure>
+
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><ul>
+<li>多线程之生产者与消费者模型</li>
+</ul>
+<ul>
+<li>代码示例一：(Lock版)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">"""</span><br><span class="hljs-string">关于多线程生产者消费者模型</span><br><span class="hljs-string">"""</span><br><span class="hljs-keyword">import</span> threading<br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> random<br><br>gMoney = <span class="hljs-number">1000</span><br>gLock = threading.Lock()<br>gTotalTimes = <span class="hljs-number">10</span><br>gTimes = <span class="hljs-number">0</span><br><br><br><span class="hljs-comment"># 生产线程Producer</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">global</span> gMoney<br>		<span class="hljs-keyword">global</span> gTimes<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			money = random.randint(<span class="hljs-number">100</span>, <span class="hljs-number">1000</span>)<br>			gLock.acquire()<br>			<span class="hljs-keyword">if</span> gTimes &gt;= gTotalTimes:<br>				gLock.release()<br>				<span class="hljs-keyword">break</span><br>			gMoney += money<br>			print(<span class="hljs-string">'&#123;&#125;生产了&#123;&#125;元钱，剩余&#123;&#125;元钱'</span><br>				  .format(threading.current_thread(), money, gMoney))<br>			gTimes += <span class="hljs-number">1</span><br>			gLock.release()<br>			time.sleep(<span class="hljs-number">0.5</span>)<br><br><br><span class="hljs-comment"># 消费线程Consumer</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Consumer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">global</span> gMoney<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			money = random.randint(<span class="hljs-number">100</span>, <span class="hljs-number">1000</span>)<br>			gLock.acquire()<br>			<span class="hljs-keyword">if</span> gMoney &gt;= money:<br>				gMoney -= money<br>				print(<span class="hljs-string">'&#123;&#125;消费者消费了&#123;&#125;元钱，剩余&#123;&#125;元钱'</span><br>					  .format(threading.current_thread(), money, gMoney))<br>			<span class="hljs-comment"># 若剩余金额不足以消费，则退出循环</span><br>			<span class="hljs-keyword">else</span>:<br>				<span class="hljs-keyword">if</span> gTimes &gt;= gTotalTimes:<br>					gLock.release()<br>					<span class="hljs-keyword">break</span><br>				print(<span class="hljs-string">'&#123;&#125;消费者准备消费&#123;&#125;元钱，剩余&#123;&#125;元钱，不足！'</span><br>					  .format(threading.current_thread(), money, gMoney))<br>			gLock.release()<br>			time.sleep(<span class="hljs-number">0.5</span>)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">mainIt</span><span class="hljs-params">()</span>:</span><br>	<span class="hljs-comment"># 设置3个消费线程</span><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):<br>		t = Consumer(name=<span class="hljs-string">'消费者线程&#123;&#125;'</span>.format(x))<br>		t.start()<br>		<span class="hljs-comment"># 设置5个生产线程</span><br><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		t = Producer(name=<span class="hljs-string">'生产者线程&#123;&#125;'</span>.format(x))<br>		t.start()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>	mainIt()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>代码示例二：(condition版)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">import</span> threading<br><span class="hljs-keyword">import</span> random<br><span class="hljs-keyword">import</span> time<br><br>gMoney = <span class="hljs-number">1000</span><br>gCondition = threading.Condition()  <span class="hljs-comment"># 等同于threading.Lock</span><br>gTimes = <span class="hljs-number">0</span><br>gTotalTimes = <span class="hljs-number">5</span><br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">global</span> gMoney<br>		<span class="hljs-keyword">global</span> gCondition<br>		<span class="hljs-keyword">global</span> gTimes<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			money = random.randint(<span class="hljs-number">100</span>, <span class="hljs-number">1000</span>)<br>			gCondition.acquire()  <span class="hljs-comment"># 加锁（全局变量改变前（gMoney））</span><br>			<span class="hljs-keyword">if</span> gTimes &gt;= gTotalTimes:<br>				gCondition.release()  <span class="hljs-comment"># 解锁</span><br>				print(<span class="hljs-string">"当前生产者总共生产了%s次"</span> % gTimes)<br>				<span class="hljs-keyword">break</span><br>			gMoney += money<br>			print(<span class="hljs-string">"%s当前存入%s元钱，剩余%s元线"</span> % (threading.current_thread(), money, gMoney))<br>			gTimes += <span class="hljs-number">1</span><br>			gCondition.notify_all()  <span class="hljs-comment"># 通知正在等待的线程（wait）</span><br>			gCondition.release()<br>			time.sleep(<span class="hljs-number">0.5</span>)<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cosumer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">global</span> gMoney<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			money = random.randint(<span class="hljs-number">100</span>, <span class="hljs-number">1000</span>)<br>			gCondition.acquire()<br>			<span class="hljs-keyword">while</span> gMoney &lt; money:<br>				<span class="hljs-keyword">if</span> gTimes &gt;= gTotalTimes:<br>					gCondition.release()<br>					<span class="hljs-keyword">return</span><br>				print(<span class="hljs-string">"%s准备消费%d元钱，剩余%d元钱，不足"</span> % (threading.current_thread(), money, gMoney))<br>				gCondition.wait()  <span class="hljs-comment"># 等待状态  （获取锁） 直到生产者把钱加上 （有钱了再去排队消费）</span><br>			gMoney -= money<br>			print(<span class="hljs-string">"%s消费了%d元钱，剩余%d元钱"</span> % (threading.current_thread(), money, gMoney))<br>			gCondition.release()<br>			time.sleep(<span class="hljs-number">0.5</span>)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):<br>		t = Cosumer(name=<span class="hljs-string">"消费者线程%s"</span> % x)<br>		t.start()<br>	<span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		t1 = Producer(name=<span class="hljs-string">"生产者线程%s"</span> % y)<br>		t1.start()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>	main()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>多线程Lock与condition方法总结：<ol>
+<li>在上述的例子中，lock方法虽然实现了多线程的使用，但是当消费者资金不足时，程序在当前线程会重新whlie True，<br>这就导致了该线程需要再次上锁和解锁，这就导致了CPU的浪费</li>
+<li>当我们使用condition方法时，每当消费者资金不足，该线程无需重新while True，也不需要再次的上锁和解锁，<br>使用wait()，使当资金不足时的消费者线程在wait()暂停并解锁，等待条件满足时再次从wait()处开始执行，这样就<br>减少了循环过程中因上锁解锁而导致的CPu资源浪费</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>Queue线程安全队列<br>在线程中，访问一些全局变量，枷锁是一个经常的过程，如果你是想把某个数据存储到某个队列中，那么python内置了一个线程安全的模块<br>叫做queue模块。python中的queue模块中提供了同步的、线程安全的模块，其中队列Queue为先进先出，实现了原子操作，即要么不做，要<br>么做完。可使用队列来实现线程的同步。相关函数如下：<br>作用：<br>　　　解耦：使程序直接实现松耦合，修改一个函数，不会有串联关系。<br>　　　提高处理效率：ＦＩＦＯ　＝　现进先出，ＬＩＦＯ　＝　后入先出。</li>
+</ul>
+<ol>
+<li><p>Queue.Queue(maxsize=0)   FIFO， 如果maxsize小于1就表示队列长度无限</p>
+</li>
+<li><p>Queue.LifoQueue(maxsize=0)   LIFO， 如果maxsize小于1就表示队列长度无限</p>
+</li>
+<li><p>Queue.qsize()   返回队列的大小</p>
+</li>
+<li><p>Queue.empty()   如果队列为空，返回True,反之False</p>
+</li>
+<li><p>Queue.full()   如果队列满了，返回True,反之False</p>
+</li>
+<li><p>Queue.get([block[, timeout]])   读队列，取出数据 ，没有数据将会等待timeout等待时间</p>
+</li>
+<li><p>Queue.put(item, [block[, timeout]])   写队列，放入数据，timeout等待时间</p>
+</li>
+<li><p>Queue.queue.clear()   清空队列</p>
+</li>
+<li><p>class queue.PriorityQueue(maxsize=0) 存储数据时可设置优先级的队列，优先级设置数越小等级越高</p>
+</li>
+<li><p>Queue.get(timeout = 1)如果1秒后没取到数据就退出</p>
+</li>
+<li><p>Queue.get_nowait() 取数据，如果没数据抛queue.Empty异常</p>
+</li>
+<li><p>Queue.task_done()后续调用告诉队列，任务的处理是完整的。</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> queue <span class="hljs-keyword">import</span> Queue<br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> threading<br><br><br><span class="hljs-comment"># 在队列中放入数值</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">set_value</span><span class="hljs-params">(q)</span>:</span><br>	index = <span class="hljs-number">0</span><br>	<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>		q.put(index)<br>		index += <span class="hljs-number">1</span><br>		time.sleep(<span class="hljs-number">0.8</span>)<br><br><br><span class="hljs-comment"># 取出队列中的数值</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_value</span><span class="hljs-params">(q)</span>:</span><br>	<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>		print(q.get())<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span><br>	<span class="hljs-comment"># 产生一个队列</span><br>	q = Queue(<span class="hljs-number">1</span>)<br>	t1 = threading.Thread(target=set_value, args=[q])<br>	t2 = threading.Thread(target=get_value, args=[q])<br><br>	t1.start()<br>	t2.start()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>	main()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>生产者与消费者模型</li>
+</ul>
+<ul>
+<li>代码示例三：(Queue版)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> threading,time<br><span class="hljs-comment">#python2  from Queue import Queue</span><br><span class="hljs-comment">#python3</span><br><span class="hljs-keyword">import</span> queue<br> <br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Producer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">global</span> queue<br>		count = <span class="hljs-number">0</span><br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			<span class="hljs-comment">#qsize返回queue内部长度</span><br>			<span class="hljs-keyword">if</span> queue.qsize() &lt; <span class="hljs-number">1000</span>:<br>				<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">100</span>):<br>					count += <span class="hljs-number">1</span><br>					msg = <span class="hljs-string">'生成产量'</span>+str(count)<br>					<span class="hljs-comment">#put是往queue中放入</span><br>					queue.put(msg)<br>					print(msg)<br>			time.sleep(<span class="hljs-number">0.5</span>)<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Consumer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">global</span> queue<br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			<span class="hljs-keyword">if</span> queue.qsize() &gt; <span class="hljs-number">100</span>:<br>				<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):<br>					<span class="hljs-comment">#get从queue中取出一个值</span><br>					msg = self.name + <span class="hljs-string">"消费了"</span>+queue.get()<br>					print(msg)<br>			time.sleep(<span class="hljs-number">1</span>)<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>	queue = queue.Queue()<br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">500</span>):<br>		queue.put(<span class="hljs-string">"初始产品"</span>+str(i))<br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">2</span>):<br>		p = Producer()<br>		p.start()<br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		c = Consumer()<br>		c.start()<br></code></pre></td></tr></table></figure>
+
+<h3 id="爬虫之多线程"><a href="#爬虫之多线程" class="headerlink" title="爬虫之多线程"></a>爬虫之多线程</h3><ul>
+<li>多线程爬虫框架代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">from</span> queue <span class="hljs-keyword">import</span> Queue<br><span class="hljs-keyword">import</span> threading<br><br><span class="hljs-string">""" </span><br><span class="hljs-string">我们引入了threading这个包，我们将使用这个包中的</span><br><span class="hljs-string">Thread类，并在我们自定义的类中继承这个Thread类</span><br><span class="hljs-string">"""</span><br><br><br><span class="hljs-comment"># 生产者线程</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Procuder</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	headers = &#123;<br>			<span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'... 浏览器...'</span><br>	&#125;<br><br>	<span class="hljs-string">""" 重写继承于父类的__init__方法 """</span><br>	<span class="hljs-string">""" 我们继承了Thread这个类，在调用类中的方法时可能需要许多参数，我们用*args和**kwargs来接收"""</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, page_queue, img_queue, *args, **kwargs)</span>:</span><br>		super(Procuder, self).__init__(*args, **kwargs)<br>		self.page_queue = page_queue<br>		self.img_queue = img_queue<br><br>	<span class="hljs-string">""" 重写继承于父类的run方法，改成我们想要的方法"""</span><br>	<span class="hljs-string">""" 从存放每页的url的队列中逐一挑出一个url并传入parse_page中</span><br><span class="hljs-string">		获取每页的url</span><br><span class="hljs-string">	"""</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			<span class="hljs-keyword">if</span> self.page_queue.empty():<br>				<span class="hljs-keyword">break</span><br>			url = self.page_queue.get()<br>			self.parse_page(url)<br><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse_page</span><span class="hljs-params">(self, url)</span>:</span><br>		<span class="hljs-string">""" </span><br><span class="hljs-string">		.......</span><br><span class="hljs-string">		</span><br><span class="hljs-string">		获取每页的响应数据，并从中提取出每张图片的</span><br><span class="hljs-string">		url和name，并放入队列中</span><br><span class="hljs-string">		"""</span><br><br><br><span class="hljs-comment"># 消费者线程</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Consumer</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, page_queue, img_queue, *args, **kwargs)</span>:</span><br>		super(Procuder, self).__init__(*args, **kwargs)<br>		self.page_queue = page_queue<br>		self.img_queue = img_queue<br><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			<span class="hljs-keyword">if</span> self.img_queue.empty() <span class="hljs-keyword">and</span> self.page_queue.empty():<br>				<span class="hljs-keyword">break</span><br>				<span class="hljs-string">"""</span><br><span class="hljs-string">				......</span><br><span class="hljs-string">				</span><br><span class="hljs-string">				利用从队列中获取的每张图片的url和name，进行图片的获取和永久储存</span><br><span class="hljs-string">				"""</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span><br>	<span class="hljs-string">""" 设置页数和图片的url队列"""</span><br>	page_queue = Queue()<br>	img_queue = Queue()<br><br>	<span class="hljs-comment"># 将每页的url放到页数队列中</span><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">101</span>):<br>		url = <span class="hljs-string">'http://........ %d'</span> % x<br>		page_queue.put(url)<br><br>	<span class="hljs-comment"># 设置5个生产者线程</span><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		t = Procuder(page_queue, img_queue)<br>		t.start()<br><br>	<span class="hljs-comment"># 设置5个消费者线程</span><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		t = Consumer(page_queue, img_queue)<br>		t.start()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>	main()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>多线程爬虫实战代码</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree<br><span class="hljs-keyword">import</span> threading<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> queue<br><span class="hljs-keyword">from</span> urllib <span class="hljs-keyword">import</span> request<br><br><span class="hljs-comment"># 生产图片的url和name</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProimgUrl</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, page_queue, img_queue, headers, *args, **kwargs)</span>:</span><br>		super().__init__(*args, **kwargs)<br>		self.page_queue = page_queue<br>		self.img_queue = img_queue<br>		self.headers = headers<br><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			<span class="hljs-keyword">if</span> self.page_queue.empty():<br>				<span class="hljs-keyword">break</span><br>			<span class="hljs-keyword">else</span>:<br>				url = self.page_queue.get()<br>				self.parse_page(url)<br><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse_page</span><span class="hljs-params">(self, url)</span>:</span><br>		img_get = requests.get(url=url, headers=self.headers).text<br>		tree = etree.HTML(img_get)<br>		img_it = tree.xpath(<span class="hljs-string">'//div[@class="page-content text-center"]//a'</span>)<br>		<span class="hljs-keyword">for</span> it <span class="hljs-keyword">in</span> img_it:<br>			img_url = it.xpath(<span class="hljs-string">'./img[@class!="gif"]/@data-original'</span>)[<span class="hljs-number">0</span>]<br>			alt = it.xpath(<span class="hljs-string">'./img/@alt'</span>)[<span class="hljs-number">0</span>]<br>			alt = re.sub(<span class="hljs-string">r'[\?？.!！，。\/\*]'</span>, <span class="hljs-string">''</span>, alt)<br>			<span class="hljs-comment"># 利用splitext截取图片的后缀名</span><br>			suffix = os.path.splitext(img_url)[<span class="hljs-number">1</span>]<br>			img_name = alt + suffix<br>			self.img_queue.put((img_url, img_name))<br><br><br><span class="hljs-comment"># 获取图片并储存</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConimgName</span><span class="hljs-params">(threading.Thread)</span>:</span><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, page_queue, img_queue, headers, *args, **kwargs)</span>:</span><br>		super().__init__(*args, **kwargs)<br>		self.page_queue = page_queue<br>		self.img_queue = img_queue<br>		self.headers = headers<br><br>	<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span><span class="hljs-params">(self)</span>:</span><br>		<span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>			<span class="hljs-keyword">if</span> self.img_queue.empty() <span class="hljs-keyword">and</span> self.page_queue.empty():<br>				<span class="hljs-keyword">break</span><br>			<span class="hljs-keyword">else</span>:<br>				img_url, img_name = self.img_queue.get()<br>				<span class="hljs-comment"># 用urlli包下的request.urlretrieve模块，可以更方便的获取和存储图片</span><br>				request.urlretrieve(img_url, <span class="hljs-string">'./smile/'</span>+img_name)<br>				print(img_name + <span class="hljs-string">' 下载成功...'</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span><span class="hljs-params">()</span>:</span><br>	<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(<span class="hljs-string">'./smile'</span>):<br>		os.mkdir(<span class="hljs-string">'./smile'</span>)<br>	headers = &#123;<br>		<span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '</span><br>					  <span class="hljs-string">'Chrome/80.0.3987.149 Safari/537.36 '</span><br>	&#125;<br>	page_queue = queue.Queue(<span class="hljs-number">100</span>)<br>	img_queue = queue.Queue(<span class="hljs-number">1000</span>)<br><br>	<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>, <span class="hljs-number">10</span>):<br>		url = <span class="hljs-string">'https://www.doutula.com/photo/list/?page='</span> + str(x)<br>		page_queue.put(url)<br><br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		t = ProimgUrl(page_queue, img_queue, headers)<br>		t.start()<br><br>	<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">5</span>):<br>		t = ConimgName(page_queue, img_queue, headers)<br>		t.start()<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:<br>	main()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>多线程爬虫的一些坑：多线程爬虫爬取的内容是无序的</li>
+</ul>
+<h1 id="爬虫第五天"><a href="#爬虫第五天" class="headerlink" title="爬虫第五天"></a>爬虫第五天</h1><h2 id="scrapy爬虫框架"><a href="#scrapy爬虫框架" class="headerlink" title="scrapy爬虫框架"></a>scrapy爬虫框架</h2><p><a href="https://zhuanlan.zhihu.com/p/25443389" target="_blank" rel="noopener">关于xpath选择器selector的网址</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20200328091921480.png" alt="scrapy框架示意图"></p>
+<ol>
+<li><p>创建项目</p>
+<p>​    scrapy startproject #^%#^(项目名字)</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>创建爬虫</p>
+<p>​    scrapy genspider 爬虫名字 网络域名</p>
+<p>注意：</p>
+<ul>
+<li>爬虫名字不要和项目名字一样</li>
+<li>网站域名是允许爬虫采集的域名<ul>
+<li>baidu.com</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://img-blog.csdn.net/20180704211604860?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMzNDcyNzY1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="创建项目与配置环境后各部分组件"></p>
+<p>item文件是存储数据的</p>
+<ul>
+<li><p>在setting文件（程序启动被首先检查的文件）</p>
+</li>
+<li><p>BOT_NAME = 爬虫的名字</p>
+</li>
+<li><p>ROBOTSTXT_OBEY = 网络君子协议君子协议（不遵守）， 布尔</p>
+</li>
+<li><p>CONCURRENT_REQUESTS = 爬虫的并发量</p>
+</li>
+<li><p>DOWOLOAD_DELAY = 下载延迟，一般是1.5或2，小项目不用管</p>
+</li>
+<li><p>COOKLES_ENABLED = cookiede的使用，布尔</p>
+</li>
+<li><p>DEFAULT_REQUEST_HEADERS = 默认请求头</p>
+</li>
+<li><p>ITEM_PIPELINES = 管道文件</p>
+</li>
+</ul>
+<h3 id="setting文件详解"><a href="#setting文件详解" class="headerlink" title="setting文件详解"></a>setting文件详解</h3>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br> <br><span class="hljs-comment"># Scrapy settings for TestSpider project</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># For simplicity, this file contains only settings considered important or</span><br><span class="hljs-comment"># commonly used. You can find more settings consulting the documentation:</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/settings.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br> <br>BOT_NAME = <span class="hljs-string">'TestSpider'</span><br> <br>SPIDER_MODULES = [<span class="hljs-string">'TestSpider.spiders'</span>]<br>NEWSPIDER_MODULE = <span class="hljs-string">'TestSpider.spiders'</span><br> <br> <br><span class="hljs-comment"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span><br><span class="hljs-comment">#USER_AGENT = 'TestSpider (+http://www.yourdomain.com)'</span><br> <br>USER_AGENT = <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0'</span><br> <br><span class="hljs-comment"># Obey robots.txt rules</span><br><span class="hljs-comment"># Scrapy框架默认遵守 robots.txt 协议规则，robots规定了一个网站中，哪些地址可以请求，哪些地址不能请求。</span><br><span class="hljs-comment"># 默认是True，设置为False不遵守这个协议。</span><br>ROBOTSTXT_OBEY = <span class="hljs-literal">False</span><br> <br> <br><span class="hljs-comment"># Configure maximum concurrent requests performed by Scrapy (default: 16)</span><br><span class="hljs-comment"># 配置scrapy的请求连接数，默认会同时并发16个请求。</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS = 10</span><br> <br><span class="hljs-comment"># Configure a delay for requests for the same website (default: 0)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay</span><br><span class="hljs-comment"># See also autothrottle settings and docs</span><br> <br><span class="hljs-comment"># 下载延时，请求和请求之间的间隔，降低爬取速度，default: 0</span><br><span class="hljs-comment"># DOWNLOAD_DELAY = 3</span><br> <br> <br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN：针对网站(主域名)设置的最大请求并发数。</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP：某一个IP的最大请求并发数。</span><br><span class="hljs-comment"># The download delay setting will honor only one of:</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN = 16</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP = 16</span><br> <br> <br><span class="hljs-comment"># Disable cookies (enabled by default)</span><br><span class="hljs-comment"># 是否启用Cookie的配置，默认是可以使用Cookie的。主要是针对一些网站是禁用Cookie的。</span><br><span class="hljs-comment"># COOKIES_ENABLED = False</span><br> <br><span class="hljs-comment"># Disable Telnet Console (enabled by default)</span><br><span class="hljs-comment">#TELNETCONSOLE_ENABLED = False</span><br> <br> <br><span class="hljs-comment"># Override the default request headers:</span><br> <br><span class="hljs-comment"># 配置默认的请求头Headers.</span><br><span class="hljs-comment"># DEFAULT_REQUEST_HEADERS = &#123;</span><br><span class="hljs-comment">#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',</span><br><span class="hljs-comment">#   'Accept-Language': 'en',</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># Enable or disable spider middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br> <br><span class="hljs-comment"># 配置自定义爬虫中间件，scrapy也默认启用了一些爬虫中间件，可以在这个配置中关闭。</span><br><span class="hljs-comment"># SPIDER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'TestSpider.middlewares.TestspiderSpiderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># 下载中间件，配置自定义的中间件或者取消Scrapy默认启用的中间件。</span><br><span class="hljs-comment"># Enable or disable downloader middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment"># DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'TestSpider.middlewares.TestspiderDownloaderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># Enable or disable extensions</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/extensions.html</span><br><span class="hljs-comment"># EXTENSIONS = &#123;</span><br><span class="hljs-comment">#    'scrapy.extensions.telnet.TelnetConsole': None,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># Configure item pipelines</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br> <br><span class="hljs-comment"># 配置自定义的PIPELINES，或者取消PIPELINES默认启用的中间件。</span><br><span class="hljs-comment"># ITEM_PIPELINES = &#123;</span><br><span class="hljs-comment">#    'TestSpider.pipelines.TestspiderPipeline': 300,</span><br><span class="hljs-comment"># &#125;</span><br> <br> <br><span class="hljs-comment"># 限速配置</span><br><span class="hljs-comment"># Enable and configure the AutoThrottle extension (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/autothrottle.html</span><br> <br><span class="hljs-comment"># 是否开启自动限速</span><br><span class="hljs-comment"># AUTOTHROTTLE_ENABLED = True</span><br> <br> <br><span class="hljs-comment"># The initial download delay</span><br><span class="hljs-comment"># 配置初始url的下载延时</span><br><span class="hljs-comment"># AUTOTHROTTLE_START_DELAY = 5</span><br> <br> <br><span class="hljs-comment"># The maximum download delay to be set in case of high latencies</span><br><span class="hljs-comment"># 配置最大请求时间</span><br><span class="hljs-comment"># AUTOTHROTTLE_MAX_DELAY = 60</span><br> <br> <br><span class="hljs-comment"># 配置请求和请求之间的下载间隔，单位是秒</span><br><span class="hljs-comment"># The average number of requests Scrapy should be sending in parallel to</span><br><span class="hljs-comment"># each remote server</span><br><span class="hljs-comment"># AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0</span><br> <br> <br><span class="hljs-comment"># Enable showing throttling stats for every response received:</span><br><span class="hljs-comment"># AUTOTHROTTLE_DEBUG = False</span><br> <br> <br><span class="hljs-comment"># 关于Http缓存的配置，默认是不启用。</span><br><span class="hljs-comment"># 对于同一个页面的请求进行数据的缓存，如果后续还有相同的请求，直接从缓存中进行获取。</span><br><span class="hljs-comment"># Enable and configure HTTP caching (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings</span><br><span class="hljs-comment">#HTTPCACHE_ENABLED = True</span><br><span class="hljs-comment">#HTTPCACHE_EXPIRATION_SECS = 0</span><br><span class="hljs-comment">#HTTPCACHE_DIR = 'httpcache'</span><br><span class="hljs-comment">#HTTPCACHE_IGNORE_HTTP_CODES = []</span><br><span class="hljs-comment">#HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="scrapy爬虫之spider类（示例-一：爬取糗事百科）"><a href="#scrapy爬虫之spider类（示例-一：爬取糗事百科）" class="headerlink" title="scrapy爬虫之spider类（示例 一：爬取糗事百科）"></a>scrapy爬虫之spider类（示例 一：爬取糗事百科）</h3><ul>
+<li><p>创建爬虫项目：scrapy startproject xiushi</p>
+</li>
+<li><p>创建爬虫文件:   scrapy genSpider xiushiSpider  qiushidabaike.com</p>
+<h4 id="item-部分"><a href="#item-部分" class="headerlink" title="item 部分"></a>item 部分</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Define here the models for your scraped items</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># See documentation in:</span><br><span class="hljs-comment"># https://doc.scrapy.org/en/latest/topics/items.html</span><br><br><span class="hljs-keyword">import</span> scrapy<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XiushiItem</span><span class="hljs-params">(scrapy.Item)</span>:</span><br>    <span class="hljs-comment"># define the fields for your item here like:</span><br>    <span class="hljs-comment"># name = scrapy.Field()</span><br>    title = scrapy.Field()<br>    text = scrapy.Field()<br></code></pre></td></tr></table></figure>
+
+<h4 id="setting-部分"><a href="#setting-部分" class="headerlink" title="setting 部分"></a>setting 部分</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Scrapy settings for xiushi project</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># For simplicity, this file contains only settings considered important or</span><br><span class="hljs-comment"># commonly used. You can find more settings consulting the documentation:</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/settings.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><br>BOT_NAME = <span class="hljs-string">'xiushi'</span><br><br>SPIDER_MODULES = [<span class="hljs-string">'xiushi.spiders'</span>]<br>NEWSPIDER_MODULE = <span class="hljs-string">'xiushi.spiders'</span><br><br><span class="hljs-comment"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span><br><span class="hljs-comment"># USER_AGENT = 'xiushi (+http://www.yourdomain.com)'</span><br><br><span class="hljs-comment"># Obey robots.txt rules</span><br>ROBOTSTXT_OBEY = <span class="hljs-literal">False</span><br><br><span class="hljs-comment"># Configure maximum concurrent requests performed by Scrapy (default: 16)</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS = 32</span><br><br><span class="hljs-comment"># Configure a delay for requests for the same website (default: 0)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay</span><br><span class="hljs-comment"># See also autothrottle settings and docs</span><br>DOWNLOAD_DELAY = <span class="hljs-number">1</span><br><span class="hljs-comment"># The download delay setting will honor only one of:</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN = 16</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP = 16</span><br><br><span class="hljs-comment"># Disable cookies (enabled by default)</span><br><span class="hljs-comment"># COOKIES_ENABLED = False</span><br><br><span class="hljs-comment"># Disable Telnet Console (enabled by default)</span><br><span class="hljs-comment"># TELNETCONSOLE_ENABLED = False</span><br><br><span class="hljs-comment"># Override the default request headers:</span><br>DEFAULT_REQUEST_HEADERS = &#123;<br>    <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span>,<br>    <span class="hljs-string">'Accept-Language'</span>: <span class="hljs-string">'en'</span>,<br>    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '</span><br>                  <span class="hljs-string">'Chrome/80.0.3987.163 Safari/537.36 '</span><br>&#125;<br><br><span class="hljs-comment"># Enable or disable spider middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><span class="hljs-comment"># SPIDER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'xiushi.middlewares.XiushiSpiderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable downloader middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment"># DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'xiushi.middlewares.XiushiDownloaderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable extensions</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/extensions.html</span><br><span class="hljs-comment"># EXTENSIONS = &#123;</span><br><span class="hljs-comment">#    'scrapy.extensions.telnet.TelnetConsole': None,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Configure item pipelines</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br>ITEM_PIPELINES = &#123;<br>   <span class="hljs-string">'xiushi.pipelines.XiushiPipeline'</span>: <span class="hljs-number">300</span>,<br>&#125;<br><br><span class="hljs-comment"># Enable and configure the AutoThrottle extension (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/autothrottle.html</span><br><span class="hljs-comment"># AUTOTHROTTLE_ENABLED = True</span><br><span class="hljs-comment"># The initial download delay</span><br><span class="hljs-comment"># AUTOTHROTTLE_START_DELAY = 5</span><br><span class="hljs-comment"># The maximum download delay to be set in case of high latencies</span><br><span class="hljs-comment"># AUTOTHROTTLE_MAX_DELAY = 60</span><br><span class="hljs-comment"># The average number of requests Scrapy should be sending in parallel to</span><br><span class="hljs-comment"># each remote server</span><br><span class="hljs-comment"># AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0</span><br><span class="hljs-comment"># Enable showing throttling stats for every response received:</span><br><span class="hljs-comment"># AUTOTHROTTLE_DEBUG = False</span><br><br><span class="hljs-comment"># Enable and configure HTTP caching (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings</span><br><span class="hljs-comment"># HTTPCACHE_ENABLED = True</span><br><span class="hljs-comment"># HTTPCACHE_EXPIRATION_SECS = 0</span><br><span class="hljs-comment"># HTTPCACHE_DIR = 'httpcache'</span><br><span class="hljs-comment"># HTTPCACHE_IGNORE_HTTP_CODES = []</span><br><span class="hljs-comment"># HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="spider-部分"><a href="#spider-部分" class="headerlink" title="spider 部分"></a>spider 部分</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-keyword">import</span> scrapy<br><span class="hljs-keyword">from</span> xiushi.items <span class="hljs-keyword">import</span> XiushiItem<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XiushispiderSpider</span><span class="hljs-params">(scrapy.Spider)</span>:</span><br>    name = <span class="hljs-string">'xiushiSpider'</span><br>    allowed_domains = [<span class="hljs-string">'qiushidabaike.com'</span>]<br>    start_urls = [<span class="hljs-string">'http://qiushidabaike.com/index_1.html'</span>]<br>    base_domain = <span class="hljs-string">'http://qiushidabaike.com'</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self, response)</span>:</span><br>        duanzi = response.xpath(<span class="hljs-string">'//div[@class="main-left fl"]//dl'</span>)<br>        <span class="hljs-keyword">for</span> it <span class="hljs-keyword">in</span> duanzi:<br>            title = it.xpath(<span class="hljs-string">'./dt/span/a/text()'</span>).get().strip()<br>            text = it.xpath(<span class="hljs-string">'./dd[@class="content"]//text()'</span>).getall()<br>            text = <span class="hljs-string">""</span>.join(text).strip()<br>            item = XiushiItem(title=title, text=text)<br>            <span class="hljs-keyword">yield</span> item<br>        <span class="hljs-comment"># 进行翻页操作</span><br>        next_url = response.xpath(<span class="hljs-string">'//div[@class="page"]//a[@class="next"]/@href'</span>).get()<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> next_url:<br>            <span class="hljs-keyword">return</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">yield</span> scrapy.Request(self.base_domain+next_url, callback=self.parse)<br></code></pre></td></tr></table></figure>
+
+<h4 id="pipelines-部分"><a href="#pipelines-部分" class="headerlink" title="pipelines 部分"></a>pipelines 部分</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Define your item pipelines here</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Don't forget to add your pipeline to the ITEM_PIPELINES setting</span><br><span class="hljs-comment"># See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br><span class="hljs-string">"""</span><br><span class="hljs-string"># 第一种方法，没进行json优化，但是看起来简单易操作</span><br><span class="hljs-string">import json</span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string">class XiushiPipeline(object):</span><br><span class="hljs-string">    def __init__(self):</span><br><span class="hljs-string">        self.fp = open('duanzi.json', 'w', encoding='utf-8')</span><br><span class="hljs-string"></span><br><span class="hljs-string">    def open_spider(self, spider):</span><br><span class="hljs-string">        print('爬虫开始了...')</span><br><span class="hljs-string"></span><br><span class="hljs-string">    def process_item(self, item, spider):</span><br><span class="hljs-string">        item_json = json.dumps(dict(item),  ensure_ascii=False)</span><br><span class="hljs-string">        self.fp.write(item_json+'\n')</span><br><span class="hljs-string">        return item</span><br><span class="hljs-string"></span><br><span class="hljs-string">    def close_spider(self, spider):</span><br><span class="hljs-string">        self.fp.close()</span><br><span class="hljs-string">        print("爬虫结束了...")</span><br><span class="hljs-string">"""</span><br><span class="hljs-comment"># 方案二，json优化，结果是每个字典存储在列表中</span><br><span class="hljs-comment">#        好处是满足json规则，坏处是数据量较大时比较耗内存</span><br><span class="hljs-comment"># ''' 自我感觉这种方法不咋地 '''</span><br><span class="hljs-comment"># from scrapy.exporters import JsonItemExporter</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># class XiushiPipeline(object):</span><br><span class="hljs-comment">#     def __init__(self):</span><br><span class="hljs-comment">#         # 注意此时以二进制形式写入</span><br><span class="hljs-comment">#         self.fp = open('duanzi.json', 'wb')</span><br><span class="hljs-comment">#         self.exporter = JsonItemExporter(self.fp, ensure_ascii=False, encoding='utf-8')</span><br><span class="hljs-comment">#         self.exporter.start_exporting()</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     def open_spider(self, spider):</span><br><span class="hljs-comment">#         print('爬虫开始了...')</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     def process_item(self, item, spider):</span><br><span class="hljs-comment">#         self.exporter.export_item(item)</span><br><span class="hljs-comment">#         return item</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     def close_spider(self, spider):</span><br><span class="hljs-comment">#         self.exporter.finish_exporting()</span><br><span class="hljs-comment">#         self.fp.close()</span><br><span class="hljs-comment">#         print("爬虫结束了...")</span><br><br><span class="hljs-string">'''方案三'''</span><br><span class="hljs-keyword">from</span> scrapy.exporters <span class="hljs-keyword">import</span> JsonLinesItemExporter<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">XiushiPipeline</span><span class="hljs-params">(object)</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span><br>        <span class="hljs-comment"># 注意此时以二进制形式写入</span><br>        self.fp = open(<span class="hljs-string">'duanzi.json'</span>, <span class="hljs-string">'wb'</span>)<br>        self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=<span class="hljs-literal">False</span>, encoding=<span class="hljs-string">'utf-8'</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open_spider</span><span class="hljs-params">(self, spider)</span>:</span><br>        print(<span class="hljs-string">'爬虫开始了...'</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self, item, spider)</span>:</span><br>        self.exporter.export_item(item)<br>        <span class="hljs-keyword">return</span> item<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close_spider</span><span class="hljs-params">(self, spider)</span>:</span><br>        self.fp.close()<br>        print(<span class="hljs-string">"爬虫结束了..."</span>)<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>可以在总文件中创建.py文件，代替爬虫开始命令 scrapy crawl xiushiSpider (注意应在爬虫目录下执行该命令)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> scrapy <span class="hljs-keyword">import</span> cmdline<br><br>cmdline.execute(<span class="hljs-string">"scrapy crawl xiushiSpider"</span>.split())<br><span class="hljs-comment"># cmdline.execute(["scrapy", 'crawl', 'xiushiSpider'])</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="爬虫第六天"><a href="#爬虫第六天" class="headerlink" title="爬虫第六天"></a>爬虫第六天</h1><h3 id="scrapy-框架之spider类（示例二-爬取优美散文）"><a href="#scrapy-框架之spider类（示例二-爬取优美散文）" class="headerlink" title="scrapy 框架之spider类（示例二.爬取优美散文）"></a>scrapy 框架之spider类（示例二.爬取优美散文）</h3><ul>
+<li>item部分</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Define here the models for your scraped items</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># See documentation in:</span><br><span class="hljs-comment"># https://doc.scrapy.org/en/latest/topics/items.html</span><br><br><span class="hljs-keyword">import</span> scrapy<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProseItem</span><span class="hljs-params">(scrapy.Item)</span>:</span><br>    <span class="hljs-comment"># define the fields for your item here like:</span><br>    <span class="hljs-comment"># name = scrapy.Field()</span><br>    title = scrapy.Field()<br>    text = scrapy.Field()<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>settings部分</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Scrapy settings for prose project</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># For simplicity, this file contains only settings considered important or</span><br><span class="hljs-comment"># commonly used. You can find more settings consulting the documentation:</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/settings.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment">#     https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><br>BOT_NAME = <span class="hljs-string">'prose'</span><br><br>SPIDER_MODULES = [<span class="hljs-string">'prose.spiders'</span>]<br>NEWSPIDER_MODULE = <span class="hljs-string">'prose.spiders'</span><br><br><span class="hljs-comment"># Crawl responsibly by identifying yourself (and your website) on the user-agent</span><br><span class="hljs-comment"># USER_AGENT = 'prose (+http://www.yourdomain.com)'</span><br><br><span class="hljs-comment"># Obey robots.txt rules</span><br>ROBOTSTXT_OBEY = <span class="hljs-literal">False</span><br><br><span class="hljs-comment"># Configure maximum concurrent requests performed by Scrapy (default: 16)</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS = 32</span><br><br><span class="hljs-comment"># Configure a delay for requests for the same website (default: 0)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay</span><br><span class="hljs-comment"># See also autothrottle settings and docs</span><br>DOWNLOAD_DELAY = <span class="hljs-number">1</span><br><span class="hljs-comment"># The download delay setting will honor only one of:</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_DOMAIN = 16</span><br><span class="hljs-comment"># CONCURRENT_REQUESTS_PER_IP = 16</span><br><br><span class="hljs-comment"># Disable cookies (enabled by default)</span><br><span class="hljs-comment"># COOKIES_ENABLED = False</span><br><br><span class="hljs-comment"># Disable Telnet Console (enabled by default)</span><br><span class="hljs-comment"># TELNETCONSOLE_ENABLED = False</span><br><br><span class="hljs-comment"># Override the default request headers:</span><br>DEFAULT_REQUEST_HEADERS = &#123;<br>    <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'</span>,<br>    <span class="hljs-string">'Accept-Language'</span>: <span class="hljs-string">'en'</span>,<br>    <span class="hljs-string">'User-Agent'</span>: <span class="hljs-string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '</span><br>                  <span class="hljs-string">'Chrome/80.0.3987.163 Safari/537.36 '</span><br>&#125;<br><br><span class="hljs-comment"># Enable or disable spider middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/spider-middleware.html</span><br><span class="hljs-comment"># SPIDER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'prose.middlewares.ProseSpiderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable downloader middlewares</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html</span><br><span class="hljs-comment"># DOWNLOADER_MIDDLEWARES = &#123;</span><br><span class="hljs-comment">#    'prose.middlewares.ProseDownloaderMiddleware': 543,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Enable or disable extensions</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/extensions.html</span><br><span class="hljs-comment"># EXTENSIONS = &#123;</span><br><span class="hljs-comment">#    'scrapy.extensions.telnet.TelnetConsole': None,</span><br><span class="hljs-comment"># &#125;</span><br><br><span class="hljs-comment"># Configure item pipelines</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br>ITEM_PIPELINES = &#123;<br>   <span class="hljs-string">'prose.pipelines.ProsePipeline'</span>: <span class="hljs-number">300</span>,<br>&#125;<br><br><span class="hljs-comment"># Enable and configure the AutoThrottle extension (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/autothrottle.html</span><br><span class="hljs-comment"># AUTOTHROTTLE_ENABLED = True</span><br><span class="hljs-comment"># The initial download delay</span><br><span class="hljs-comment"># AUTOTHROTTLE_START_DELAY = 5</span><br><span class="hljs-comment"># The maximum download delay to be set in case of high latencies</span><br><span class="hljs-comment"># AUTOTHROTTLE_MAX_DELAY = 60</span><br><span class="hljs-comment"># The average number of requests Scrapy should be sending in parallel to</span><br><span class="hljs-comment"># each remote server</span><br><span class="hljs-comment"># AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0</span><br><span class="hljs-comment"># Enable showing throttling stats for every response received:</span><br><span class="hljs-comment"># AUTOTHROTTLE_DEBUG = False</span><br><br><span class="hljs-comment"># Enable and configure HTTP caching (disabled by default)</span><br><span class="hljs-comment"># See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings</span><br><span class="hljs-comment"># HTTPCACHE_ENABLED = True</span><br><span class="hljs-comment"># HTTPCACHE_EXPIRATION_SECS = 0</span><br><span class="hljs-comment"># HTTPCACHE_DIR = 'httpcache'</span><br><span class="hljs-comment"># HTTPCACHE_IGNORE_HTTP_CODES = []</span><br><span class="hljs-comment"># HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>proseSpider部分</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-keyword">import</span> scrapy<br><span class="hljs-keyword">from</span> prose.items <span class="hljs-keyword">import</span> ProseItem<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProsespiderSpider</span><span class="hljs-params">(scrapy.Spider)</span>:</span><br>    name = <span class="hljs-string">'proseSpider'</span><br>    allowed_domains = [<span class="hljs-string">'duwenzhang.com'</span>]<br>    start_urls = [<span class="hljs-string">'http://www.duwenzhang.com/wenzhang/shenghuosuibi/'</span>]<br>    base_url = <span class="hljs-string">'http://www.duwenzhang.com/wenzhang/shenghuosuibi/'</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">parse</span><span class="hljs-params">(self, response)</span>:</span><br>        <span class="hljs-comment"># xpath 选择不含有某一属性的标签</span><br>        url_list = response.xpath(<span class="hljs-string">'//center//tr[2]//td[(@valign) and not(@height)]/table'</span>)<br>        <span class="hljs-keyword">for</span> it <span class="hljs-keyword">in</span> url_list:<br>            title = it.xpath(<span class="hljs-string">'.//tr[2]//td[@height="26"]/b/a/text()'</span>).getall()<br>            text = it.xpath(<span class="hljs-string">'.//tr[4]/td[@style="padding-left:3px"]/text()'</span>).getall()<br>            text = <span class="hljs-string">""</span>.join(text).strip()<br>            item = ProseItem(title=title, text=text)<br>            <span class="hljs-keyword">yield</span> item<br>        <span class="hljs-comment"># //a[contains(text(), "百度搜索")]  【可以部分检索】</span><br>        <span class="hljs-comment"># //a[text()="文字内容"] 【需要填全】 xpath定位指定文本标签</span><br>        next_url = response.xpath(<span class="hljs-string">'//tr//a[text()="下一页"]/@href'</span>).get()<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> next_url:<br>            <span class="hljs-keyword">return</span><br>        <span class="hljs-keyword">else</span>:<br>            <span class="hljs-keyword">yield</span> scrapy.Request(self.base_url+next_url, callback=self.parse)<br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>piplines 部分</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><br><span class="hljs-comment"># Define your item pipelines here</span><br><span class="hljs-comment">#</span><br><span class="hljs-comment"># Don't forget to add your pipeline to the ITEM_PIPELINES setting</span><br><span class="hljs-comment"># See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html</span><br><br><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">from</span> scrapy.exporters <span class="hljs-keyword">import</span> JsonLinesItemExporter<br><br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ProsePipeline</span><span class="hljs-params">(object)</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self)</span>:</span><br>        self.fp = open(<span class="hljs-string">'prose.json'</span>, <span class="hljs-string">'wb'</span>)<br>        self.exporter = JsonLinesItemExporter(self.fp, ensure_ascii=<span class="hljs-literal">False</span>,<br>                                              encoding=<span class="hljs-string">'utf-8'</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">open_spider</span><span class="hljs-params">(self, spider)</span>:</span><br>        print(<span class="hljs-string">'爬虫开始了...'</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">process_item</span><span class="hljs-params">(self, item, spider)</span>:</span><br>        self.exporter.export_item(item)<br>        <span class="hljs-keyword">return</span> item<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">close_spider</span><span class="hljs-params">(self, spider)</span>:</span><br>        self.fp.close()<br>        print(<span class="hljs-string">'爬虫结束了....'</span>)<br></code></pre></td></tr></table></figure>
+
+
+
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/05/03/spider/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/05/03/mongod_note/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            MongoDB
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/05/03/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">tcp/ip</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'monsterid',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2021
+        <i class="ri-heart-fill heart_icon"></i> 李子强
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="陈年往事"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://shenyu-vip.lofter.com" target="_blank" rel="noopener">摄影</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['面朝大海，春暖花开', '所有遗憾的，都不是未来', '花开花落，你陪了我多少年，一路上起起跌跌'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+    
+  </div>
+</body>
+
+</html>
