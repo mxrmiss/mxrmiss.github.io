@@ -45,7 +45,8 @@ tags:
   1. 终端输入ssh-keygen, 之后不断按回车
   2. 会产生一对公密和私密，存储在家目录下的 .ssh 目录中
   3. cat ～/.ssh/id_rsa.pub ，复制输出的公密内容至 github个人主页setting中的ssh中，并保存
-  4. 以后clone仓库地址时就可以直接使用
+  4. ssh -T git@github.com #打开git bash输入此命令，显示successful表示成功
+  5. 以后clone仓库地址时就可以直接使用
   
 - 向仓库更新文件基本命令
 

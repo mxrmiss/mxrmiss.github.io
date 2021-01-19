@@ -99,7 +99,7 @@ theme: ayer
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/mxrmiss/mxrmiss.github.io.git
+  repo: ubuntu@118.25.8.57:/home/ubuntu/mxrmiss.github.io
   branch: master
 
 
