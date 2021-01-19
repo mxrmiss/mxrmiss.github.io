@@ -1,3 +1,15 @@
+---
+title: hexo+腾讯云
+date: 2020/1/19 17:14:50
+comments: ture
+categories:
+- hexo
+tags:
+- hexo
+---
+
+
+
 ## hexo＋腾讯云主机搭建博客
 
 - [参考链接1](https://zhuanlan.zhihu.com/p/120322118)
@@ -5,6 +17,8 @@
 - [参考链接3](https://zhuanlan.zhihu.com/p/60578464)
 
 + 说明：不建议用hexo在云主机上搭建博客，感觉多此一举，建议hexo+github， wordpress+云主机（宝塔界面更快哦）
+
+<!--more-->
 
 ### 一．Git安装
 
