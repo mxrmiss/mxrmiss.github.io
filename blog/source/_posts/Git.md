@@ -68,3 +68,32 @@ fatal: 无法读取远程仓库。
 
 请确认您有正确的访问权限并且仓库存在。
 ```
+
+### git clonne
+
+1. fatal: unable to access ‘https://XXX: Failed onnect to github. com port 443: Timed out
+
+- 解决方法
+
+```
+git config --global --unset http.proxy
+```
+
+2. failed to receive handshake, SSL/TLS connection failed
+
+- 解决方法
+
+```
+git config --global http.sslBackend "openssl"
+```
+
+3. [OpenSSL SSL_read: Connection was reset, errno 10054](https://www.cnblogs.com/jfen625/p/12995408.html)
+
+- 解决方法
+
+```
+git config --global http.sslVerify "false"
+```
+
+
+

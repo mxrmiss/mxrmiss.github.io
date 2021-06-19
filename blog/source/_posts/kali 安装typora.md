@@ -1,5 +1,11 @@
 ---
-
+title: kali安装typora
+date: 2020/10/20 8:46:40
+comments: ture
+categories:
+- kali
+tags:
+- kali
 ---
 
 ## kali 安装typora
@@ -13,6 +19,7 @@
 ### 二、赋权
 
 - 在typora目录的bin文件夹下执行命令
+<!--more-->
 
 ```
 ./typora

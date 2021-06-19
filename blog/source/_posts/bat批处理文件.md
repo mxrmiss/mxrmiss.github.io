@@ -1,7 +1,11 @@
 ---
-
-
-
+title: bat批处理命令及解释
+date: 2020/5/3 8:46:40
+comments: ture
+categories:
+- windows10
+tags:
+- bat
 ---
 
 # bat批处理命令及解释

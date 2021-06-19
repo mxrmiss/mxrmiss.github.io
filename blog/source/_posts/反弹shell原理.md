@@ -1,5 +1,11 @@
 ---
-
+title: 反弹shell原理
+date: 2020/5/3 8:46:40
+comments: ture
+categories:
+- shell
+tags:
+- shell
 ---
 
 # 反弹shell原理

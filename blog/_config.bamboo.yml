@@ -1,20 +1,20 @@
 # 菜单
 menu:
-  # Home:
-  #   url: /
-  #   icon: fa fa-home
-  # Archives:
-  #   url: /archives
-  #   icon: fa fa-archive
-  # Tags:
-  #   url: /tags
-  #   icon: fa fa-tags
-  # Categories:
-  #   url: /categories
-  #   icon: fa fa-bookmark
-  # About:
-  #   url: /about
-  #   icon: fa fa-user
+  Home:
+    url: /
+    icon: fa fa-home
+  Archives:
+    url: /archives
+    icon: fa fa-archive
+  Tags:
+    url: /tags
+    icon: fa fa-tags
+  Categories:
+    url: /categories
+    icon: fa fa-bookmark
+  About:
+    url: /about
+    icon: fa fa-user
   # Friends:
   #   url: /friends
   # 更多: # 这是二级菜单的写法
@@ -133,7 +133,7 @@ postNav:
 copy:
   on: true
   title: '成功'
-  content: '代码已复制，请遵守相关授权协议。'
+  content: '代码已复制，请注明出处。'
 
 # 输入框打字特效
 inputEffects:
@@ -142,7 +142,7 @@ inputEffects:
 # live-2d(左下角动画人物)
 live2d:
   on: true # 控制显示或者隐藏
-  modelId:  # 0 or 1 or 2 or 3 or 4 or 5 or 6
+  modelId: 6  # 0 or 1 or 2 or 3 or 4 or 5 or 6
   open: true # 默认展开，false则收缩，通过点左下角的方块点击，控制展开或者收缩
 
 # 首页雪花飘落效果--冬天
@@ -220,12 +220,12 @@ baseInfo:
   on: true
   age: 1 # 年龄
   sex: '男' # 性别
-  coordinate: '星' # 坐标
-  status: '划水中' # 状态
+  coordinate: '水星' # 坐标
+  status: '发呆' # 状态
 
 # 关于我 技能
 skills:  # color or #000 技能
-  on: true
+  on: false
   # data: # data下面的值，不是固定个数的，可以自己增加或者删除
   #   HTML5:
   #     background: 'linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)'
@@ -246,15 +246,15 @@ skills:  # color or #000 技能
 # 关于我 社交账号
 socialAccounts: 
   on: true
-  # data: # data下面的值，不是固定个数的，可以自己增加或者删除
-  #   QQ:
-  #     icon: fa fa-qq
-  #     name: 2296557984
-  #     url: 'http://www.baidu.com'
-  #   微信:
-  #     icon: fa fa-weixin
-  #     name: 15156508997
-  #     url: 'http://www.baidu.com'
+  data: # data下面的值，不是固定个数的，可以自己增加或者删除
+    QQ:
+      icon: fa fa-qq
+      name: 2296557984
+      url: 'http://www.baidu.com'
+    微信:
+      icon: fa fa-weixin
+      name: 15156508997
+      url: 'http://www.baidu.com'
 
 # 关于我 游戏
 games:
@@ -287,8 +287,8 @@ copyright:
 # 首页座右铭
 motto:
   on: true
-  title: '座右铭'
-  content: '沉淀后我愿意做个温暖的人，有自己的喜好，有自己的原则，有自己的信仰，不急功近利，不浮夸轻薄。宠辱不惊，淡定安逸，心静如水，不忘初心，方得始终。——凌茜'
+  title: '想对你说'
+  content: '花开花落，你陪了我多少年，一路上起起跌跌'
   background: 'url("https://img10.360buyimg.com/ddimg/jfs/t1/166587/8/21344/72069/6088c24fEda5fdeb6/f9730ab637b7ca47.png")' # url("xxx") or red or #000 or rgba() ..
 
 # 首页公告
@@ -298,28 +298,11 @@ notice:
   title: '公告'
   background: 'url("https://img10.360buyimg.com/ddimg/jfs/t1/166587/8/21344/72069/6088c24fEda5fdeb6/f9730ab637b7ca47.png")' # url("xxx") or red or #000 or rgba() ..
   list: # list相当于数组对象，[{title:'xx',date: 'xx', url: 'xxx', color: 'red'}]根据自己实际情况，增加或者删除
-    # - title: '#博客更新到2.0了'
-    #   date: '2021-04-28'
-    #   url: '/archives'   # 可以为空, 也可以是本地页面地址如 '/archives'
-    #   color: red   # 字体颜色
-    # - title: '#新增 轮播图支持三种模式了，功能也增强了 ~'
-    #   date: '2021-04-28'
-    #   url: 'http://baidu.com'
-    #   color: red
-    # - title: '#新增 支持二级导航'
-    #   date: '2021-04-28'
-    #   url: 'http://baidu.com'
-    #   color: blue
-    # - title: '#新增 归档，分类等页面头部图片位置可以设置为视频 ~'
-    #   date: '2021-04-28'
-    #   url: 'http://baidu.com'
-    #   color: '#42b983'
-    # - title: '#新增 头部导航可以设置为在顶部透明，并且可以任意设置背景颜色了 ~'
-    #   date: '2021-04-28'
-    #   url: 'http://baidu.com'
-    # - title: '#新增 首页增加了座右铭和公告栏目 ~'
-    #   date: '2021-04-28'
-    #   url: 'http://baidu.com'
+    - title: '我的博客新主题！'
+      date: '2021-06-19'
+      url: '/archives'   # 可以为空, 也可以是本地页面地址如 '/archives'
+      color: red   # 字体颜色
+
     
   
 
@@ -559,12 +542,12 @@ site_footer:
     - icon: fa fa-rss
       url: /atom.xml
     - icon: fa fa-envelope
-      url: mailto:1730241541@qq.com
+      url: mailto:2296557984@qq.com
     - icon: fa fa-github
-      url: https://github.com/yuang01/hexo-theme-bamboo
+      url: https://github.com/mxrmiss
     - icon: fa fa-qq
-      url: tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1730241541
-  copyright: 'Copyright © 2019 - 2020 <a href="https://github.com/yuang01">yuang01</a> | Powered by <a href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a href="https://github.com/yuang01/theme">Bamboo</a> '
+      url: tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2296557984
+  copyright: 'Copyright © 2019 - 2020 <a href="https://mxrmiss">mxrmiss</a> | Powered by <a href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a href="https://github.com/yuang01/theme">Bamboo</a> '
   custom: # 根据需要自行取消注释，label: 'markdown格式'，会在下面继续增加内容
     # - label: '<br>'
     # - label: '[Hello World](http://baidu.com)'
