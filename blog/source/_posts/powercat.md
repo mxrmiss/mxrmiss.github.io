@@ -1,13 +1,3 @@
----
-title: powercat
-date: 2020/10/20 8:46:40
-comments: ture
-categories:
-- 网络安全
-tags:
-- 黑客技术
----
-
 # powercat
 
 - powercat是netcat的powershell版本，可以在windows系统上使用

@@ -109,7 +109,7 @@ cat id_rsa.pub
 
 ```
 cd /opt
-wget https://npm.taobao.org/mirrors/node/v10.16.0/node-v10.16.0-linux-x64.tar.xz  # 下载二进制安装包
+wget https://npm.taobao.org/mirrors/node/latest-v15.x/node-v15.0.1-linux-x64.tar.xz  # 下载二进制安装包
 ```
 
 2. node.js部署

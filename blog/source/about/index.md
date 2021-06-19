@@ -1,5 +1,10 @@
-title: "About me"
 ---
+title: about
+date: 2020-09-14 15:30:30 # 时间随便写
+type: "about"
+layout: "about"
+---
+
 # 联系方式
 QQ: 2296557984
 Github: github.com/mxrmiss

@@ -1,11 +1,5 @@
 ---
-title: win10开机自启文件夹
-date: 2020/10/20 8:46:40
-comments: ture
-categories:
-- windows10
-tags:
-- windows10
+
 ---
 
 ## 所有用户的开机自启文件夹

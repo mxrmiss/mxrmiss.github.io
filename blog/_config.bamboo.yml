@@ -66,10 +66,10 @@ swiper:
   defaultVideo: '' # video，min-width:992px show
   defaultVideoLoadingImg: 'https://img14.360buyimg.com/ddimg/jfs/t1/150557/6/19578/249564/60320406Ed5c42418/0d18299f505e4268.gif' # video loading img -- use .gif img, 视频预加载动画，使用gif图片作为loading，为空则视频没有预加载动画
   defaultTile: '青墨书晚风' # 标题
-  defaultDesc: [] #描 述，例如 ['煮酒洗净尘嚣，论知交', '万般付之一笑，共偕老']
-  defaultLeftBtnText: '阅读文档' # 左边按钮文字, 空字符串则不显示
+  defaultDesc: ['花开花落，你陪了我多少年，一路山起起跌跌'] #描 述，例如 ['煮酒洗净尘嚣，论知交', '万般付之一笑，共偕老']
+  defaultLeftBtnText: '' # 左边按钮文字, 空字符串则不显示
   defaultLeftBtnLink: 'https://yuang01.gitee.io/2021/02/08/hexo-theme-bamboo-new/' # 左边按钮链接 
-  defaultRightBtnText: '下载主题' # 右边按钮的文字，空字符串则不显示
+  defaultRightBtnText: '' # 右边按钮的文字，空字符串则不显示
   defaultRightBtnLink: 'https://gitee.com/yuang01/hexo-theme-bamboo/repository/archive/dev.zip' # 右边的按钮的链接
   defaultDescTyped: true # defaultDesc文字是否开启打字特效
   defaultDescTypedLoop: true # defaultDesc文字的打字特效是否循环
@@ -100,12 +100,12 @@ show_count: true
 
 # 打赏功能
 donate:
-  on: false
-donate_message: 你的赏识是我前进的动力
+  on: true
+donate_message: 大爷，赏点吧
 # 支付宝打赏图片相对路径
-Alipay: '/medias/zfb.jpg'
+# Alipay: '/medias/zfb.jpg'
 # 微信打赏图片相对路径
-WeChatpay: '/medias/wx.jpg'
+WeChatpay: '/medias/wechat_pay.png'
 
 # 分享功能
 sharejs: 
@@ -288,7 +288,7 @@ copyright:
 motto:
   on: true
   title: '想对你说'
-  content: '花开花落，你陪了我多少年，一路上起起跌跌'
+  content: 'Alone by yourself than you lack there's no doubt about. I'm always into something marking moves to impore. What whould you do if you where in my shoes. Boom a letter oops anther suicide.'
   background: 'url("https://img10.360buyimg.com/ddimg/jfs/t1/166587/8/21344/72069/6088c24fEda5fdeb6/f9730ab637b7ca47.png")' # url("xxx") or red or #000 or rgba() ..
 
 # 首页公告
@@ -308,7 +308,7 @@ notice:
 
 # 文章置顶
 topArticle:
-  on: true
+  on: flase
   background: 'rgba(255,255,255,1)' # url("http://xxx.png") or red or #000 or rgba() ..
 
 # 归档，标签，分类页图片上的打字效果
@@ -331,9 +331,9 @@ valine:
   appkey: 
   avatar: '' # 匿名者头像选项 https://valine.js.org/avatar.html
   placeholder: '客官，说点什么吧' # 评论内容输入框的 placeholder
-  master: '' # 博主标签识别，博主邮箱md5 可以去md5加密网站，例如 https://md5jiami.51240.com/ ，将自己的邮箱输入， 得到 32位小写 的字符串
+  master: '	6c1236649cc4edce3bd1f37f98795b78' # 博主标签识别，博主邮箱md5 可以去md5加密网站，例如 https://md5jiami.51240.com/ ，将自己的邮箱输入， 得到 32位小写 的字符串
   friends: [] # 小伙伴的 邮箱md5， 是个数组
-  requiredFields: [] # 设置必填项 ['nick', 'mail'] nick为昵称必填， mail为邮箱必填，建议设置必填，填写qq邮箱，会使用qq头像作为头像
+  requiredFields: ['redsheep', '2296557984@qq.com'] # 设置必填项 ['nick', 'mail'] nick为昵称必填， mail为邮箱必填，建议设置必填，填写qq邮箱，会使用qq头像作为头像
   backgroundImg: '/medias/comment-bg.gif' # 右下角背景图片
   backgroundColor: 'rgba(255,255,255,0.9)' # 背景颜色
 
@@ -383,7 +383,7 @@ gitalk:
 
 # 弹幕 只对valine评论有效
 danmu:
-  on: false
+  on: true
   loop: false # 设为true，则弹幕完了之后，继续查询评论接口，将该篇文章的评论再显示在弹幕里
   delay: 5000 # 每条弹幕之间出现的间隔时间
   speed: 20 # 弹幕运行的速度, 越小越快
@@ -405,7 +405,7 @@ tag:
   title: 'tags'
   img: 'https://pic2.zhimg.com/80/v2-bf6c555e7c61a57ba4a1fd95a9a32975_1440w.jpg' # 标签页上面的图片
   desc: '愿你如风，被人温柔以待'
-  full: false # 标签页上面的图片是否全屏显示
+  full: true # 标签页上面的图片是否全屏显示
   video: '' # 如果有值，则在屏幕大于920px的时候，全屏显示视频
   background: '' # red or rgba(255,255,255,0.8) or other color or url("http:xxx.png")
   titleColor: '' # 标题字体颜色
@@ -415,7 +415,7 @@ tagDetail:
   title: 'tag'
   img: 'https://pic1.zhimg.com/80/v2-604a15cef201cf177943af2d915eb2e7_1440w.jpg?source=1940ef5c'
   desc: '愿你如风，被人温柔以待' # 标签页详情上上面的图片上的文字
-  full: false
+  full: true
   video: ''
   background: '' # red or rgba(255,255,255,0.8) or other color or url("http:xxx.png")
 
@@ -424,7 +424,7 @@ categories:
   title: 'categories'
   img: 'https://pic2.zhimg.com/80/v2-7c496c95897fb15768593cc5170c8b1a_1440w.jpg?source=1940ef5c'
   desc: '愿你如风，被人温柔以待'
-  full: false
+  full: true
   video: ''
   background: '' # red or rgba(255,255,255,0.8) or other color or url("http:xxx.png")
   titleColor: '' # 标题字体颜色
@@ -434,7 +434,7 @@ categoryDetail:
   title: 'category'
   img: 'https://pic3.zhimg.com/80/v2-98dcd81cb0d1fee52a807c13cedb8338_1440w.jpg?source=1940ef5c'
   desc: '愿你如风，被人温柔以待'
-  full: false
+  full: true
   video: ''
   background: '' # red or rgba(255,255,255,0.8) or other color or url("http:xxx.png")
 
@@ -443,7 +443,7 @@ about:
   title: 'about'
   img: 'https://pic4.zhimg.com/80/v2-d12b0c9802720897793993a5a199720f_1440w.jpg'
   desc: '愿你如风，被人温柔以待'
-  full: false
+  full: true
   video: ''
   background: '' # red or rgba(255,255,255,0.8) or other color or url("http:xxx.png")
   titleColor: '' # 标题字体颜色
@@ -617,6 +617,19 @@ imgs:
 - '/medias/13.jpg'
 - '/medias/14.jpg'
 - '/medias/15.jpg'
+- '/medias/16.jpg'
+- '/medias/17.jpg'
+- '/medias/18.jpg'
+- '/medias/19.jpg'
+- '/medias/20.jpg'
+- '/medias/21.jpg'
+- '/medias/22.jpg'
+- '/medias/23.jpg'
+- '/medias/24.jpg'
+- '/medias/25.jpg'
+- '/medias/26.jpg'
+- '/medias/27.jpg'
+
 
 CDN:
   valine: https://cdn.jsdelivr.net/gh/HCLonely/Valine@latest/dist/Valine.min.js

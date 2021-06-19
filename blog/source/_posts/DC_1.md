@@ -1,12 +1,4 @@
----
-title: DC_1靶机渗透测试
-date: 2020/5/3 8:46:40
-comments: ture
-categories:
-- 渗透测试
-tags:
-- DC
----
+
 
 # DC_1靶机渗透测试
 
@@ -18,7 +10,6 @@ tags:
 ## 一、DC_1的准备
 
 1.  在官网上下载DC_1镜像文件到电脑1上并且解压到虚拟机上，我使用的是VMware
-<!--more-->
 2. 将DC_1与攻击机器配置在同一网段上
 
 [![R9rCFS.png](https://z3.ax1x.com/2021/06/18/R9rCFS.png)](https://imgtu.com/i/R9rCFS)
