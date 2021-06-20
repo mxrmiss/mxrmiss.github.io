@@ -1,13 +1,13 @@
 ---
-title: hexo+腾讯云
-date: 2020/1/19 17:14:50
-comments: ture
-categories:
-- hexo
-tags:
-- hexo
+title: hexo＋腾讯云主机搭建博客
+date: 2020-09-14 14:06
+swiper: false # 将改文章放入轮播图中
+swiperImg: '' # 该文章在轮播图中的图片，可以是本地目录下图片也可以是http://xxx图片
+img: 'http://cdn.mxrblog.cn/ct_6.jpg' # 该文章图片，可以是本地目录下图片也可以是http://xxx图片
+categories: blog
+tags: [hexo, blog]   # 可以是数组
+top: false
 ---
-
 
 
 ## hexo＋腾讯云主机搭建博客

@@ -1,13 +1,13 @@
 ---
-title: 网络编程
-date: 2020/10/16 
-comments: ture
-categories:
-- python
-tags:
-- 网络编程
+title: python网络编程
+date: 2020-09-14 14:06
+swiper: false # 将改文章放入轮播图中
+swiperImg: '' # 该文章在轮播图中的图片，可以是本地目录下图片也可以是http://xxx图片
+img: 'http://cdn.mxrblog.cn/ct_16.jpg' # 该文章图片，可以是本地目录下图片也可以是http://xxx图片
+categories: python
+tags: [python, 网络编程, 套接字]   # 可以是数组
+top: false
 ---
-
 
 
 # python网络编程

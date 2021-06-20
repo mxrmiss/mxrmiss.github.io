@@ -75,11 +75,7 @@ function loadLocale(name) {
         try {
             oldLocale = globalLocale._abbr;
             aliasedRequire = require;
-            aliasedRequire(
-                (typeof __dirname !== undefined ? __dirname : '.') +
-                    '/locale/' +
-                    name
-            );
+            aliasedRequire('./locale/' + name);
             getSetGlobalLocale(oldLocale);
         } catch (e) {
             // mark as not found to avoid repeating expensive file require call causing high CPU

@@ -1,16 +1,13 @@
 ---
-title: Git & Github
-date: 2020/5/3 9:08:28
-comments: ture
-categories:
-- Git
-tags:
-- Git
+title: Git&Github
+date: 2020-09-14 14:06
+swiper: false # 将改文章放入轮播图中
+swiperImg: '' # 该文章在轮播图中的图片，可以是本地目录下图片也可以是http://xxx图片
+img: 'http://cdn.mxrblog.cn/ct_5.jpg' # 该文章图片，可以是本地目录下图片也可以是http://xxx图片
+categories: git
+tags: [git,github]   # 可以是数组
+top: false
 ---
-
-# Git & Github
-
-
 
 - Git 初始化
 

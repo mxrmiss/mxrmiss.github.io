@@ -646,7 +646,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   color: #273849;
   width: 300px;
   padding: 0 10px;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.7);
   transition: width 0.3s;
 }
 .toc-aside .toc-content {
@@ -1099,7 +1099,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   color: #42b983;
 }
 .bg-light-floor-tags {
-  background: ;
+  background: http;
   background-size: cover;
   background-position: center center;
 }
@@ -1108,6 +1108,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   width: 100%;
   height: 50vh;
   height: 60vh;
+  height: 100vh;
   overflow: hidden;
   background-size: cover;
   background-position: center center;
@@ -1249,7 +1250,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   color: #42b983;
 }
 .bg-light-floor-categories {
-  background: ;
+  background: http;
   background-size: cover;
   background-position: center center;
 }
@@ -1258,6 +1259,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   width: 100%;
   height: 50vh;
   height: 60vh;
+  height: 100vh;
   overflow: hidden;
   background-size: cover;
   background-position: center center;
@@ -1779,7 +1781,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   word-break: break-all;
 }
 .bg-light-floor-archive {
-  background: ;
+  background: http;
   background-size: cover;
   background-position: center center;
 }
@@ -1957,7 +1959,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   line-height: 18px;
 }
 .bg-light-floor-tagDetail {
-  background: ;
+  background: http;
   background-size: cover;
   background-position: center center;
 }
@@ -1966,6 +1968,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   width: 100%;
   height: 50vh;
   height: 60vh;
+  height: 100vh;
   overflow: hidden;
   background-size: cover;
   background-position: center center;
@@ -2080,7 +2083,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   border-radius: 10px;
 }
 .bg-light-floor-categoryDetail {
-  background: ;
+  background: http;
   background-size: cover;
   background-position: center center;
 }
@@ -2089,6 +2092,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   width: 100%;
   height: 50vh;
   height: 60vh;
+  height: 100vh;
   overflow: hidden;
   background-size: cover;
   background-position: center center;
@@ -2366,7 +2370,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   }
 }
 .bg-light-floor-about {
-  background: ;
+  background: http;
   background-size: cover;
   background-position: center center;
 }
@@ -2375,6 +2379,7 @@ pre:hover::-webkit-scrollbar-thumb:hover,
   width: 100%;
   height: 50vh;
   height: 60vh;
+  height: 100vh;
   overflow: hidden;
   background-size: cover;
   background-position: center center;

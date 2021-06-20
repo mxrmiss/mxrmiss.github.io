@@ -1,3 +1,14 @@
+---
+title: powercat的使用
+date: 2020-09-14 14:06
+swiper: false # 将改文章放入轮播图中
+swiperImg: '' # 该文章在轮播图中的图片，可以是本地目录下图片也可以是http://xxx图片
+img: 'http://cdn.mxrblog.cn/ct_14.jpg' # 该文章图片，可以是本地目录下图片也可以是http://xxx图片
+categories: tool
+tags: [powercat, tool, kali]   # 可以是数组
+top: false
+---
+
 # powercat
 
 - powercat是netcat的powershell版本，可以在windows系统上使用

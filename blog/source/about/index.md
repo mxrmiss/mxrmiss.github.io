@@ -17,4 +17,3 @@ Github: github.com/mxrmiss
 - 转载时应注明出处
 - 本博客内容均只供学术交流，请不要利用本博客触犯法律法规，本博主将不承担任何法律责任
 - 感谢本博客主题提供者
- - [主题链接点此处](https://github.com/markyong/hexo-theme-stage)

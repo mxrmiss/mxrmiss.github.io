@@ -1,11 +1,12 @@
 ---
-title: Linux基础
-date: 2020/5/3 9:08:28
-comments: ture
-categories:
-- linux
-tags:
-- Linux
+title: Linux基础操作
+date: 2020-09-14 14:06
+swiper: false # 将改文章放入轮播图中
+swiperImg: '' # 该文章在轮播图中的图片，可以是本地目录下图片也可以是http://xxx图片
+img: 'http://cdn.mxrblog.cn/ct_10.jpg' # 该文章图片，可以是本地目录下图片也可以是http://xxx图片
+categories: linux
+tags: [linux, kali]   # 可以是数组
+top: false
 ---
 
 [本笔记的友情链接](https://book.apeland.cn/details/189/)
