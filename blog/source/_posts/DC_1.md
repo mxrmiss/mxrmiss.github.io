@@ -63,7 +63,7 @@ nmap -sP 192.168.0.0/24       //查询这个网段里面的活的IP
 
 ![image-20210619101204599](http://cdn.mxrblog.cn/image-20210619101204599.png)
 
-## 二、寻找漏洞
+## 三、寻找漏洞
 
 - 由于我们已经知晓网站的CMS是Drupal，于是我们可以使用msf探测Drupal的漏洞，并加以利用
 
@@ -79,7 +79,7 @@ nmap -sP 192.168.0.0/24       //查询这个网段里面的活的IP
 
 
 
-## 三、寻找flag
+## 四、寻找flag
 
 - 执行ls， 并且发现flag1
 
@@ -169,6 +169,15 @@ find / -perm -u=s -type f 2>/dev/null
 ![image-20210619120759548](http://cdn.mxrblog.cn/image-20210619120759548.png)
 
 
+
+## 五、总结
+
+- nmap使用
+- arp-scan -l
+- 通过CMS寻找漏洞
+- msf的使用
+- find发现root可执行文件
+- suid提权
 
 ## 知识点
 
